@@ -90,21 +90,32 @@ monogatari.script({
         //'show scene restaurant.jpg',
         //'play music restaurant.mp3',
         //'show character chef Normal center with fadeIn',
-		{"Input": {
-			"Text": "What is your name?",
-			"Validation": function (input) {
-				return input.trim().length > 0;
-			},
-			"Save": function (input) {
-				Storage.set ("PlayerName", input);
-				storage.player.name = input;
-				return true;
-			},
-			"Warning": "You must enter a name!"
-		}},
-		'user "Welcome to Git-Food, the most delicious version control kitchen in town!"',
+		{
+			'Input': {
+				'Text': 'What is your name?',
+				'Validation': function (input) {
+					return input.trim ().length > 0;
+				},
+				'Save': function (input) {
+					this.storage ({
+						player: {
+							name: input
+						}
+					});
+					return true;
+				},
+				'Revert': function () {
+					this.storage ({
+						player: {
+							name: ''
+						}
+					});
+				},
+				'Warning': 'You must enter a name!'
+			}
+		},
         'chef "Welcome to Git-Food, the most delicious version control kitchen in town!"',
-        'chef "I\'m Chef {{player.name}}, and I\'ll be your guide on this exciting culinary journey through the world of Git."',
+        'chef "I\'m Chef {{chef_name}}, and I\'ll be your guide on this exciting culinary journey through the world of Git."',
         'chef "In this kitchen, we use Git to manage our recipes and collaborate with other chefs like you."',
         //'show character chef Smile center with fadeIn',
         'chef "Are you ready to become a master chef of version control and whip up some mouthwatering code?"',

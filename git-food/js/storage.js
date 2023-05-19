@@ -1,4 +1,4 @@
-let storage = {
+monogatari.storage ({
 	player: {
 		name: "Player"
 	},
@@ -7,4 +7,4 @@ let storage = {
 	media: false,
 	playing: false,
 	scripting: false
-};
+});
