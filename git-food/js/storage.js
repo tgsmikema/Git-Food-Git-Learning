@@ -1,8 +1,10 @@
-/* global monogatari */
-
-// Persistent Storage Variable
-monogatari.storage ({
+let storage = {
 	player: {
-		name: ''
-	}
-});
+		name: "Player"
+	},
+	chef_name: "Kyle",
+	animations: false,
+	media: false,
+	playing: false,
+	scripting: false
+};

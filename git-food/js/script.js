@@ -75,93 +75,91 @@ monogatari.assets ('scenes', {
 
 // Define the Characters
 monogatari.characters ({
-	'chef': {
-		name: 'Yui',
-		color: '#5bcaff'
+	"user": {
+		"Name": "{{player.name}}",
+		"Color": "#ff3951"
+	},
+	"chef":{
+		"Name": "Kyle",
+		"Color": "#00bfff",
 	}
 });
 
 monogatari.script({
-	// Introduction
-	'Start': [
-		'centered "Welcome to the Git Bistro, a place where cooking and Git merge together!"',
-		'chef "Hello, aspiring chef! Are you ready to learn the art of merging in our kitchen?"',
-		{
-			'Choice': {
-				'Dialog': 'chef',
-				'Yes': {
-					'Text': 'Yes',
-					'Do': 'jump LearnMerge'
-				},
-				'No': {
-					'Text': 'No',
-					'Do': 'jump End'
-				}
-			}
-		}
-	],
-
-	// Learning "git merge"
-	'LearnMerge': [
-		'chef "Fantastic! Let me explain how merging works in our kitchen."',
-		'chef "In Git, merging is like combining different flavors of code to create something extraordinary."',
-		'chef "When you merge branches, you bring together the changes made in one branch and incorporate them into another."',
-		'jump QuizMerge'
-	],
-
-	// Quiz about "git merge"
-	'QuizMerge': [
-		'chef "Now, let\'s test your knowledge with a quiz!"',
-		{
-			'Choice': {
-				'Dialog': 'chef',
-				'What does "git merge" command do?': {
-					'Text': 'What does the "git merge" command do?',
-					'Do': 'jump AnswerMerge'
-				},
-				// Add more quiz questions here
-				'End': {
-					'Text': 'End',
-					'Do': 'jump End'
-				}
-			}
-		}
-	],
-
-	// Handling the user's answer for the merge quiz
-	'AnswerMerge': [
-		'chef "Let\'s see if you got it right."',
-		{
-			'Choice': {
-				'Dialog': 'chef',
-				'C) Combines the changes from one branch into another': {
-					'Text': 'C) Combines the changes from one branch into another',
-					'Do': 'jump CorrectMerge'
-				},
-				// Add incorrect answer choices here
-			}
-		}
-	],
-
-	// Feedback for correct answer
-	'CorrectMerge': [
-		'chef "Congratulations! That\'s the correct answer."',
-		'chef "Just like in our kitchen, the \'git merge\' command combines the changes from one branch into another."',
-		'jump QuizMerge'
-	],
-
-	// Feedback for incorrect answer
-	'IncorrectMerge': [
-		'chef "Oops! That\'s not the correct answer."',
-		'chef "In our kitchen, the \'git merge\' command combines the changes from one branch into another."',
-		'jump QuizMerge'
-	],
-
-	// End of the game
-	'End': [
-		'chef "You did great, chef! Keep exploring the Git Bistro kitchen and continue to hone your skills."',
-		'hide character chef with fadeOut',
-		'play sound applause.mp3',
-		'end'
-	]
+    'Start': [
+        //'show scene restaurant.jpg',
+        //'play music restaurant.mp3',
+        //'show character chef Normal center with fadeIn',
+		{"Input": {
+			"Text": "What is your name?",
+			"Validation": function (input) {
+				return input.trim().length > 0;
+			},
+			"Save": function (input) {
+				Storage.set ("PlayerName", input);
+				storage.player.name = input;
+				return true;
+			},
+			"Warning": "You must enter a name!"
+		}},
+		'user "Welcome to Git-Food, the most delicious version control kitchen in town!"',
+        'chef "Welcome to Git-Food, the most delicious version control kitchen in town!"',
+        'chef "I\'m Chef {{player.name}}, and I\'ll be your guide on this exciting culinary journey through the world of Git."',
+        'chef "In this kitchen, we use Git to manage our recipes and collaborate with other chefs like you."',
+        //'show character chef Smile center with fadeIn',
+        'chef "Are you ready to become a master chef of version control and whip up some mouthwatering code?"',
+        {
+            'Choice': {
+                'Yes': {
+                    'Text': 'Yes, I\'m ready!',
+                    'Do': 'jump IntroductionPart2'
+                },
+                'No': {
+                    'Text': 'No, I need more time.',
+                    'Do': 'jump End'
+                }
+            }
+        }
+    ],
+    'IntroductionPart2': [
+        'chef "Great! Before we dive into the Git-Food kitchen, let me give you a quick overview of Git."',
+        //'hide character chef',
+        //'show scene kitchen.jpg with fadeIn',
+        //'play music kitchen.mp3',
+        //'show character chef Normal left with fadeIn',
+        'chef "Imagine Git as a magical cookbook that keeps track of all our recipes and their revisions."',
+        'chef "With Git, we can create new recipes, make changes, and collaborate with other chefs without losing track of our cooking history."',
+        //'show character chef Thought left',
+        'chef "Just like in cooking, Git provides us with powerful commands to manage our recipes and collaborate effectively."',
+        //'show character chef Normal left',
+        'chef "We have commands like \'git init\' to initialize a new cookbook, \'git add\' to add new recipes to the cookbook, and \'git commit\' to save our cooking changes."',
+        'chef "And when we\'re ready to share our culinary creations with others, we can use commands like \'git clone\' and \'git push\' to serve our recipes to fellow chefs."',
+        //'hide character chef',
+        //'show scene restaurant.jpg with fadeIn',
+        //'play music restaurant.mp3',
+        //'show character chef Normal center with fadeIn',
+        'chef "In the Git-Food kitchen, you\'ll learn these commands and more as you embark on your cooking adventure."',
+        'chef "Are you ready to put on your chef\'s hat and start cooking with Git?"',
+        {
+            'Choice': {
+                'Yes': {
+                    'Text': 'Yes, let\'s get cooking!',
+                    'Do': 'jump GameStart'
+                },
+                'No': {
+                    'Text': 'No, I need more time to prepare.',
+                    'Do': 'jump End'
+                }
+            }
+        }
+    ],
+    'GameStart': [
+        // Start your game here
+    ],
+    'End': [
+        //'hide character chef',
+        //'play sound applause.mp3',
+        //'stop music',
+        'end'
+    ]
 });
