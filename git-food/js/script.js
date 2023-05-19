@@ -165,12 +165,48 @@ monogatari.script({
         }
     ],
     'GameStart': [
-        // Start your game here
+        {
+			'Choice': {
+				'Dialog': 'Select which topic you would like to begin with?',
+				'GitClonePull': {
+					'Text': 'GitClonePull',
+					'Do': 'jump GitClonePull'
+				},
+				'GitAddCommitPush': {
+					'Text': 'GitAddCommitPush',
+					'Do': 'jump GitAddCommitPush'
+				},
+				'GitBranchCheckout': {
+					'Text': 'GitBranchCheckout',
+					'Do': 'jump GitBranchCheckout'
+				},
+				'GitMergePR': {
+					'Text': 'GitMergePR',
+					'Do': 'jump GitMergePR'
+				}
+			}
+		}
     ],
     'End': [
         //'hide character chef',
         //'play sound applause.mp3',
         //'stop music',
         'end'
-    ]
+    ],
+	'GitClonePull':[
+		'selected Clone&Pull',
+		'jump GameStart'
+	],
+	'GitAddCommitPush':[
+		'selected Commit&Push',
+		'jump GameStart'
+	],
+	'GitBranchCheckout':[
+		'selected Branch&Checkout',
+		'jump GameStart'
+	],
+	'GitMergePR':[
+		'selected Merge&PR',
+		'jump GameStart'
+	]
 });
