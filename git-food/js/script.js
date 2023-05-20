@@ -195,24 +195,9 @@ monogatari.script({
         //'stop music',
         'end'
     ],
-	'GitIntro':[
-		'selected GitIntro',
-		'jump GameStart',
-	],
-	'GitClonePull':[
-		'selected Clone&Pull',
-		'jump GameStart'
-	],
-	'GitAddCommitPush':[
-		'selected Commit&Push',
-		'jump GameStart'
-	],
-	'GitBranchCheckout':[
-		'selected Branch&Checkout',
-		'jump GameStart'
-	],
-	'GitMergePR':[
-		'selected Merge&PR',
-		'jump GameStart'
-	]
+	'GitIntro': gitIntro,
+	'GitClonePull': GitClonePull,
+	'GitAddCommitPush': GitAddCommitPush,
+	'GitBranchCheckout': GitBranchCheckout,
+	'GitMergePR': GitMergePR,
 });
