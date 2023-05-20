@@ -1,8 +1,8 @@
 const GitMergePR = [
-    'chef Greetings, aspiring chef! In the Git Food, merging is like blending different ingredients to create a brand-new recipe. It allows us to combine the work done in separate branches and bring them together in harmony. Let\'s learn how to use the \'git merge\' command!',
+    'chef Greetings, aspiring chef {{player.name}}! In the Git Food, merging is like blending different ingredients to create a brand-new recipe. It allows us to combine the work done in separate branches and bring them together in harmony. Let\'s learn how to use the \'git merge\' command!',
     'user Sounds good, Chef! I\'m ready!',
     'chef Great! Let me explain how \'git merge\' works in our kitchen. Imagine you\'re working on your own dish in a separate prep station, and another chef is also preparing a different dish. When both dishes are ready, you can merge them to create something extraordinary!',
-    'na In the Git Food, each chef represents a branch, and their dish represents the code changes made in that branch. Merging branches allows the chefs to combine their work and create a unified codebase.',
+    'chef In the Git Food, each chef represents a branch, and their dish represents the code changes made in that branch. Merging branches allows the chefs to combine their work and create a unified codebase.',
     'chef Now, let\'s dive deeper into the \'git merge\' command',
     'chef In our kitchen, when it\'s time to merge dishes, we use the \'git merge\' command. Similarly, in Git, \'git merge\' brings together the changes made in one branch and incorporates them into another.',
     //NPC Chef demonstrates the usage of the 'git merge' command in a restaurant context, showing examples of merging different dishes to create a new, unique dish.
