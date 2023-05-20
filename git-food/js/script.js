@@ -82,6 +82,10 @@ monogatari.characters ({
 	"chef":{
 		"Name": "Kyle",
 		"Color": "#00bfff",
+	},
+	"na":{
+		"Name": "Narrator",
+		"Color": "#abcdef",
 	}
 });
 
@@ -91,6 +95,7 @@ monogatari.script({
         //'play music restaurant.mp3',
         //'show character chef Normal center with fadeIn',
 		{
+			// Asking for player to enter their name.
 			'Input': {
 				'Text': 'What is your name?',
 				'Validation': function (input) {
@@ -114,11 +119,11 @@ monogatari.script({
 				'Warning': 'You must enter a name!'
 			}
 		},
-        'chef "Welcome to Git-Food, the most delicious version control kitchen in town!"',
-        'chef "I\'m Chef {{chef_name}}, and I\'ll be your guide on this exciting culinary journey through the world of Git."',
-        'chef "In this kitchen, we use Git to manage our recipes and collaborate with other chefs like you."',
+        'na Welcome to Git-Food, the most delicious version control kitchen in town!',
+        'chef Hi, {{player.name}}, I\'m grateful for you to join our kitchen as a Commis Chef, I\'m Head Chef {{chef_name}}, and I\'ll be your guide on this exciting culinary journey through the world of Git.',
+        'chef In this kitchen, we use Git to manage our recipes and collaborate with other chefs like you.',
         //'show character chef Smile center with fadeIn',
-        'chef "Are you ready to become a master chef of version control and whip up some mouthwatering code?"',
+        'chef Are you ready to become a master chef of version control and whip up some mouthwatering code?',
         {
             'Choice': {
                 'Yes': {
@@ -127,63 +132,60 @@ monogatari.script({
                 },
                 'No': {
                     'Text': 'No, I need more time.',
-                    'Do': 'jump End'
+                    'Do': 'jump TakeABreak'
                 }
             }
         }
     ],
+	'TakeABreak': [
+		'chef No Problem, take a break and come back!',
+		'jump End'
+	],
     'IntroductionPart2': [
-        'chef "Great! Before we dive into the Git-Food kitchen, let me give you a quick overview of Git."',
+        'chef Great! Before we dive into the Git-Food kitchen, let me give you a quick overview of Git.',
         //'hide character chef',
         //'show scene kitchen.jpg with fadeIn',
         //'play music kitchen.mp3',
         //'show character chef Normal left with fadeIn',
-        'chef "Imagine Git as a magical cookbook that keeps track of all our recipes and their revisions."',
-        'chef "With Git, we can create new recipes, make changes, and collaborate with other chefs without losing track of our cooking history."',
+        'chef Imagine Git as a magical cookbook that keeps track of all our recipes and their revisions.',
+        'chef With Git, we can create new recipes, make changes, and collaborate with other chefs without losing track of our cooking history.',
         //'show character chef Thought left',
-        'chef "Just like in cooking, Git provides us with powerful commands to manage our recipes and collaborate effectively."',
+        'chef Just like in cooking, Git provides us with powerful commands to manage our recipes and collaborate effectively.',
         //'show character chef Normal left',
-        'chef "We have commands like \'git init\' to initialize a new cookbook, \'git add\' to add new recipes to the cookbook, and \'git commit\' to save our cooking changes."',
-        'chef "And when we\'re ready to share our culinary creations with others, we can use commands like \'git clone\' and \'git push\' to serve our recipes to fellow chefs."',
+        'chef We have commands like \'git init\' to initialize a new cookbook, \'git add\' to add new recipes to the cookbook, and \'git commit\' to save our cooking changes.',
+        'chef And when we\'re ready to share our culinary creations with others, we can use commands like \'git clone\' and \'git push\' to serve our recipes to fellow chefs.',
         //'hide character chef',
         //'show scene restaurant.jpg with fadeIn',
         //'play music restaurant.mp3',
         //'show character chef Normal center with fadeIn',
-        'chef "In the Git-Food kitchen, you\'ll learn these commands and more as you embark on your cooking adventure."',
-        'chef "Are you ready to put on your chef\'s hat and start cooking with Git?"',
-        {
-            'Choice': {
-                'Yes': {
-                    'Text': 'Yes, let\'s get cooking!',
-                    'Do': 'jump GameStart'
-                },
-                'No': {
-                    'Text': 'No, I need more time to prepare.',
-                    'Do': 'jump End'
-                }
-            }
-        }
+        'chef In the Git-Food kitchen, you\'ll learn these commands and more as you embark on your cooking adventure.',
+        'chef Lets begin our journey in the kitchen, {{player.name}}, I will see you on the other side!',
+		'jump GameStart',
     ],
     'GameStart': [
         {
 			'Choice': {
 				'Dialog': 'Select which topic you would like to begin with?',
+				'GitIntro': {
+					'Text': 'Level 1: Introduction of Git',
+					'Do': 'jump GitIntro'
+				},
 				'GitClonePull': {
-					'Text': 'GitClonePull',
+					'Text': 'Level 2: Git Clone & Pull',
 					'Do': 'jump GitClonePull'
 				},
 				'GitAddCommitPush': {
-					'Text': 'GitAddCommitPush',
+					'Text': 'Level 3: Git Add, Commit, Push',
 					'Do': 'jump GitAddCommitPush'
 				},
 				'GitBranchCheckout': {
-					'Text': 'GitBranchCheckout',
+					'Text': 'Level 4: Git Branch & Checkout',
 					'Do': 'jump GitBranchCheckout'
 				},
 				'GitMergePR': {
-					'Text': 'GitMergePR',
+					'Text': 'Level 5: Git Merge & Pull-Request',
 					'Do': 'jump GitMergePR'
-				}
+				},
 			}
 		}
     ],
@@ -193,6 +195,10 @@ monogatari.script({
         //'stop music',
         'end'
     ],
+	'GitIntro':[
+		'selected GitIntro',
+		'jump GameStart',
+	],
 	'GitClonePull':[
 		'selected Clone&Pull',
 		'jump GameStart'

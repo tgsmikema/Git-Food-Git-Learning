@@ -86,8 +86,13 @@ button:hover {
 **/
 
 /* Choice Buttons style */
-[data-component="choice-container"] button {
+[data-component="choice-container"] div {
+	flex-direction: row !important;
+	flex-wrap: wrap;
+}
 
+[data-component="choice-container"] button {
+	flex: "50%"
 }
 
 /* Choice Button Style on Hover */
