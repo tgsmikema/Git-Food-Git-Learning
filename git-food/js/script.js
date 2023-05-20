@@ -86,6 +86,10 @@ monogatari.characters ({
 	"na":{
 		"Name": "Narrator",
 		"Color": "#abcdef",
+	},
+	"sous":{
+		"Name": "Arvin",
+		"Color":"#9370DB"
 	}
 });
 
