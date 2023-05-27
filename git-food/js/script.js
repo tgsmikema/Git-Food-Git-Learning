@@ -199,7 +199,7 @@ monogatari.script({
         //'stop music',
         'end'
     ],
-	'GitIntro': gitIntro,
+	'GitIntro': GitIntro,
 	'GitClonePull': GitClonePull,
 	'GitAddCommitPush': GitAddCommitPush,
 	'GitBranchCheckout': GitBranchCheckout,
