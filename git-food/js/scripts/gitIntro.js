@@ -52,7 +52,7 @@ const GitIntro = [
           },
         },
       },
-      "jump GitIntroEnd",
+      "jump GitIntro2",
     ],
     GitIntro2: [
       "chef Another chef in your team wants to improve the recipe at the same time as you. ",
@@ -62,7 +62,7 @@ const GitIntro = [
         Choice: {
           option1: {
             Text: "Ah I understand.",
-            Do: "Sweet! Let's test your understanding",
+            Do: "chef Sweet! Let's test your understanding",
           },
           option2: {
             Text: "Hold on, can you say that again?",
@@ -70,7 +70,32 @@ const GitIntro = [
           },
         },
       },
+      "chef If you want your fellow chef to modify your recipe, what is the safest option?",
+      {
+        Choice: {
+          option1: {
+            Text: "Let them overwrite your recipe",
+            Do: "chef That seems not quite right. You don't want to let people overwrite your work without creating backups because their changes may not be desirable",
+          },
+          option2: {
+            Text: "chef Let them copy the recipe and then make modifications on their copy",
+            Do: "Well done!",
+          },
+          option3: {
+            Text: "Don't let them modify your recipe at all, your recipe is perfect",
+            Do: "chef That seems not quite right. Working in a team often requires your teammates to make changes to what you have made, so it does not make sense to disallow them from modifying your work.",
+          },
+          option4: {
+            Text: "Yell at them because you feel insulted",
+            Do: "chef Nah let's be nice. We should allow them to copy the receipe and make changes",
+          },
+        },
+      },
+      "jump GitIntro3",
     ],
+
+    GitIntro3: [],
+
     GitIntroEnd: [
       "na You now know the importance of git, let's dive into it with the next level!",
       "jump GameStart",
