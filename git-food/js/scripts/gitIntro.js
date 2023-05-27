@@ -115,7 +115,7 @@ const GitIntro = [
         Choice: {
           option1: {
             Text: "In the kitchen.",
-            Do: "Nah, You wouldn't keep all your important files in one place, so having an extra online backups is a good way to store them. It also allows you to access them anywhere, any time!",
+            Do: "chef Nah, You wouldn't keep all your important files in one place, so having an extra online backups is a good way to store them. It also allows you to access them anywhere, any time!",
           },
           option2: {
             Text: "Nowhere, you'll probably remember.",
@@ -156,7 +156,7 @@ const GitIntro = [
           },
           optionD: {
             Text: "All above",
-            Do: "chef Well done, actually you should store copies in all of these senarios",
+            Do: "chef Well done, you should store copies in all of these senarios",
           },
         },
       },
