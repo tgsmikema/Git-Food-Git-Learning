@@ -134,7 +134,34 @@ const GitIntro = [
       "jump GitIntro4",
     ],
 
-    GitIntro4: [],
+    GitIntro4: [
+      "chef With many chefs making changes to each other's recipes, it is nice to be able to keep track of which iteration you prefer and the chef who made it.",
+      "chef This is so that you can always revert any changes that turned out to ruin the dishes.",
+      "chef Once you and your team of chefs are happy with the new dishes, you can add them to the final menu.",
+      "chef Let's review what you have learned.",
+      "chef Why would you want to store a copy of your recipe? Select all that apply.",
+      {
+        Choice: {
+          optionA: {
+            Text: "In case new versions aren't as nice",
+            Do: "chef Actually you should store copies in all of these senarios",
+          },
+          optionB: {
+            Text: "In case you lose the recipe",
+            Do: "chef Actually you should store copies in all of these senarios",
+          },
+          optionC: {
+            Text: "In case your fellow chefs want to try it",
+            Do: "chef Actually you should store copies in all of these senarios",
+          },
+          optionD: {
+            Text: "All above",
+            Do: "chef Well done, actually you should store copies in all of these senarios",
+          },
+        },
+      },
+      "jump GitIntroEnd",
+    ],
 
     GitIntroEnd: [
       "na You now know the importance of git, let's dive into it with the next level!",
