@@ -94,7 +94,47 @@ const GitIntro = [
       "jump GitIntro3",
     ],
 
-    GitIntro3: [],
+    GitIntro3: [
+      "chef We save our recipes both online and in the kitchen.",
+      "chef If the physical copies of the recipes get lost, we can rewrite those recipes back into a physical version from the online versions.",
+      "chef Similarly, if we don't have an internet connection, we still have local copies. So save the changes to your recipes online and locally.",
+      {
+        Choice: {
+          option1: {
+            Text: "Nah my memory is really good so I probably won't need it.",
+            Do: "chef Mate this is not just about you, we want to ensure we can get your recipes too! You're really getting on my nerves...",
+          },
+          option2: {
+            Text: "Sounds good!",
+            Do: "chef Nice! Let's move on",
+          },
+        },
+      },
+      "chef In cases of a fire, earthquake, or other event causing the kitchen to be destroyed, where should you keep your backup recipes",
+      {
+        Choice: {
+          option1: {
+            Text: "In the kitchen.",
+            Do: "Nah, You wouldn't keep all your important files in one place, so having an extra online backups is a good way to store them. It also allows you to access them anywhere, any time!",
+          },
+          option2: {
+            Text: "Nowhere, you'll probably remember.",
+            Do: "chef Umm, mate, this is not just about you, we want to ensure we can get your recipes too! You're really getting on my nerves...",
+          },
+          option3: {
+            Text: "Online and in the kitchen",
+            Do: "chef Good job! You wouldn't keep all your important files in one place, so having online and local backups is a good way to store them. It also allows you to access them anywhere, any time!",
+          },
+          option4: {
+            Text: "Online.",
+            Do: "Nah, You wouldn't keep all your important files in one place, so having an extra backups is a good way to store them. It also allows you to access them anywhere, any time!",
+          },
+        },
+      },
+      "jump GitIntro4",
+    ],
+
+    GitIntro4: [],
 
     GitIntroEnd: [
       "na You now know the importance of git, let's dive into it with the next level!",
