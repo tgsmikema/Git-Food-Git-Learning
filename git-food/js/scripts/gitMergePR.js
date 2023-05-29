@@ -20,7 +20,10 @@ const GitMergePR = [
             },
             'GitAddCommitPush': {
                 'Text': 'C) Combines the changes from one branch into another.',
-                'Do': 'jump CorrectMergeQ1'
+                'Do': 'jump CorrectMergeQ1',
+                onChosen: () => {
+                  updateScore()
+                }
             },
             'GitBranchCheckout': {
                 'Text': 'D) Checks out a specific commit.',
@@ -48,7 +51,10 @@ const GitMergePR = [
                     },
                     'GitClonePull': {
                         'Text': 'B) A merge conflict occurs, and manual intervention is required.',
-                        'Do': 'jump CorrectMergeQ2'
+                        'Do': 'jump CorrectMergeQ2',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) The conflicting changes are deleted from the repository.',
@@ -80,7 +86,10 @@ const GitMergePR = [
                     },
                     'GitClonePull': {
                         'Text': 'B) The destination dish.',
-                        'Do': 'jump CorrectMergeQ3'
+                        'Do': 'jump CorrectMergeQ3',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) Both dishes equally.',
@@ -119,7 +128,10 @@ const GitMergePR = [
                     },
                     'GitClonePull': {
                         'Text': 'B) To request review and discussion before adding the dish to the menu.',
-                        'Do': 'jump CorrectPRQ1'
+                        'Do': 'jump CorrectPRQ1',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) To delete a dish from the menu.',
@@ -151,7 +163,10 @@ const GitMergePR = [
                     },
                     'GitClonePull': {
                         'Text': 'B) A summary of the changes made to the dish and their purpose.',
-                        'Do': 'jump CorrectPRQ2'
+                        'Do': 'jump CorrectPRQ2',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) A request to remove a dish from the menu.',

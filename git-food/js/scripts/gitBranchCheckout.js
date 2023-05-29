@@ -25,7 +25,10 @@ const GitBranchCheckout = [
                     },
                     'B': {
                         'Text': 'B) git branch branch_name',
-                        'Do': 'jump BranchCorrectQ1'
+                        'Do': 'jump BranchCorrectQ1',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'C': {
                         'Text': 'C)  git checkout branch_name',
@@ -52,7 +55,10 @@ const GitBranchCheckout = [
                     },
                     'B': {
                         'Text': 'B) To create multiple copies of a repository',
-                        'Do': 'jump BranchCorrectQ2'
+                        'Do': 'jump BranchCorrectQ2',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'C': {
                         'Text': 'C) To synchronise changes between multiple repositories',
@@ -94,7 +100,10 @@ const GitBranchCheckout = [
                     },
                     'B': {
                         'Text': 'B) Switches to the branch with the given name',
-                        'Do': 'jump CheckoutCorrectQ1'
+                        'Do': 'jump CheckoutCorrectQ1',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'C': {
                         'Text': 'C) Deletes the branch with the given name',
@@ -126,7 +135,10 @@ const GitBranchCheckout = [
                     },
                     'C': {
                         'Text': 'C) The changes are preserved on the original branch',
-                        'Do': 'jump CheckoutCorrectQ2'
+                        'Do': 'jump CheckoutCorrectQ2',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                 },
             }

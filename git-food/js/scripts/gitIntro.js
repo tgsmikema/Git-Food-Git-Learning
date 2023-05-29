@@ -37,6 +37,9 @@ const GitIntro = [
           A: {
             Text: "Create a copy of the recipe as a backup",
             Do: "na Excellent! You should create a copy of your version as you should not rely on your own or other people's memories",
+            onChosen: () => {
+              updateScore()
+            }
           },
           B: {
             Text: "Store it in your brain because you probably won't forget",
@@ -80,6 +83,9 @@ const GitIntro = [
           option2: {
             Text: "chef Let them copy the recipe and then make modifications on their copy",
             Do: "Well done!",
+            onChosen: () => {
+              updateScore()
+            }
           },
           option3: {
             Text: "Don't let them modify your recipe at all, your recipe is perfect",
@@ -124,6 +130,9 @@ const GitIntro = [
           option3: {
             Text: "Online and in the kitchen",
             Do: "chef Good job! You wouldn't keep all your important files in one place, so having online and local backups is a good way to store them. It also allows you to access them anywhere, any time!",
+            onChosen: () => {
+              updateScore()
+            }
           },
           option4: {
             Text: "Online.",
@@ -157,6 +166,9 @@ const GitIntro = [
           optionD: {
             Text: "All above",
             Do: "chef Well done, you should store copies in all of these senarios",
+            onChosen: () => {
+              updateScore()
+            }
           },
         },
       },

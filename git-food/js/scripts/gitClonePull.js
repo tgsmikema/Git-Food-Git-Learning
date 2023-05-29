@@ -28,7 +28,10 @@ const GitClonePull = [
                     'Dialog': 'Quiz Question 1: What happens when you cast  "git clone" on the central recipe book?',
                     'A': {
                         'Text': 'A) You get your own recipe book',
-                        'Do': 'jump CorrectQ1'
+                        'Do': 'jump CorrectQ1',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'B': {
                         'Text': 'B) You change the central recipe book',
@@ -72,7 +75,10 @@ const GitClonePull = [
                     },
                     'D': {
                         'Text': 'D) All of the above.',
-                        'Do': 'jump CorrectQ2'
+                        'Do': 'jump CorrectQ2',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                 },
             }
@@ -122,7 +128,10 @@ const GitClonePull = [
                     },
                     'B': {
                         'Text': 'B) Add new stuff in the central recipe book to your personal recipe book',
-                        'Do': 'jump CorrectQ1ForPull'
+                        'Do': 'jump CorrectQ1ForPull',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'C': {
                         'Text': 'C) You get a new personal recipe book',
@@ -154,7 +163,10 @@ const GitClonePull = [
                     },
                     'B': {
                         'Text': 'B) No, you can’t replace it',
-                        'Do': 'jump CorrectQ2ForPull'
+                        'Do': 'jump CorrectQ2ForPull',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'C': {
                         'Text': 'C) Yes, but it would require additional steps',

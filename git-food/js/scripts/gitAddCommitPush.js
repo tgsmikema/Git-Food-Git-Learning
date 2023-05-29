@@ -12,7 +12,10 @@ const GitAddCommitPush = [
                     'Dialog': 'Quiz Question 1: If you want to add a new dish named "recipe.txt," which command should you run?',
                     'A': {
                         'Text': 'A) git add recipe.txt',
-                        'Do': 'jump CorrectAddQ1'
+                        'Do': 'jump CorrectAddQ1',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'B': {
                         'Text': 'B) git add -m "recipe.txt"',
@@ -49,7 +52,10 @@ const GitAddCommitPush = [
                     },
                     'False': {
                         'Text': 'False',
-                        'Do': 'jump CorrectAddQ2'
+                        'Do': 'jump CorrectAddQ2',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     }
                 }
             }
@@ -76,7 +82,10 @@ const GitAddCommitPush = [
                     'Dialog': 'Quiz Question 1: Update recipe: spaghetti" to create a new commit, which command should you use?',
                     'A': {
                         'Text': 'A) git commit -m "Update recipe: spaghetti"',
-                        'Do': 'jump CorrectCommitQ1'
+                        'Do': 'jump CorrectCommitQ1',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'B': {
                         'Text': 'B) git commit -a "Update recipe: spaghetti"',
@@ -108,7 +117,10 @@ const GitAddCommitPush = [
                     'Dialog': 'Quiz Question 2: What is the role of the commit message in the "git commit" command?',
                     'A': {
                         'Text': 'A) It describes the changes made in the commit.',
-                        'Do': 'jump CorrectCommitQ2'
+                        'Do': 'jump CorrectCommitQ2',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'B': {
                         'Text': 'B) It specifies the name of the branch to commit to.',
@@ -155,7 +167,10 @@ const GitAddCommitPush = [
                     },
                     'C': {
                         'Text': 'C) Push changes to the remote repository.',
-                        'Do': 'jump CorrectPushQ1'
+                        'Do': 'jump CorrectPushQ1',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'D': {
                         'Text': 'D) Create a new branch.',
@@ -188,7 +203,10 @@ const GitAddCommitPush = [
                     },
                     'C': {
                         'Text': 'C) git add - git commit - git push',
-                        'Do': 'jump CorrectPushQ2'
+                        'Do': 'jump CorrectPushQ2',
+                        onChosen: () => {
+                          updateScore()
+                        }
                     },
                     'D': {
                         'Text': 'D) git add - git push - git commit',

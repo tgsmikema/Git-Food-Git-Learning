@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /* global Monogatari */
 /* global monogatari */
 
@@ -23,16 +23,24 @@
  * =============================================================================
  **/
 
+const registerButtonAction = (handler) => {
+	const allButtons = $("button")
+	allButtons.on({
+		"click": () => {
+			handler()
+			registerButtonAction(handler)
+		}
+	})
+}
+
 const { $_ready, $_ } = Monogatari;
 
 // 1. Outside the $_ready function:
 
+$_ready(() => {
+  // 2. Inside the $_ready function:
 
-$_ready (() => {
-	// 2. Inside the $_ready function:
-
-	monogatari.init ('#monogatari').then (() => {
-		// 3. Inside the init function:
-
-	});
+  monogatari.init("#monogatari").then(() => {
+    // 3. Inside the init function:
+  });
 });
