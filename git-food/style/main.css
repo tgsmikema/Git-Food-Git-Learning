@@ -13,6 +13,37 @@
 
 /**
  * ===========================
+ * Custom Styling
+ * ===========================
+**/
+
+button:hover {
+	transform: scale(1.04);
+	transition: all .2s;
+}
+
+choice-container {
+	width: 100%;
+}
+
+choice-container>div {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+choice-container button {
+	background-color: rgba(255, 255, 255, .15);
+	border: 2px solid white;
+}
+
+choice-container button:hover {
+	background-color: rgba(255, 255, 255, .15);
+	border: 2px solid white;
+}
+
+/**
+ * ===========================
  * General Styling
  * ===========================
 **/
