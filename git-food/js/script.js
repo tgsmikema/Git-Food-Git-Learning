@@ -119,18 +119,8 @@ monogatari.script({
     "chef In this kitchen, we use Git to manage our recipes and collaborate with other chefs like you.",
     //'show character chef Smile center with fadeIn',
     "chef Are you ready to become a master chef of version control and whip up some mouthwatering code?",
-    {
-      Choice: {
-        Yes: {
-          Text: "Yes, I'm ready!",
-          Do: "jump IntroductionPart2",
-        },
-        No: {
-          Text: "No, I need more time.",
-          Do: "jump TakeABreak",
-        },
-      },
-    },
+    "user Yes Chef! Let's do it!",
+    "jump IntroductionPart2",
   ],
   TakeABreak: ["chef No Problem, take a break and come back!", "jump End"],
   IntroductionPart2: [
