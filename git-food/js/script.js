@@ -119,7 +119,6 @@ monogatari.script({
       },
     },
     "na Welcome to Git-Food, the most delicious version control kitchen in town!",
-    "PlayCorrectAndJump",
     "show character chef welcome center with fadeIn",
     "chef Hi, {{player.name}}, I'm grateful for you to join our kitchen as a Commis Chef, I'm Head Chef {{chef_name}}, and I'll be your guide on this exciting culinary journey through the world of Git.",
     "chef In this kitchen, we use Git to manage our recipes and collaborate with other chefs like you.",
