@@ -21,18 +21,25 @@ const GitBranchCheckout = [
                         'How do you create a new cooking station to experiment with a recipe?',
                     'A': {
                         'Text': 'A) git init branch_name',
-                        'Do': 'jump BranchWrongQ1'
+                        'Do': 'jump BranchWrongQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'B': {
                         'Text': 'B) git branch branch_name',
                         'Do': 'jump BranchCorrectQ1',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'C': {
                         'Text': 'C)  git checkout branch_name',
-                        'Do': 'jump BranchWrongQ1'
+                        'Do': 'jump BranchWrongQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }
@@ -51,18 +58,25 @@ const GitBranchCheckout = [
                     'Dialog': 'Quiz Question 2: What is the purpose of Git branching?',
                     'A': {
                         'Text': 'A) To experiment with new features without affecting the main codebase',
-                        'Do': 'jump BranchWrongQ2'
+                        'Do': 'jump BranchWrongQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'B': {
                         'Text': 'B) To create multiple copies of a repository',
                         'Do': 'jump BranchCorrectQ2',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'C': {
                         'Text': 'C) To synchronise changes between multiple repositories',
-                        'Do': 'jump BranchWrongQ2'
+                        'Do': 'jump BranchWrongQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }
@@ -96,18 +110,25 @@ const GitBranchCheckout = [
                     'Dialog': 'Quiz Question 1: What does git checkout branch-name do?',
                     'A': {
                         'Text': 'A) Creates a new branch with the given name',
-                        'Do': 'jump CheckoutWrongQ1'
+                        'Do': 'jump CheckoutWrongQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'B': {
                         'Text': 'B) Switches to the branch with the given name',
                         'Do': 'jump CheckoutCorrectQ1',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'C': {
                         'Text': 'C) Deletes the branch with the given name',
-                        'Do': 'jump CheckoutWrongQ1'
+                        'Do': 'jump CheckoutWrongQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }
@@ -127,17 +148,24 @@ const GitBranchCheckout = [
                     'Dialog': 'Quiz Question 2: What happens to the changes made on a branch when you switch to a different branch using git checkout?',
                     'A': {
                         'Text': 'A) The changes are discarded',
-                        'Do': 'jump CheckoutWrongQ2'
+                        'Do': 'jump CheckoutWrongQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'B': {
                         'Text': 'B) The changes are automatically merged into the new branch',
-                        'Do': 'jump CheckoutWrongQ2'
+                        'Do': 'jump CheckoutWrongQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'C': {
                         'Text': 'C) The changes are preserved on the original branch',
                         'Do': 'jump CheckoutCorrectQ2',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                 },

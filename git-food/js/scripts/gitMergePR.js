@@ -124,22 +124,32 @@ const GitMergePR = [
                     'Dialog': 'Quiz Question 1: What is the purpose of a pull request in the Git Food kitchen?',
                     'GitIntro': {
                         'Text': 'A) To immediately add the dish to the menu.',
-                        'Do': 'jump WrongPRQ1'
+                        'Do': 'jump WrongPRQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'GitClonePull': {
                         'Text': 'B) To request review and discussion before adding the dish to the menu.',
                         'Do': 'jump CorrectPRQ1',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) To delete a dish from the menu.',
-                        'Do': 'jump WrongPRQ1'
+                        'Do': 'jump WrongPRQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'GitBranchCheckout': {
                         'Text': 'D) To undo the last modification made to the dish.',
-                        'Do': 'jump WrongPRQ1'
+                        'Do': 'jump WrongPRQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 }
             },
@@ -159,22 +169,32 @@ const GitMergePR = [
                     'Dialog': 'Quiz Question 2: What is typically included in a pull request in the Git Food kitchen?',
                     'GitIntro': {
                         'Text': 'A) The entire collection of recipes in the kitchen.',
-                        'Do': 'jump WrongPRQ2'
+                        'Do': 'jump WrongPRQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'GitClonePull': {
                         'Text': 'B) A summary of the changes made to the dish and their purpose.',
                         'Do': 'jump CorrectPRQ2',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) A request to remove a dish from the menu.',
-                        'Do': 'jump WrongPRQ2'
+                        'Do': 'jump WrongPRQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'GitBranchCheckout': {
                         'Text': 'D) The last update made to the dish\'s recipe.',
-                        'Do': 'jump WrongPRQ2'
+                        'Do': 'jump WrongPRQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 }
             },

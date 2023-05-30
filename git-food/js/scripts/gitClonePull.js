@@ -31,19 +31,29 @@ const GitClonePull = [
                         'Do': 'jump CorrectQ1',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'B': {
                         'Text': 'B) You change the central recipe book',
-                        'Do': 'jump WrongQ1'
+                        'Do': 'jump WrongQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'C': {
                         'Text': 'C)  Your personal recipe book disappears',
-                        'Do': 'jump WrongQ1'
+                        'Do': 'jump WrongQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'D': {
                         'Text': 'D) You steal the central recipe book',
-                        'Do': 'jump WrongQ1'
+                        'Do': 'jump WrongQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }
@@ -63,21 +73,31 @@ const GitClonePull = [
                     'Dialog': 'Quiz Question 2: Why would you want your own recipe book instead of working with the central recipe book?',
                     'A': {
                         'Text': 'A) Make personal changes without affecting the central recipe book',
-                        'Do': 'jump WrongQ2'
+                        'Do': 'jump WrongQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'B': {
                         'Text': 'B) Refer to the recipes without needing to look in the central recipe book',
-                        'Do': 'jump WrongQ2'
+                        'Do': 'jump WrongQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'C': {
                         'Text': 'C) Add experimental recipes that aren’t fully taste tested yet',
-                        'Do': 'jump WrongQ2'
+                        'Do': 'jump WrongQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'D': {
                         'Text': 'D) All of the above.',
                         'Do': 'jump CorrectQ2',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                 },
@@ -124,22 +144,32 @@ const GitClonePull = [
                     'Dialog': 'Quiz Question 1: What happens when you use "git pull" for your recipe book?',
                     'A': {
                         'Text': 'A) Sends your changes to the central recipe book',
-                        'Do': 'jump WrongQ1ForPull'
+                        'Do': 'jump WrongQ1ForPull',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'B': {
                         'Text': 'B) Add new stuff in the central recipe book to your personal recipe book',
                         'Do': 'jump CorrectQ1ForPull',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'C': {
                         'Text': 'C) You get a new personal recipe book',
-                        'Do': 'jump WrongQ1ForPull'
+                        'Do': 'jump WrongQ1ForPull',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'D': {
                         'Text': 'D) Your personal recipe book disappears',
-                        'Do': 'jump WrongQ1ForPull'
+                        'Do': 'jump WrongQ1ForPull',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }
@@ -159,22 +189,32 @@ const GitClonePull = [
                     'Dialog': 'Quiz Question 2: Can you use “git clone” to replace “git pull”?',
                     'A': {
                         'Text': 'A) Yes, it is exactly the same',
-                        'Do': 'jump WrongQ2ForPull'
+                        'Do': 'jump WrongQ2ForPull',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'B': {
                         'Text': 'B) No, you can’t replace it',
                         'Do': 'jump CorrectQ2ForPull',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'C': {
                         'Text': 'C) Yes, but it would require additional steps',
-                        'Do': 'jump WrongQ2ForPull'
+                        'Do': 'jump WrongQ2ForPull',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'D': {
                         'Text': 'D) I don’t know',
-                        'Do': 'jump WrongQ2ForPull'
+                        'Do': 'jump WrongQ2ForPull',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }

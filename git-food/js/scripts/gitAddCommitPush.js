@@ -15,19 +15,29 @@ const GitAddCommitPush = [
                         'Do': 'jump CorrectAddQ1',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'B': {
                         'Text': 'B) git add -m "recipe.txt"',
-                        'Do': 'jump WrongAddQ1'
+                        'Do': 'jump WrongAddQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'C': {
                         'Text': 'C) git add commit recipe.txt',
-                        'Do': 'jump WrongAddQ1'
+                        'Do': 'jump WrongAddQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'D': {
                         'Text': 'D) git add origin recipe.txt',
-                        'Do': 'jump WrongAddQ1'
+                        'Do': 'jump WrongAddQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }
@@ -48,13 +58,17 @@ const GitAddCommitPush = [
                     'Dialog': 'True or False: "git add" only stages new files and ignores modifications to existing files.',
                     'True': {
                         'Text': 'True',
-                        'Do': 'jump WrongAddQ2'
+                        'Do': 'jump WrongAddQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'False': {
                         'Text': 'False',
                         'Do': 'jump CorrectAddQ2',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     }
                 }
@@ -85,19 +99,29 @@ const GitAddCommitPush = [
                         'Do': 'jump CorrectCommitQ1',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'B': {
                         'Text': 'B) git commit -a "Update recipe: spaghetti"',
-                        'Do': 'jump WrongCommitQ1'
+                        'Do': 'jump WrongCommitQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'C': {
                         'Text': 'C) git commit -p "Update recipe: spaghetti"',
-                        'Do': 'jump WrongCommitQ1'
+                        'Do': 'jump WrongCommitQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'D': {
                         'Text': 'D) git commit -s "Update recipe: spaghetti"',
-                        'Do': 'jump WrongCommitQ1'
+                        'Do': 'jump WrongCommitQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }
@@ -120,19 +144,29 @@ const GitAddCommitPush = [
                         'Do': 'jump CorrectCommitQ2',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'B': {
                         'Text': 'B) It specifies the name of the branch to commit to.',
-                        'Do': 'jump WrongCommitQ2'
+                        'Do': 'jump WrongCommitQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'C': {
                         'Text': 'C) It determines the level of visibility for the commit.',
-                        'Do': 'jump WrongCommitQ2'
+                        'Do': 'jump WrongCommitQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'D': {
                         'Text': 'D) It sets the priority level for the commit.',
-                        'Do': 'jump WrongCommitQ2'
+                        'Do': 'jump WrongCommitQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }
@@ -159,22 +193,32 @@ const GitAddCommitPush = [
                     'Dialog': 'Quiz Question 1: In the given conversation context, what is the purpose of "git push"?',
                     'A': {
                         'Text': 'A) Move files from the working directory to the staging area.',
-                        'Do': 'jump WrongPushQ1'
+                        'Do': 'jump WrongPushQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'B': {
                         'Text': 'B) Save changes to the local repository.',
-                        'Do': 'jump WrongPushQ1'
+                        'Do': 'jump WrongPushQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'C': {
                         'Text': 'C) Push changes to the remote repository.',
                         'Do': 'jump CorrectPushQ1',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'D': {
                         'Text': 'D) Create a new branch.',
-                        'Do': 'jump WrongPushQ1'
+                        'Do': 'jump WrongPushQ1',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }
@@ -195,22 +239,32 @@ const GitAddCommitPush = [
                     'Dialog': 'Quiz Question 2: After you update the dish in the menu, your colleague points out a potential improvement. You want to update the edited dish and share with other chefs, what is the correct process to try the dish and update the menu?',
                     'A': {
                         'Text': 'A) git commit - git push - git add',
-                        'Do': 'jump WrongPushQ2'
+                        'Do': 'jump WrongPushQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'B': {
                         'Text': 'B) git push - git commit - git add',
-                        'Do': 'jump WrongPushQ2'
+                        'Do': 'jump WrongPushQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'C': {
                         'Text': 'C) git add - git commit - git push',
                         'Do': 'jump CorrectPushQ2',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'D': {
                         'Text': 'D) git add - git push - git commit',
-                        'Do': 'jump WrongPushQ2'
+                        'Do': 'jump WrongPushQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 },
             }
