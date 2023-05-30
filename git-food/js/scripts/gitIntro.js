@@ -49,6 +49,7 @@ const GitIntro = [
             Do: "na Excellent! You should create a copy of your version as you should not rely on your own or other people's memories",
             onChosen: () => {
               updateScore();
+              monogatari.storage({currentScript: "GitIntro1"});
               monogatari.storage({nextScript: "GitIntro2"});
               correct=true;
             }
@@ -58,6 +59,7 @@ const GitIntro = [
             onChosen: function(){
               incrementIncorrect();
               correct=false;
+              monogatari.storage({currentScript: "GitIntro1"});
             },
             Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories",
           },
@@ -66,6 +68,7 @@ const GitIntro = [
             onChosen: function(){
               incrementIncorrect();
               correct=false;
+              monogatari.storage({currentScript: "GitIntro1"});
             },
             Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories",
           },
@@ -74,28 +77,13 @@ const GitIntro = [
             onChosen: function(){
               incrementIncorrect();
               correct=false;
+              monogatari.storage({currentScript: "GitIntro1"});
             },
             Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories",
           },
         },
       },
-      "jump FailCheck",
-    ],
-    FailCheck:[
-      {'Conditional':
-          {
-            'Condition': function () {
-              if(!correct){
-                this.storage('nextScript') = currentScript;
-              }
-              let fail = this.storage('incorrectCounter') == this.storage('maxIncorrect');
-              if (fail){monogatari.storage({incorrectCounter: 0});}
-              return fail;
-            },
-            'True': 'jump GitIntro1',
-            'False': 'jump {{nextScript}}'
-          }
-      }
+      "jump CorrectCheck",
     ],
     GitIntro2: [
       "chef Another chef in your team wants to improve the recipe at the same time as you. ",
@@ -121,6 +109,8 @@ const GitIntro = [
             Do: "chef That seems not quite right. You don't want to let people overwrite your work without creating backups because their changes may not be desirable",
             onChosen: () => {
               incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro2"});
             }
           },
           option2: {
@@ -128,6 +118,8 @@ const GitIntro = [
             Do: "chef Well done!",
             onChosen: () => {
               updateScore();
+              correct=true;
+              monogatari.storage({currentScript: "GitIntro2"});
               monogatari.storage({nextScript: "GitIntro3"});
             }
           },
@@ -136,6 +128,8 @@ const GitIntro = [
             Do: "chef That seems not quite right. Working in a team often requires your teammates to make changes to what you have made, so it does not make sense to disallow them from modifying your work.",
             onChosen: () => {
               incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro2"});
             }
           },
           option4: {
@@ -143,11 +137,13 @@ const GitIntro = [
             Do: "chef Nah let's be nice. We should allow them to copy the receipe and make changes",
             onChosen: () => {
               incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro2"});
             }
           },
         },
       },
-      "jump FailCheck",
+      "jump CorrectCheck",
     ],
 
     GitIntro3: [
@@ -173,6 +169,8 @@ const GitIntro = [
             Text: "In the kitchen.",
             onChosen: () => {
               incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro3"});
             },
             Do: "chef Nah, You wouldn't keep all your important files in one place, so having an extra online backups is a good way to store them. It also allows you to access them anywhere, any time!",
           },
@@ -180,6 +178,8 @@ const GitIntro = [
             Text: "Nowhere, you'll probably remember.",
             onChosen: () => {
               incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro3"});
             },
             Do: "chef Umm, mate, this is not just about you, we want to ensure we can get your recipes too! You're really getting on my nerves...",
           },
@@ -188,6 +188,8 @@ const GitIntro = [
             Do: "chef Good job! You wouldn't keep all your important files in one place, so having online and local backups is a good way to store them. It also allows you to access them anywhere, any time!",
             onChosen: () => {
               updateScore();
+              correct=true;
+              monogatari.storage({currentScript: "GitIntro3"});
               monogatari.storage({nextScript: "GitIntro4"});
             }
           },
@@ -195,12 +197,14 @@ const GitIntro = [
             Text: "Online.",
             onChosen: () => {
               incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro3"});
             },
             Do: "Nah, You wouldn't keep all your important files in one place, so having an extra backups is a good way to store them. It also allows you to access them anywhere, any time!",
           },
         },
       },
-      "jump FailCheck",
+      "jump CorrectCheck",
     ],
 
     GitIntro4: [
@@ -215,6 +219,8 @@ const GitIntro = [
             Text: "In case new versions aren't as nice",
             onChosen: () => {
               incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro4"});
             },
             Do: "chef Actually you should store copies in all of these senarios",
           },
@@ -222,6 +228,8 @@ const GitIntro = [
             Text: "In case you lose the recipe",
             onChosen: () => {
               incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro4"});
             },
             Do: "chef Actually you should store copies in all of these senarios",
           },
@@ -229,6 +237,8 @@ const GitIntro = [
             Text: "In case your fellow chefs want to try it",
             onChosen: () => {
               incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro4"});
             },
             Do: "chef Actually you should store copies in all of these senarios",
           },
@@ -237,17 +247,60 @@ const GitIntro = [
             Do: "chef Well done, you should store copies in all of these senarios",
             onChosen: () => {
               updateScore();
-              monogatari.storage({nextScript: "GitIntroEnd"});
+              correct=true;
+              monogatari.storage({currentScript: "GitIntro4"});
+              monogatari.storage({nextScript: "FailCheck"});
             }
           },
         },
       },
-      "jump FailCheck",
+      "jump CorrectCheck",
     ],
-
+    CorrectCheck:[
+      {'Conditional':
+          {
+            'Condition': function () {
+              return correct;
+            },
+            'True': 'jump {{nextScript}}',
+            'False': 'jump {{currentScript}}'
+          }
+      }
+    ],
+    FailCheck:[
+      {'Conditional':
+          {
+            'Condition': function () {
+              if(!correct){
+                this.storage('nextScript') = currentScript;
+              }
+              let fail = this.storage('incorrectCounter') >= this.storage('maxIncorrect');
+              if (fail){monogatari.storage({incorrectCounter: 0});}
+              return fail;
+            },
+            'True': 'jump GitIntroEndAlt',
+            'False': 'jump GitIntroEnd'
+          }
+      }
+    ],
     GitIntroEnd: [
       "na You now know the importance of git, let's dive into it with the next level!",
       "jump GameStart",
     ],
+    GitIntroEndAlt: [
+      "na You answered more than 3 questions incorrectly. Would you like to try again?",
+      {
+        Choice: {
+          optionA: {
+            Text: "Yes",
+            Do: "jump GitIntro1",
+          },
+          optionB: {
+            Text: "No",
+            Do: "jump GameStart",
+          }
+        }
+      }
+    ]
   }),
 ];
