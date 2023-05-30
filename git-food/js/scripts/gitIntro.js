@@ -1,3 +1,13 @@
+function incrementIncorrect(){
+  let incorrectCounter  = monogatari.storage('incorrectCounter');
+  incorrectCounter++;
+  monogatari.storage({incorrectCounter: incorrectCounter});
+}
+
+let currentScript = "GitIntro1";
+let correct = true;
+monogatari.storage({nextScript: currentScript});
+
 const GitIntro = [
   "chef Before you can begin creating recipes with us, we need to teach you how the team saves their versions of recipes.",
   "na Are you familiar with the importance of Git?",
@@ -38,24 +48,54 @@ const GitIntro = [
             Text: "Create a copy of the recipe as a backup",
             Do: "na Excellent! You should create a copy of your version as you should not rely on your own or other people's memories",
             onChosen: () => {
-              updateScore()
+              updateScore();
+              monogatari.storage({nextScript: "GitIntro2"});
+              correct=true;
             }
           },
           B: {
             Text: "Store it in your brain because you probably won't forget",
+            onChosen: function(){
+              incrementIncorrect();
+              correct=false;
+            },
             Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories",
           },
           C: {
             Text: "Ask your coworker to remember it for you",
+            onChosen: function(){
+              incrementIncorrect();
+              correct=false;
+            },
             Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories",
           },
           D: {
             Text: "Nothing, you won't ever need to refer to an old recipe",
+            onChosen: function(){
+              incrementIncorrect();
+              correct=false;
+            },
             Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories",
           },
         },
       },
-      "jump GitIntro2",
+      "jump FailCheck",
+    ],
+    FailCheck:[
+      {'Conditional':
+          {
+            'Condition': function () {
+              if(!correct){
+                this.storage('nextScript') = currentScript;
+              }
+              let fail = this.storage('incorrectCounter') == this.storage('maxIncorrect');
+              if (fail){monogatari.storage({incorrectCounter: 0});}
+              return fail;
+            },
+            'True': 'jump GitIntro1',
+            'False': 'jump {{nextScript}}'
+          }
+      }
     ],
     GitIntro2: [
       "chef Another chef in your team wants to improve the recipe at the same time as you. ",
@@ -79,25 +119,35 @@ const GitIntro = [
           option1: {
             Text: "Let them overwrite your recipe",
             Do: "chef That seems not quite right. You don't want to let people overwrite your work without creating backups because their changes may not be desirable",
+            onChosen: () => {
+              incrementIncorrect();
+            }
           },
           option2: {
-            Text: "chef Let them copy the recipe and then make modifications on their copy",
-            Do: "Well done!",
+            Text: "Let them copy the recipe and then make modifications on their copy",
+            Do: "chef Well done!",
             onChosen: () => {
-              updateScore()
+              updateScore();
+              monogatari.storage({nextScript: "GitIntro3"});
             }
           },
           option3: {
             Text: "Don't let them modify your recipe at all, your recipe is perfect",
             Do: "chef That seems not quite right. Working in a team often requires your teammates to make changes to what you have made, so it does not make sense to disallow them from modifying your work.",
+            onChosen: () => {
+              incrementIncorrect();
+            }
           },
           option4: {
             Text: "Yell at them because you feel insulted",
             Do: "chef Nah let's be nice. We should allow them to copy the receipe and make changes",
+            onChosen: () => {
+              incrementIncorrect();
+            }
           },
         },
       },
-      "jump GitIntro3",
+      "jump FailCheck",
     ],
 
     GitIntro3: [
@@ -121,26 +171,36 @@ const GitIntro = [
         Choice: {
           option1: {
             Text: "In the kitchen.",
+            onChosen: () => {
+              incrementIncorrect();
+            },
             Do: "chef Nah, You wouldn't keep all your important files in one place, so having an extra online backups is a good way to store them. It also allows you to access them anywhere, any time!",
           },
           option2: {
             Text: "Nowhere, you'll probably remember.",
+            onChosen: () => {
+              incrementIncorrect();
+            },
             Do: "chef Umm, mate, this is not just about you, we want to ensure we can get your recipes too! You're really getting on my nerves...",
           },
           option3: {
             Text: "Online and in the kitchen",
             Do: "chef Good job! You wouldn't keep all your important files in one place, so having online and local backups is a good way to store them. It also allows you to access them anywhere, any time!",
             onChosen: () => {
-              updateScore()
+              updateScore();
+              monogatari.storage({nextScript: "GitIntro4"});
             }
           },
           option4: {
             Text: "Online.",
+            onChosen: () => {
+              incrementIncorrect();
+            },
             Do: "Nah, You wouldn't keep all your important files in one place, so having an extra backups is a good way to store them. It also allows you to access them anywhere, any time!",
           },
         },
       },
-      "jump GitIntro4",
+      "jump FailCheck",
     ],
 
     GitIntro4: [
@@ -153,26 +213,36 @@ const GitIntro = [
         Choice: {
           optionA: {
             Text: "In case new versions aren't as nice",
+            onChosen: () => {
+              incrementIncorrect();
+            },
             Do: "chef Actually you should store copies in all of these senarios",
           },
           optionB: {
             Text: "In case you lose the recipe",
+            onChosen: () => {
+              incrementIncorrect();
+            },
             Do: "chef Actually you should store copies in all of these senarios",
           },
           optionC: {
             Text: "In case your fellow chefs want to try it",
+            onChosen: () => {
+              incrementIncorrect();
+            },
             Do: "chef Actually you should store copies in all of these senarios",
           },
           optionD: {
             Text: "All above",
             Do: "chef Well done, you should store copies in all of these senarios",
             onChosen: () => {
-              updateScore()
+              updateScore();
+              monogatari.storage({nextScript: "GitIntroEnd"});
             }
           },
         },
       },
-      "jump GitIntroEnd",
+      "jump FailCheck",
     ],
 
     GitIntroEnd: [

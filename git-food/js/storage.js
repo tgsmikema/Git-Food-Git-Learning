@@ -7,5 +7,7 @@ monogatari.storage ({
 	animations: false,
 	media: false,
 	playing: false,
-	scripting: false
+	scripting: false,
+	incorrectCounter: 0,
+	maxIncorrect: 3
 });
