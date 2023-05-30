@@ -7,6 +7,7 @@ function incrementIncorrect(){
 let currentScript = "GitIntro1";
 let correct = true;
 monogatari.storage({nextScript: currentScript});
+monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
 
 const GitIntro = [
   "chef Before you can begin creating recipes with us, we need to teach you how the team saves their versions of recipes.",
@@ -18,7 +19,7 @@ const GitIntro = [
         Do: "jump GitIntroEnd",
       },
       No: {
-        Text: "No, but I like to learn about it!",
+        Text: "No, but I would like to learn about it!",
         Do: "jump GitIntro1",
       },
     },
@@ -51,6 +52,7 @@ const GitIntro = [
               updateScore();
               monogatari.storage({currentScript: "GitIntro1"});
               monogatari.storage({nextScript: "GitIntro2"});
+              monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
               correct=true;
             }
           },
@@ -60,8 +62,12 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro1"});
+              monogatari.storage({B_Wrong: true});
             },
             Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Clickable: function(){
+              return !(this.storage().B_Wrong);
+            }
           },
           C: {
             Text: "Ask your coworker to remember it for you",
@@ -69,8 +75,12 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro1"});
+              monogatari.storage({C_Wrong: true});
             },
             Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Clickable: function(){
+              return !(this.storage().C_Wrong);
+            }
           },
           D: {
             Text: "Nothing, you won't ever need to refer to an old recipe",
@@ -78,8 +88,12 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro1"});
+              monogatari.storage({D_Wrong: true});
             },
             Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Clickable: function(){
+              return !(this.storage().D_Wrong);
+            }
           },
         },
       },
@@ -111,6 +125,10 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro2"});
+              monogatari.storage({A_Wrong: true});
+            },
+            Clickable: function(){
+              return !(this.storage().A_Wrong);
             }
           },
           option2: {
@@ -121,6 +139,7 @@ const GitIntro = [
               correct=true;
               monogatari.storage({currentScript: "GitIntro2"});
               monogatari.storage({nextScript: "GitIntro3"});
+              monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
             }
           },
           option3: {
@@ -130,6 +149,10 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro2"});
+              monogatari.storage({C_Wrong: true});
+            },
+            Clickable: function(){
+              return !(this.storage().C_Wrong);
             }
           },
           option4: {
@@ -139,6 +162,10 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro2"});
+              monogatari.storage({D_Wrong: true});
+            },
+            Clickable: function(){
+              return !(this.storage().D_Wrong);
             }
           },
         },
@@ -171,8 +198,12 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro3"});
+              monogatari.storage({A_Wrong: true});
             },
             Do: "chef Nah, You wouldn't keep all your important files in one place, so having an extra online backups is a good way to store them. It also allows you to access them anywhere, any time! Try again.",
+            Clickable: function(){
+              return !(this.storage().A_Wrong);
+            }
           },
           option2: {
             Text: "Nowhere, you'll probably remember.",
@@ -180,8 +211,12 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro3"});
+              monogatari.storage({B_Wrong: true});
             },
             Do: "chef Umm, mate, this is not just about you, we want to ensure we can get your recipes too! Try again.",
+            Clickable: function(){
+              return !(this.storage().B_Wrong);
+            }
           },
           option3: {
             Text: "Online and in the kitchen",
@@ -191,6 +226,7 @@ const GitIntro = [
               correct=true;
               monogatari.storage({currentScript: "GitIntro3"});
               monogatari.storage({nextScript: "GitIntro4"});
+              monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
             }
           },
           option4: {
@@ -199,8 +235,12 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro3"});
+              monogatari.storage({D_Wrong: true});
             },
             Do: "Nah, You wouldn't keep all your important files in one place, so having an extra backups is a good way to store them. It also allows you to access them anywhere, any time! Try again.",
+            Clickable: function(){
+              return !(this.storage().D_Wrong);
+            }
           },
         },
       },
@@ -221,8 +261,12 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro4"});
+              monogatari.storage({A_Wrong: true});
             },
             Do: "chef Actually you should store copies in all of these scenarios. Try again.",
+            Clickable: function(){
+              return !(this.storage().A_Wrong);
+            }
           },
           optionB: {
             Text: "In case you lose the recipe",
@@ -230,8 +274,12 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro4"});
+              monogatari.storage({B_Wrong: true});
             },
             Do: "chef Actually you should store copies in all of these scenarios. Try again.",
+            Clickable: function(){
+              return !(this.storage().B_Wrong);
+            }
           },
           optionC: {
             Text: "In case your fellow chefs want to try it",
@@ -239,8 +287,12 @@ const GitIntro = [
               incrementIncorrect();
               correct=false;
               monogatari.storage({currentScript: "GitIntro4"});
+              monogatari.storage({C_Wrong: true});
             },
             Do: "chef Actually you should store copies in all of these scenarios",
+            Clickable: function(){
+              return !(this.storage().C_Wrong);
+            }
           },
           optionD: {
             Text: "All above",
@@ -250,6 +302,7 @@ const GitIntro = [
               correct=true;
               monogatari.storage({currentScript: "GitIntro4"});
               monogatari.storage({nextScript: "FailCheck"});
+              monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
             }
           },
         },
