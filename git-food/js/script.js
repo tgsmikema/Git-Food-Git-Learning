@@ -53,15 +53,24 @@ monogatari.assets("scenes", {
   kitchen: "kitchen.svg",
 });
 
+// Define the characters
+// monogatari.assets("characters", {
+//   chef: "chef-with-empty-wooden-board-welcoming-guest.svg",
+// });
+
 // Define the Characters
 monogatari.characters({
   user: {
     Name: "{{player.name}}",
     Color: "#ff3951",
+    sprites: {},
   },
   chef: {
     Name: "Kyle",
     Color: "#00bfff",
+    sprites: {
+      welcome: "chef-with-empty-wooden-board-welcoming-guest.svg",
+    },
   },
   na: {
     Name: "Narrator",
@@ -79,6 +88,7 @@ monogatari.script({
     "show background kitchen",
     //'play music restaurant.mp3',
     //'show character chef Normal center with fadeIn',
+    "show character chef welcome center with fadeIn",
     {
       // Asking for player to enter their name.
       Input: {
