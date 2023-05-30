@@ -34,7 +34,9 @@ monogatari.configuration("credits", {});
 monogatari.assets("gallery", {});
 
 // Define the music used in the game.
-monogatari.assets("music", {});
+monogatari.assets("music", {
+  "ap": "ambient-piano.mp3"
+});
 
 // Define the voice files used in the game.
 monogatari.assets("voices", {});
@@ -86,7 +88,7 @@ monogatari.script({
   Start: [
     //'show scene restaurant.jpg',
     "show background kitchen",
-    //'play music restaurant.mp3',
+    'play music ap',
     //'show character chef Normal center with fadeIn',
     {
       // Asking for player to enter their name.
