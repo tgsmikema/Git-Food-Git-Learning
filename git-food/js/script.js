@@ -37,7 +37,10 @@ monogatari.assets("gallery", {});
 monogatari.assets("music", {});
 
 // Define the voice files used in the game.
-monogatari.assets("voices", {});
+monogatari.assets("voices", {
+  greetingNa: "greeting_na.mp3",
+  greetingChef: "greeting_chef.mp3",
+});
 
 // Define the sounds used in the game.
 monogatari.assets("sounds", {});
@@ -88,7 +91,6 @@ monogatari.script({
     "show background kitchen",
     //'play music restaurant.mp3',
     //'show character chef Normal center with fadeIn',
-    "show character chef welcome center with fadeIn",
     {
       // Asking for player to enter their name.
       Input: {
@@ -114,7 +116,10 @@ monogatari.script({
         Warning: "You must enter a name!",
       },
     },
+    "play voice greetingNa",
     "na Welcome to Git-Food, the most delicious version control kitchen in town!",
+    "show character chef welcome center with fadeIn",
+    "play voice greetingChef",
     "chef Hi, {{player.name}}, I'm grateful for you to join our kitchen as a Commis Chef, I'm Head Chef {{chef_name}}, and I'll be your guide on this exciting culinary journey through the world of Git.",
     "chef In this kitchen, we use Git to manage our recipes and collaborate with other chefs like you.",
     //'show character chef Smile center with fadeIn',
