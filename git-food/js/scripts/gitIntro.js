@@ -1,14 +1,25 @@
+function incrementIncorrect(){
+  let incorrectCounter  = monogatari.storage('incorrectCounter');
+  incorrectCounter++;
+  monogatari.storage({incorrectCounter: incorrectCounter});
+}
+
+let currentScript = "GitIntro1";
+let correct = true;
+monogatari.storage({nextScript: currentScript});
+monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
+
 const GitIntro = [
   "chef Before you can begin creating recipes with us, we need to teach you how the team saves their versions of recipes.",
   "na Are you familiar with the importance of Git?",
   {
     Choice: {
       Yes: {
-        Text: "Yes, I know git is really important",
+        Text: "Yes, I know git is really important!",
         Do: "jump GitIntroEnd",
       },
       No: {
-        Text: "No, but I really wanna know",
+        Text: "No, but I would like to learn about it!",
         Do: "jump GitIntro1",
       },
     },
@@ -38,24 +49,55 @@ const GitIntro = [
             Text: "Create a copy of the recipe as a backup",
             Do: "na Excellent! You should create a copy of your version as you should not rely on your own or other people's memories",
             onChosen: () => {
-              updateScore()
+              updateScore();
+              monogatari.storage({currentScript: "GitIntro1"});
+              monogatari.storage({nextScript: "GitIntro2"});
+              monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
+              correct=true;
             }
           },
           B: {
             Text: "Store it in your brain because you probably won't forget",
-            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories",
+            onChosen: function(){
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro1"});
+              monogatari.storage({B_Wrong: true});
+            },
+            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Clickable: function(){
+              return !(this.storage().B_Wrong);
+            }
           },
           C: {
             Text: "Ask your coworker to remember it for you",
-            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories",
+            onChosen: function(){
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro1"});
+              monogatari.storage({C_Wrong: true});
+            },
+            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Clickable: function(){
+              return !(this.storage().C_Wrong);
+            }
           },
           D: {
             Text: "Nothing, you won't ever need to refer to an old recipe",
-            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories",
+            onChosen: function(){
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro1"});
+              monogatari.storage({D_Wrong: true});
+            },
+            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Clickable: function(){
+              return !(this.storage().D_Wrong);
+            }
           },
         },
       },
-      "jump GitIntro2",
+      "jump CorrectCheck",
     ],
     GitIntro2: [
       "chef Another chef in your team wants to improve the recipe at the same time as you. ",
@@ -78,26 +120,57 @@ const GitIntro = [
         Choice: {
           option1: {
             Text: "Let them overwrite your recipe",
-            Do: "chef That seems not quite right. You don't want to let people overwrite your work without creating backups because their changes may not be desirable",
+            Do: "chef That seems not quite right. You don't want to let people overwrite your work without creating backups because their changes may not be desirable. Try again.",
+            onChosen: () => {
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro2"});
+              monogatari.storage({A_Wrong: true});
+            },
+            Clickable: function(){
+              return !(this.storage().A_Wrong);
+            }
           },
           option2: {
-            Text: "chef Let them copy the recipe and then make modifications on their copy",
-            Do: "Well done!",
+            Text: "Let them copy the recipe and then make modifications on their copy",
+            Do: "chef Well done!",
             onChosen: () => {
-              updateScore()
+              updateScore();
+              correct=true;
+              monogatari.storage({currentScript: "GitIntro2"});
+              monogatari.storage({nextScript: "GitIntro3"});
+              monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
             }
           },
           option3: {
             Text: "Don't let them modify your recipe at all, your recipe is perfect",
-            Do: "chef That seems not quite right. Working in a team often requires your teammates to make changes to what you have made, so it does not make sense to disallow them from modifying your work.",
+            Do: "chef That seems not quite right. Working in a team often requires your teammates to make changes to what you have made, so it does not make sense to disallow them from modifying your work. Try again.",
+            onChosen: () => {
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro2"});
+              monogatari.storage({C_Wrong: true});
+            },
+            Clickable: function(){
+              return !(this.storage().C_Wrong);
+            }
           },
           option4: {
             Text: "Yell at them because you feel insulted",
-            Do: "chef Nah let's be nice. We should allow them to copy the receipe and make changes",
+            Do: "chef Nah let's be nice. We should allow them to copy the receipe and make changes. Try again.",
+            onChosen: () => {
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro2"});
+              monogatari.storage({D_Wrong: true});
+            },
+            Clickable: function(){
+              return !(this.storage().D_Wrong);
+            }
           },
         },
       },
-      "jump GitIntro3",
+      "jump CorrectCheck",
     ],
 
     GitIntro3: [
@@ -108,7 +181,7 @@ const GitIntro = [
         Choice: {
           option1: {
             Text: "Nah my memory is really good so I probably won't need it.",
-            Do: "chef Mate this is not just about you, we want to ensure we can get your recipes too! You're really getting on my nerves...",
+            Do: "chef Mate this is not just about you, we want to ensure we can get your recipes too!",
           },
           option2: {
             Text: "Sounds good!",
@@ -121,26 +194,57 @@ const GitIntro = [
         Choice: {
           option1: {
             Text: "In the kitchen.",
-            Do: "chef Nah, You wouldn't keep all your important files in one place, so having an extra online backups is a good way to store them. It also allows you to access them anywhere, any time!",
+            onChosen: () => {
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro3"});
+              monogatari.storage({A_Wrong: true});
+            },
+            Do: "chef Nah, You wouldn't keep all your important files in one place, so having an extra online backups is a good way to store them. It also allows you to access them anywhere, any time! Try again.",
+            Clickable: function(){
+              return !(this.storage().A_Wrong);
+            }
           },
           option2: {
             Text: "Nowhere, you'll probably remember.",
-            Do: "chef Umm, mate, this is not just about you, we want to ensure we can get your recipes too! You're really getting on my nerves...",
+            onChosen: () => {
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro3"});
+              monogatari.storage({B_Wrong: true});
+            },
+            Do: "chef Umm, mate, this is not just about you, we want to ensure we can get your recipes too! Try again.",
+            Clickable: function(){
+              return !(this.storage().B_Wrong);
+            }
           },
           option3: {
             Text: "Online and in the kitchen",
             Do: "chef Good job! You wouldn't keep all your important files in one place, so having online and local backups is a good way to store them. It also allows you to access them anywhere, any time!",
             onChosen: () => {
-              updateScore()
+              updateScore();
+              correct=true;
+              monogatari.storage({currentScript: "GitIntro3"});
+              monogatari.storage({nextScript: "GitIntro4"});
+              monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
             }
           },
           option4: {
             Text: "Online.",
-            Do: "Nah, You wouldn't keep all your important files in one place, so having an extra backups is a good way to store them. It also allows you to access them anywhere, any time!",
+            onChosen: () => {
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro3"});
+              monogatari.storage({D_Wrong: true});
+            },
+            Do: "Nah, You wouldn't keep all your important files in one place, so having an extra backups is a good way to store them. It also allows you to access them anywhere, any time! Try again.",
+            Clickable: function(){
+              return !(this.storage().D_Wrong);
+            }
           },
         },
       },
-      "jump GitIntro4",
+      "jump CorrectCheck",
     ],
 
     GitIntro4: [
@@ -153,31 +257,103 @@ const GitIntro = [
         Choice: {
           optionA: {
             Text: "In case new versions aren't as nice",
-            Do: "chef Actually you should store copies in all of these senarios",
+            onChosen: () => {
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro4"});
+              monogatari.storage({A_Wrong: true});
+            },
+            Do: "chef Actually you should store copies in all of these scenarios. Try again.",
+            Clickable: function(){
+              return !(this.storage().A_Wrong);
+            }
           },
           optionB: {
             Text: "In case you lose the recipe",
-            Do: "chef Actually you should store copies in all of these senarios",
+            onChosen: () => {
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro4"});
+              monogatari.storage({B_Wrong: true});
+            },
+            Do: "chef Actually you should store copies in all of these scenarios. Try again.",
+            Clickable: function(){
+              return !(this.storage().B_Wrong);
+            }
           },
           optionC: {
             Text: "In case your fellow chefs want to try it",
-            Do: "chef Actually you should store copies in all of these senarios",
+            onChosen: () => {
+              incrementIncorrect();
+              correct=false;
+              monogatari.storage({currentScript: "GitIntro4"});
+              monogatari.storage({C_Wrong: true});
+            },
+            Do: "chef Actually you should store copies in all of these scenarios",
+            Clickable: function(){
+              return !(this.storage().C_Wrong);
+            }
           },
           optionD: {
             Text: "All above",
-            Do: "chef Well done, you should store copies in all of these senarios",
+            Do: "chef Well done, you should store copies in all of these scenarios. Try again.",
             onChosen: () => {
-              updateScore()
+              updateScore();
+              correct=true;
+              monogatari.storage({currentScript: "GitIntro4"});
+              monogatari.storage({nextScript: "FailCheck"});
+              monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
             }
           },
         },
       },
-      "jump GitIntroEnd",
+      "jump CorrectCheck",
     ],
-
+    CorrectCheck:[
+      {'Conditional':
+          {
+            'Condition': function () {
+              return correct;
+            },
+            'True': 'jump {{nextScript}}',
+            'False': 'jump {{currentScript}}'
+          }
+      }
+    ],
+    FailCheck:[
+      {'Conditional':
+          {
+            'Condition': function () {
+              if(!correct){
+                this.storage('nextScript') = currentScript;
+              }
+              let fail = this.storage('incorrectCounter') >= this.storage('maxIncorrect');
+              if (fail){monogatari.storage({incorrectCounter: 0});}
+              return fail;
+            },
+            'True': 'jump GitIntroEndAlt',
+            'False': 'jump GitIntroEnd'
+          }
+      }
+    ],
     GitIntroEnd: [
       "na You now know the importance of git, let's dive into it with the next level!",
       "jump GameStart",
     ],
+    GitIntroEndAlt: [
+      "na You answered more than 3 questions incorrectly. Would you like to try again?",
+      {
+        Choice: {
+          optionA: {
+            Text: "Yes",
+            Do: "jump GitIntro1",
+          },
+          optionB: {
+            Text: "No",
+            Do: "jump GameStart",
+          }
+        }
+      }
+    ]
   }),
 ];
