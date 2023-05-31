@@ -1,4 +1,3 @@
-
 function incrementIncorrect(){
     let incorrectCounter  = monogatari.storage('incorrectCounter');
     incorrectCounter++;
@@ -11,7 +10,7 @@ function incrementCorrect(){
     let correctCounter = monogatari.storage('temp_score');
     correctCounter++;
     monogatari.storage({temp_score: correctCounter});
-  }
+}
 
 
 const GitClonePull = [
