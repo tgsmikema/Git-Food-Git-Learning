@@ -13,5 +13,6 @@ const ExternalResources = [
     'nvl We also have our very own <u><a href="https://discord.gg/dPbK9pCabw" target="_blank" style="color: blue">Discord server</a></u> for our users to discuss and share their experiences. ' +
     'Our dev team is also happy to help you with anything you need, and you can enjoy a community of learners and learn from each other.',
     'nvl We wish you the best of luck in you Git Journey!',
+    "show background kitchen",
     'jump GameStart'
 ]
