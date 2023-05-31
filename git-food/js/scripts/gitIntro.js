@@ -361,7 +361,6 @@ const GitIntro = [
       "jump GameStart",
     ],
     GitIntroEndAlt: [
-      "hide character chef with fadeOut",
       "na You answered more than 3 questions incorrectly. Would you like to try again?",
       {
         Choice: {
