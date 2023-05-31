@@ -1,3 +1,11 @@
+function incrementIncorrect(){
+    let incorrectCounter  = monogatari.storage('incorrectCounter');
+    incorrectCounter++;
+    monogatari.storage({incorrectCounter: incorrectCounter});
+}
+
+monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
+
 const GitClonePull = [
     'chef Hi, {{player.name}}! I hope you’ve gotten situated and ready to start work.',
     'user Yes Chef {{chef_name}}. I am ready and eager.',
@@ -30,20 +38,42 @@ const GitClonePull = [
                         'Text': 'A) You get your own recipe book',
                         'Do': 'jump CorrectQ1',
                         onChosen: () => {
-                          updateScore()
+                          updateScore();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'B': {
                         'Text': 'B) You change the central recipe book',
-                        'Do': 'jump WrongQ1'
+                        'Do': 'jump WrongQ1',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);
+                        }
                     },
                     'C': {
                         'Text': 'C)  Your personal recipe book disappears',
-                        'Do': 'jump WrongQ1'
+                        'Do': 'jump WrongQ1',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);
+                        }
                     },
                     'D': {
                         'Text': 'D) You steal the central recipe book',
-                        'Do': 'jump WrongQ1'
+                        'Do': 'jump WrongQ1',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);
+                        }
                     },
                 },
             }
@@ -54,7 +84,7 @@ const GitClonePull = [
         ],
         'WrongQ1': [
             'sous Oops! The correct answer is A) You get your own recipe book. "Git clone" can create you a personal recipe book from the central recipe book',
-            'jump Quiz2',
+            'jump Quiz1',
         ],
 
         'Quiz2':[
@@ -63,21 +93,43 @@ const GitClonePull = [
                     'Dialog': 'Quiz Question 2: Why would you want your own recipe book instead of working with the central recipe book?',
                     'A': {
                         'Text': 'A) Make personal changes without affecting the central recipe book',
-                        'Do': 'jump WrongQ2'
+                        'Do': 'jump WrongQ2',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);
+                        }
                     },
                     'B': {
                         'Text': 'B) Refer to the recipes without needing to look in the central recipe book',
-                        'Do': 'jump WrongQ2'
+                        'Do': 'jump WrongQ2',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);
+                        }
                     },
                     'C': {
                         'Text': 'C) Add experimental recipes that aren’t fully taste tested yet',
-                        'Do': 'jump WrongQ2'
+                        'Do': 'jump WrongQ2',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);
+                        }
                     },
                     'D': {
                         'Text': 'D) All of the above.',
                         'Do': 'jump CorrectQ2',
                         onChosen: () => {
-                          updateScore()
+                          updateScore();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                 },
@@ -89,7 +141,7 @@ const GitClonePull = [
         ],
         'WrongQ2': [
             'sous Oops! The correct answer is D) All of the above.  All the answers given are benefits of working with your personal recipe book. You can change and use your personal recipe book without worrying about the central recipe book.',
-            'jump EndOfClone',
+            'jump Quiz2',
         ],
 
         'EndOfClone':[
@@ -124,22 +176,44 @@ const GitClonePull = [
                     'Dialog': 'Quiz Question 1: What happens when you use "git pull" for your recipe book?',
                     'A': {
                         'Text': 'A) Sends your changes to the central recipe book',
-                        'Do': 'jump WrongQ1ForPull'
+                        'Do': 'jump WrongQ1ForPull',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);
+                        }
                     },
                     'B': {
                         'Text': 'B) Add new stuff in the central recipe book to your personal recipe book',
                         'Do': 'jump CorrectQ1ForPull',
                         onChosen: () => {
-                          updateScore()
+                          updateScore();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'C': {
                         'Text': 'C) You get a new personal recipe book',
-                        'Do': 'jump WrongQ1ForPull'
+                        'Do': 'jump WrongQ1ForPull',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);
+                        }
                     },
                     'D': {
                         'Text': 'D) Your personal recipe book disappears',
-                        'Do': 'jump WrongQ1ForPull'
+                        'Do': 'jump WrongQ1ForPull',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);
+                        }
                     },
                 },
             }
@@ -150,7 +224,7 @@ const GitClonePull = [
         ],
         'WrongQ1ForPull': [
             'sous Oops! The correct answer is B) Add new stuff in the central recipe book to your personal recipe book. When you use "git pull", it checks the central recipe book and adds all the new things to your personal recipe book.',
-            'jump Quiz2ForPull',
+            'jump Quiz1ForPull',
         ],
 
         'Quiz2ForPull':[
@@ -159,40 +233,93 @@ const GitClonePull = [
                     'Dialog': 'Quiz Question 2: Can you use “git clone” to replace “git pull”?',
                     'A': {
                         'Text': 'A) Yes, it is exactly the same',
-                        'Do': 'jump WrongQ2ForPull'
+                        'Do': 'jump WrongQ2ForPull',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);
+                        }
                     },
                     'B': {
                         'Text': 'B) No, you can’t replace it',
-                        'Do': 'jump CorrectQ2ForPull',
+                        'Do': 'jump WrongQ2ForPull',
                         onChosen: () => {
-                          updateScore()
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);
                         }
                     },
                     'C': {
                         'Text': 'C) Yes, but it would require additional steps',
-                        'Do': 'jump WrongQ2ForPull'
+                        'Do': 'jump CorrectQ2ForPull',
+                        onChosen: () => {
+                            updateScore();
+                            monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);
+                        }
                     },
                     'D': {
                         'Text': 'D) I don’t know',
-                        'Do': 'jump WrongQ2ForPull'
+                        'Do': 'jump WrongQ2ForPull',
+                        onChosen: () => {
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);
+                        }
                     },
                 },
             }
         ],
         'CorrectQ2ForPull' : [
             'sous Well done! Your answer is correct! Technically, you can throw away your old recipe book and use “Git clone” to create a new recipe book when you need to use “Git pull”, but this is very cumbersome and should not be done.',
-            'jump EndOfPull',
+            'jump FailCheck',
         ],
         'WrongQ2ForPull': [
             'sous Oops! The correct answer is C) Yes, but it would require additional steps. Technically, you can throw away your old recipe book and use “Git clone” to create a new recipe book when you need to use “Git pull”, but this is very cumbersome and should not be done.',
-            'jump EndOfPull',
+            'jump Quiz2ForPull',
         ],
         'EndOfPull':[
             'chef Congratulations! You have now master the skill to use git clone,and git pull.',
             'chef Enjoy your "cook" in Git-Food!',
             'na Now You can try out other modules to study!',
             'jump GameStart'
-        ]
+        ],
+        EndOfPullAlt:[
+            "na You answered more than 3 questions incorrectly. Would you like to try again?",
+            {
+              Choice: {
+                optionA: {
+                  Text: "Yes",
+                  Do: "jump Quiz1",
+                },
+                optionB: {
+                  Text: "No",
+                  Do: "jump EndOfPull",
+                }
+              }
+            }
+        ],
+        FailCheck:[
+            {'Conditional':
+                {
+                  'Condition': function () {
+                    let fail = this.storage('incorrectCounter') >= this.storage('maxIncorrect');
+                    if (fail){monogatari.storage({incorrectCounter: 0});}
+                    return fail;
+                  },
+                  'True': 'jump EndOfPullAlt',
+                  'False': 'jump EndOfPull'
+                }
+            }
+        ],
     })
 ]
 
