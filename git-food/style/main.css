@@ -48,12 +48,13 @@ choice-container>div {
 }
 
 choice-container button {
-	background-color: rgba(255, 255, 255, .15);
+	background-color: rgba(0, 0, 0, .5);
 	border: 2px solid white;
+	color: white;
 }
 
 choice-container button:hover {
-	background-color: rgba(255, 255, 255, .15);
+	background-color: rgba(0, 0, 0, .5);
 	border: 2px solid white;
 }
 
