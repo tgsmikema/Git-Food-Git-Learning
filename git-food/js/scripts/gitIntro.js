@@ -23,8 +23,12 @@ const GitIntro = [
         },
         No: {
           Text: "No, Thanks",
-          Do: "jump GameStart",
+          Do: 'clear',
         },
+        Back: {
+            Text:"Back to the menu",
+            Do:"jump GameStart",
+        }
       },
     },
     'False': 'clear',

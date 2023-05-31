@@ -11,9 +11,13 @@ const GitBranchCheckout = [
               Do: "jump QuestionsOnly4",
             },
             No: {
-              Text: "No, Thanks",
-              Do: "jump GameStart",
+                Text: "No, Thanks",
+                Do: 'clear',
             },
+            Back: {
+                Text:"Back to the menu",
+                Do:"jump GameStart",
+            }
           },
         },
         'False': 'clear',
