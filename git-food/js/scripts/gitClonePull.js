@@ -561,16 +561,17 @@ const GitClonePull = [
               },
               {'Conditional': {
                 'Condition': function(){
-                  return this.storage.section1_mastery;
+                    return monogatari.storage('section2_mastery');
                 },
-                'True': "jump Achievement2"
+                'True': "jump Achievement2",
+                'False': "na Complete this test with no mistakes to gain mastery!"
             }},
             "chef It's nice to see that you have practiced these questions again, keep working hard!",
             "jump GameStart",
         ],
         Achievement2:[
-            "na Congratulations! You have unlocked the Section 1 Mastery achievement in the gallery!",
-            "gallery unlock section1",
+            "na Congratulations! You have unlocked the Section 2 Mastery achievement in the gallery!",
+            "gallery unlock section2",
             "jump GameStart"
         ]
     })
