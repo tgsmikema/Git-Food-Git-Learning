@@ -149,7 +149,7 @@ monogatari.script({
       Choice: {
         Dialog: "Select which topic you would like to begin with?",
         GitIntro: {
-          Text: "Level 1: Introduction of Git",
+          Text: "Level 1: Introduction to Version Control",
           Do: "jump GitIntro",
         },
         GitClonePull: {
