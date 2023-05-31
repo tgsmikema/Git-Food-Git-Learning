@@ -1,4 +1,23 @@
 const GitClonePull = [
+    {'Conditional': {
+        'Condition': function () {
+            return this.storage.level_2_done;
+        },
+        'True': {
+          Choice: {
+            'Dialog': "Seems like you have done this module already, would you like to test your knowledge again?",
+            Yes: {
+              Text: "Yes, Please!",
+              Do: "jump QuestionsOnly",
+            },
+            No: {
+              Text: "No, Thanks",
+              Do: "jump GameStart",
+            },
+          },
+        },
+        'False': 'clear',
+      }},
     'chef Hi, {{player.name}}! I hope you’ve gotten situated and ready to start work.',
     'user Yes Chef {{chef_name}}. I am ready and eager.',
     'chef Good. Your first task is to prepare our famous Fish and Chips.',
@@ -191,7 +210,112 @@ const GitClonePull = [
             'chef Congratulations! You have now master the skill to use git clone,and git pull.',
             'chef Enjoy your "cook" in Git-Food!',
             'na Now You can try out other modules to study!',
+            function () {
+                monogatari.storage.level_2_done = true;
+                return true;
+              },
             'jump GameStart'
+        ],
+        'QuestionsOnly':[
+            "Let's test your knowledge again!",
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 1: What happens when you cast  "git clone" on the central recipe book?',
+                    A: {
+                        Text: "A) You get your own recipe book",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    B: {
+                        Text: "B) You change the central recipe book",
+                        Do: "na Incorrect...",
+                    },
+                    C: {
+                        Text: "C) Your personal recipe book disappears",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) You steal the central recipe book",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 2: Why would you want your own recipe book instead of working with the central recipe book?',
+                    A: {
+                        Text: "A) Make personal changes without affecting the central recipe book",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) Refer to the recipes without needing to look in the central recipe book",
+                        Do: "na Incorrect...",
+                    },
+                    C: {
+                        Text: "C) Add experimental recipes that aren’t fully taste tested yet",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) All of the above",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 3: What happens when you use "git pull" for your recipe book?',
+                    A: {
+                        Text: "A) Sends your changes to the central recipe book",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) Add new stuff in the central recipe book to your personal recipe book",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    C: {
+                        Text: "C) You get a new personal recipe book",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) Your personal recipe book disappears",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 4: Can you use “git clone” to replace “git pull”?',
+                    A: {
+                        Text: "A) Yes, it is exactly the same",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) No, you can’t replace it",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    C: {
+                        Text: "C) Yes, but it would require additional steps",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) I don’t know",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            "chef It's nice to see that you have practiced these questions again, keep working hard!",
+            "jump GameStart",
         ]
     })
 ]
