@@ -37,7 +37,7 @@ monogatari.assets("gallery", {
   'section3': 'section3_mastery.svg',
   'section4': 'section4_mastery.svg',
   'section5': 'section5_mastery.jpg',
-  'chat': 'chat.svg'
+  'chat': 'chat_icon.svg'
 });
 
 // Define the music used in the game.
