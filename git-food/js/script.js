@@ -85,7 +85,7 @@ monogatari.characters({
     Name: "Arvin",
     Color: "#9370DB",
     sprites: {
-      welcome: "chef-holding-empty-board.svg",
+      welcome: "image4.svg",
     },
   },
 });
