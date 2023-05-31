@@ -16,4 +16,10 @@ monogatari.storage ({
 	incorrectCounter: 0,
 	maxIncorrect: 3,
 	temp_score: 0,
+	section1_mastery: false,
+	section2_mastery: false,
+	section3_mastery: false,
+	section4_mastery: false,
+	section5_mastery: false,
+	learn_more_achievement: false
 });
