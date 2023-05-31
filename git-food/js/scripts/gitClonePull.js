@@ -1,8 +1,18 @@
+
+function incrementIncorrect(){
+    let incorrectCounter  = monogatari.storage('incorrectCounter');
+    incorrectCounter++;
+    monogatari.storage({incorrectCounter: incorrectCounter});
+}
+
+monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
+
 function incrementCorrect(){
     let correctCounter = monogatari.storage('temp_score');
     correctCounter++;
     monogatari.storage({temp_score: correctCounter});
   }
+
 
 const GitClonePull = [
     {'Conditional': {
@@ -60,8 +70,9 @@ const GitClonePull = [
                         'Text': 'A) You get your own recipe book',
                         'Do': 'jump CorrectQ1',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                            playCorrectSound()
+                            updateScore();
+                            monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'B': {
@@ -69,6 +80,11 @@ const GitClonePull = [
                         'Do': 'jump WrongQ1',
                         onChosen: () => {
                             playIncorrectSound()
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);  
                         }
                     },
                     'C': {
@@ -76,6 +92,11 @@ const GitClonePull = [
                         'Do': 'jump WrongQ1',
                         onChosen: () => {
                             playIncorrectSound()
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);
                         }
                     },
                     'D': {
@@ -83,6 +104,11 @@ const GitClonePull = [
                         'Do': 'jump WrongQ1',
                         onChosen: () => {
                             playIncorrectSound()
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);
                         }
                     },
                 },
@@ -98,7 +124,7 @@ const GitClonePull = [
             "show character sous welcome center with fadeIn",
             'sous Oops! The correct answer is A) You get your own recipe book. "Git clone" can create you a personal recipe book from the central recipe book',
             "hide character sous with fadeOut",
-            'jump Quiz2',
+            'jump Quiz1',
         ],
 
         'Quiz2':[
@@ -110,6 +136,11 @@ const GitClonePull = [
                         'Do': 'jump WrongQ2',
                         onChosen: () => {
                             playIncorrectSound()
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);
                         }
                     },
                     'B': {
@@ -117,6 +148,11 @@ const GitClonePull = [
                         'Do': 'jump WrongQ2',
                         onChosen: () => {
                             playIncorrectSound()
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);    
                         }
                     },
                     'C': {
@@ -124,13 +160,19 @@ const GitClonePull = [
                         'Do': 'jump WrongQ2',
                         onChosen: () => {
                             playIncorrectSound()
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong); 
                         }
                     },
                     'D': {
                         'Text': 'D) All of the above.',
                         'Do': 'jump CorrectQ2',
                         onChosen: () => {
-                          updateScore()
+                          updateScore();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                           playCorrectSound()
                         }
                     },
@@ -147,7 +189,7 @@ const GitClonePull = [
             "show character sous welcome center with fadeIn",
             'sous Oops! The correct answer is D) All of the above.  All the answers given are benefits of working with your personal recipe book. You can change and use your personal recipe book without worrying about the central recipe book.',
             "hide character sous with fadeOut",
-            'jump EndOfClone',
+            'jump Quiz2',
         ],
 
         'EndOfClone':[
@@ -191,29 +233,45 @@ const GitClonePull = [
                         'Text': 'A) Sends your changes to the central recipe book',
                         'Do': 'jump WrongQ1ForPull',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);
                         }
                     },
                     'B': {
                         'Text': 'B) Add new stuff in the central recipe book to your personal recipe book',
                         'Do': 'jump CorrectQ1ForPull',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                            playCorrectSound();
+                            updateScore();
+                            monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false}); 
                         }
                     },
                     'C': {
                         'Text': 'C) You get a new personal recipe book',
                         'Do': 'jump WrongQ1ForPull',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);
                         }
                     },
                     'D': {
                         'Text': 'D) Your personal recipe book disappears',
                         'Do': 'jump WrongQ1ForPull',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);
                         }
                     },
                 },
@@ -229,7 +287,7 @@ const GitClonePull = [
             "show character sous welcome center with fadeIn",
             'sous Oops! The correct answer is B) Add new stuff in the central recipe book to your personal recipe book. When you use "git pull", it checks the central recipe book and adds all the new things to your personal recipe book.',
             "hide character sous with fadeOut",
-            'jump Quiz2ForPull',
+            'jump Quiz1ForPull',
         ],
 
         'Quiz2ForPull':[
@@ -240,29 +298,46 @@ const GitClonePull = [
                         'Text': 'A) Yes, it is exactly the same',
                         'Do': 'jump WrongQ2ForPull',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);
                         }
                     },
                     'B': {
                         'Text': 'B) No, you can’t replace it',
-                        'Do': 'jump CorrectQ2ForPull',
+                        'Do': 'jump WrongQ2ForPull',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);
                         }
                     },
                     'C': {
                         'Text': 'C) Yes, but it would require additional steps',
-                        'Do': 'jump WrongQ2ForPull',
+                        'Do': 'jump CorrectQ2ForPull',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playCorrectSound();
+                            updateScore();
+                            monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
+
                     'D': {
                         'Text': 'D) I don’t know',
                         'Do': 'jump WrongQ2ForPull',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
                         }
                     },
                 },
@@ -272,13 +347,13 @@ const GitClonePull = [
             "show character sous welcome center with fadeIn",
             'sous Well done! Your answer is correct! Technically, you can throw away your old recipe book and use “Git clone” to create a new recipe book when you need to use “Git pull”, but this is very cumbersome and should not be done.',
             "hide character sous with fadeOut",
-            'jump EndOfPull',
+            'jump FailCheck',
         ],
         'WrongQ2ForPull': [
             "show character sous welcome center with fadeIn",
             'sous Oops! The correct answer is C) Yes, but it would require additional steps. Technically, you can throw away your old recipe book and use “Git clone” to create a new recipe book when you need to use “Git pull”, but this is very cumbersome and should not be done.',
             "hide character sous with fadeOut",
-            'jump EndOfPull',
+            'jump Quiz2ForPull',
         ],
         'EndOfPull':[
             "show character chef welcome center with fadeIn",
@@ -291,6 +366,34 @@ const GitClonePull = [
                 return true;
               },
             'jump GameStart'
+        ],
+        EndOfPullAlt:[
+            "na You answered more than 3 questions incorrectly. Would you like to try again?",
+            {
+              Choice: {
+                optionA: {
+                  Text: "Yes",
+                  Do: "jump Quiz1",
+                },
+                optionB: {
+                  Text: "No",
+                  Do: "jump EndOfPull",
+                }
+              }
+            }
+        ],
+        FailCheck:[
+            {'Conditional':
+                {
+                  'Condition': function () {
+                    let fail = this.storage('incorrectCounter') >= this.storage('maxIncorrect');
+                    if (fail){monogatari.storage({incorrectCounter: 0});}
+                    return fail;
+                  },
+                  'True': 'jump EndOfPullAlt',
+                  'False': 'jump EndOfPull'
+                }
+            }
         ],
         'QuestionsOnly2':[
             "Let's test your knowledge again!",
@@ -306,29 +409,29 @@ const GitClonePull = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
-                            playCorrectSound()
-                            incrementCorrect()
+                            playCorrectSound();
+                            incrementCorrect();
                         }
                     },
                     B: {
                         Text: "B) You change the central recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     C: {
                         Text: "C) Your personal recipe book disappears",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     D: {
                         Text: "D) You steal the central recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                 },
@@ -340,21 +443,21 @@ const GitClonePull = [
                         Text: "A) Make personal changes without affecting the central recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     B: {
                         Text: "B) Refer to the recipes without needing to look in the central recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     C: {
                         Text: "C) Add experimental recipes that aren’t fully taste tested yet",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     D: {
@@ -362,8 +465,8 @@ const GitClonePull = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
-                            playCorrectSound()
-                            incrementCorrect()
+                            playCorrectSound();
+                            incrementCorrect();
                         }
                     },
                 },
@@ -375,7 +478,7 @@ const GitClonePull = [
                         Text: "A) Sends your changes to the central recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     B: {
@@ -383,22 +486,22 @@ const GitClonePull = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
-                            playCorrectSound()
-                            incrementCorrect()
+                            playCorrectSound();
+                            incrementCorrect();
                         }
                     },
                     C: {
                         Text: "C) You get a new personal recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     D: {
                         Text: "D) Your personal recipe book disappears",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                 },
@@ -410,30 +513,30 @@ const GitClonePull = [
                         Text: "A) Yes, it is exactly the same",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     B: {
                         Text: "B) No, you can’t replace it",
-                        Do: "na Correct! Well done!",
+                        Do: "na Incorrect...",
                         onChosen: () => {
-                            updateScore();
-                            playCorrectSound()
-                            incrementCorrect()
+                            playIncorrectSound();
                         }
                     },
                     C: {
                         Text: "C) Yes, but it would require additional steps",
-                        Do: "na Incorrect...",
+                        Do: "na Correct! Well done!",
                         onChosen: () => {
-                            playIncorrectSound()
+                            updateScore();
+                            playCorrectSound();
+                            incrementCorrect(); 
                           }
                     },
                     D: {
                         Text: "D) I don’t know",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                 },

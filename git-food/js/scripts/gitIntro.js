@@ -399,7 +399,7 @@ const GitIntro = [
           },
           optionB: {
             Text: "No",
-            Do: "jump GameStart",
+            Do: "jump GameIntroEnd",
           }
         }
       }
