@@ -28,9 +28,13 @@ const GitIntro = [
           Do: "jump QuestionsOnly",
         },
         No: {
-          Text: "No, Thanks",
-          Do: "jump GameStart",
+          Text: "Study again",
+          Do: 'clear',
         },
+        Back: {
+            Text:"Back to the menu",
+            Do:"jump GameStart",
+        }
       },
     },
     'False': 'clear',
@@ -550,12 +554,14 @@ const GitIntro = [
       },
   },
 },
+"show character chef welcome center with fadeIn",
       "chef you have answered {{temp_score}} out of 4 questions correctly!",
       function () {
         monogatari.storage({temp_score: 0});
         return true;
       },
       "chef It's nice to see that you have practiced these questions again, keep working hard!",
+      "hide character chef with fadeOut",
       "jump GameStart",
     ]
   }),
