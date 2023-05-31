@@ -356,7 +356,6 @@ const GitIntro = [
       }
     ],
     GitIntroEnd: [
-      "hide character chef with fadeOut",
       "na You now know the importance of git, let's dive into it with the next level!",
       "jump GameStart",
     ],
