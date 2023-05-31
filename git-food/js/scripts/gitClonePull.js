@@ -38,7 +38,21 @@ const GitClonePull = [
         },
         'False': 'clear',
       }},
+    "na Are you already familiar with the Git Clone and Pull?", 
+    {
+        Choice: {
+          Yes: {
+            Text: "Yes, I already knew this knowledge!",
+            Do: "jump EndOfPull",
+          },
+          No: {
+            Text: "No, but I would like to learn about it!",
+            Do: "next",
+          },
+        },
+      },
     "show character chef welcome center with fadeIn",
+    
     'chef Hi, {{player.name}}! I hope you’ve gotten situated and ready to start work.',
     'user Yes Chef {{chef_name}}. I am ready and eager.',
     'chef Good. Your first task is to prepare our famous Fish and Chips.',

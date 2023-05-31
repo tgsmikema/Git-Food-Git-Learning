@@ -42,11 +42,11 @@ const GitIntro = [
   "show character chef welcome center with fadeIn",
   "chef Before you can begin creating recipes with us, we need to teach you how the team saves their versions of recipes.",
   "hide character chef with fadeOut",
-  "na Are you familiar with the importance of Git?",
+  "na Are you already familiar with the importance of Git?",
   {
     Choice: {
       Yes: {
-        Text: "Yes, I know git is really important!",
+        Text: "Yes, I already knew this knowledge!",
         Do: "jump GitIntroEnd",
       },
       No: {
