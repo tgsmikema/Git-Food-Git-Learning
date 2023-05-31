@@ -1,4 +1,23 @@
 const GitBranchCheckout = [
+    {'Conditional': {
+        'Condition': function () {
+            return this.storage.level_4_done;
+        },
+        'True': {
+          Choice: {
+            'Dialog': "Seems like you have done this module already, would you like to test your knowledge again?",
+            Yes: {
+              Text: "Yes, Please!",
+              Do: "jump QuestionsOnly4",
+            },
+            No: {
+              Text: "No, Thanks",
+              Do: "jump GameStart",
+            },
+          },
+        },
+        'False': 'clear',
+      }},
     'na Anonymous Chef is working on his recipe for a new dish. The chef wants to make changes to the recipe and experiment, but he doesn’t want to alter the original recipe',
     'na He makes a copy of the recipe and takes it to a separate cooking station. There he can start experimenting with the recipe like adding different spices, modifying cooking times, or even introducing new ingredients.',
     'na  His original recipe remains unaffected as he is experimenting on with his new experimental recipe.',
@@ -51,14 +70,14 @@ const GitBranchCheckout = [
                     'Dialog': 'Quiz Question 2: What is the purpose of Git branching?',
                     'A': {
                         'Text': 'A) To experiment with new features without affecting the main codebase',
-                        'Do': 'jump BranchWrongQ2'
-                    },
-                    'B': {
-                        'Text': 'B) To create multiple copies of a repository',
                         'Do': 'jump BranchCorrectQ2',
                         onChosen: () => {
                           updateScore()
                         }
+                    },
+                    'B': {
+                        'Text': 'B) To create multiple copies of a repository',
+                        'Do': 'jump BranchWrongQ2',
                     },
                     'C': {
                         'Text': 'C) To synchronise changes between multiple repositories',
@@ -72,7 +91,7 @@ const GitBranchCheckout = [
             'jump EndOfBranch',
         ],
         'BranchWrongQ2': [
-            'chef Oops! The correct answer is B) To create multiple copies of a repository.  Branching allows multiple versions of a codebase to coexist simultaneously, enabling developers to work on different features',
+            'chef Oops! The correct answer is A) To experiment with new features without affecting the main codebase. Branching allows multiple versions of a codebase to coexist simultaneously, enabling developers to work on different features',
             'jump EndOfBranch',
         ],
         'EndOfBranch':[
@@ -155,7 +174,114 @@ const GitBranchCheckout = [
             'chef Congratulations! You have now master the skill to use git branch,and git checkout.',
             'chef Enjoy your "cook" in Git-Food!',
             'na Now You can try out other modules to study!',
+            function () {
+                monogatari.storage.level_4_done = true;
+                return true;
+              },
             'jump GameStart'
+        ],
+
+        'QuestionsOnly4':[
+            "Let's test your knowledge again!",
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 1: Which Git command is used to create a new branch?',
+                    A: {
+                        Text: "A) git init branch_name",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) git branch branch_name",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    C: {
+                        Text: "C) git checkout branch_name",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) None of the above",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 2: What is the purpose of Git branching?',
+                    A: {
+                        Text: "A) To experiment with new features without affecting the main codebase",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    B: {
+                        Text: "B) To create multiple copies of a repository",
+                        Do: "na Incorrect...",
+                    },
+                    C: {
+                        Text: "C) To synchronise changes between multiple repositories",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) None of the above",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 3: What does git checkout branch-name do?',
+                    A: {
+                        Text: "A) Creates a new branch with the given name",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) Switches to the branch with the given name",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    C: {
+                        Text: "C) Deletes the branch with the given name",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) None of the above",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 4: What happens to the changes made on a branch when you switch to a different branch using git checkout?',
+                    A: {
+                        Text: "A) The changes are discarded",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) The changes are automatically merged into the new branch",
+                        Do: "na Incorrect...",
+                    },
+                    C: {
+                        Text: "C) The changes are preserved on the original branch",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    D: {
+                        Text: "D) None of the above",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+
+            "chef It's nice to see that you have practiced these questions again, keep working hard!",
+            "jump GameStart",
         ]
     })
 ]
