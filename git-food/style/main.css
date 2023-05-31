@@ -37,6 +37,10 @@ button:hover {
 	transition: all .2s;
 }
 
+button[disabled] {
+	text-decoration: line-through;
+}
+
 choice-container {
 	width: 100%;
 }
