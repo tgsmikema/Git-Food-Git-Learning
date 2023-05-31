@@ -34,13 +34,18 @@ monogatari.configuration("credits", {});
 monogatari.assets("gallery", {});
 
 // Define the music used in the game.
-monogatari.assets("music", {});
+monogatari.assets("music", {
+  ap: "ambient-piano.mp3",
+});
 
 // Define the voice files used in the game.
 monogatari.assets("voices", {});
 
 // Define the sounds used in the game.
-monogatari.assets("sounds", {});
+monogatari.assets("sounds", {
+  correct: "achieve.mp3",
+  incorrect: "lose.mp3",
+});
 
 // Define the videos used in the game.
 monogatari.assets("videos", {});
@@ -79,6 +84,9 @@ monogatari.characters({
   sous: {
     Name: "Arvin",
     Color: "#9370DB",
+    sprites: {
+      welcome: "image4.svg",
+    },
   },
 });
 
@@ -86,7 +94,7 @@ monogatari.script({
   Start: [
     //'show scene restaurant.jpg',
     "show background kitchen",
-    //'play music restaurant.mp3',
+    "play music ap with loop",
     //'show character chef Normal center with fadeIn',
     {
       // Asking for player to enter their name.
@@ -142,6 +150,7 @@ monogatari.script({
     //'show character chef Normal center with fadeIn',
     "chef In the Git-Food kitchen, you'll learn these commands and more as you embark on your cooking adventure.",
     "chef Lets begin our journey in the kitchen, {{player.name}}, I will see you on the other side!",
+    "hide character chef with fadeOut",
     "jump GameStart",
   ],
   GameStart: [

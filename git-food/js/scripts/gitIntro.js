@@ -29,7 +29,9 @@ const GitIntro = [
     },
     'False': 'clear',
   }},
+  "show character chef welcome center with fadeIn",
   "chef Before you can begin creating recipes with us, we need to teach you how the team saves their versions of recipes.",
+  "hide character chef with fadeOut",
   "na Are you familiar with the importance of Git?",
   {
     Choice: {
@@ -45,6 +47,7 @@ const GitIntro = [
   },
   monogatari.script({
     GitIntro1: [
+      "show character chef welcome center with fadeIn",
       "chef Let's say you create a recipe idea but when we team taste test the dish, we don't think it is quite ready for the menu yet.",
       "chef You would like to improve the recipe but also do not want to forget the current ingredients and instructions.",
       "chef Thus, you should create a copy of the recipe as a backup.",
@@ -66,9 +69,10 @@ const GitIntro = [
         Choice: {
           A: {
             Text: "A) Create a copy of the recipe as a backup",
-            Do: "na Excellent! You should create a copy of your version as you should not rely on your own or other people's memories",
+            Do: "chef Excellent! You should create a copy of your version as you should not rely on your own or other people's memories",
             onChosen: () => {
               updateScore();
+              playCorrectSound()
               monogatari.storage({currentScript: "GitIntro1"});
               monogatari.storage({nextScript: "GitIntro2"});
               monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
@@ -79,11 +83,12 @@ const GitIntro = [
             Text: "B) Store it in your brain because you probably won't forget",
             onChosen: function(){
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro1"});
               monogatari.storage({B_Wrong: true});
             },
-            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Do: "chef Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
             Clickable: function(){
               return !(this.storage().B_Wrong);
             }
@@ -92,11 +97,12 @@ const GitIntro = [
             Text: "C: Ask your coworker to remember it for you",
             onChosen: function(){
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro1"});
               monogatari.storage({C_Wrong: true});
             },
-            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Do: "chef Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
             Clickable: function(){
               return !(this.storage().C_Wrong);
             }
@@ -105,11 +111,12 @@ const GitIntro = [
             Text: "D: Nothing, you won't ever need to refer to an old recipe",
             onChosen: function(){
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro1"});
               monogatari.storage({D_Wrong: true});
             },
-            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Do: "chef Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
             Clickable: function(){
               return !(this.storage().D_Wrong);
             }
@@ -142,6 +149,7 @@ const GitIntro = [
             Do: "chef That seems not quite right. You don't want to let people overwrite your work without creating backups because their changes may not be desirable. Try again.",
             onChosen: () => {
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro2"});
               monogatari.storage({A_Wrong: true});
@@ -155,6 +163,7 @@ const GitIntro = [
             Do: "chef Well done!",
             onChosen: () => {
               updateScore();
+              playCorrectSound()
               correct=true;
               monogatari.storage({currentScript: "GitIntro2"});
               monogatari.storage({nextScript: "GitIntro3"});
@@ -166,6 +175,7 @@ const GitIntro = [
             Do: "chef That seems not quite right. Working in a team often requires your teammates to make changes to what you have made, so it does not make sense to disallow them from modifying your work. Try again.",
             onChosen: () => {
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro2"});
               monogatari.storage({C_Wrong: true});
@@ -179,6 +189,7 @@ const GitIntro = [
             Do: "chef Nah let's be nice. We should allow them to copy the receipe and make changes. Try again.",
             onChosen: () => {
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro2"});
               monogatari.storage({D_Wrong: true});
@@ -215,6 +226,7 @@ const GitIntro = [
             Text: "A) In the kitchen.",
             onChosen: () => {
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro3"});
               monogatari.storage({A_Wrong: true});
@@ -228,6 +240,7 @@ const GitIntro = [
             Text: "B) Nowhere, you'll probably remember.",
             onChosen: () => {
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro3"});
               monogatari.storage({B_Wrong: true});
@@ -242,6 +255,7 @@ const GitIntro = [
             Do: "chef Good job! You wouldn't keep all your important files in one place, so having online and local backups is a good way to store them. It also allows you to access them anywhere, any time!",
             onChosen: () => {
               updateScore();
+              playCorrectSound()
               correct=true;
               monogatari.storage({currentScript: "GitIntro3"});
               monogatari.storage({nextScript: "GitIntro4"});
@@ -252,6 +266,7 @@ const GitIntro = [
             Text: "D) Online.",
             onChosen: () => {
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro3"});
               monogatari.storage({D_Wrong: true});
@@ -278,6 +293,7 @@ const GitIntro = [
             Text: "A) In case new versions aren't as nice",
             onChosen: () => {
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro4"});
               monogatari.storage({A_Wrong: true});
@@ -291,6 +307,7 @@ const GitIntro = [
             Text: "B) In case you lose the recipe",
             onChosen: () => {
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro4"});
               monogatari.storage({B_Wrong: true});
@@ -304,6 +321,7 @@ const GitIntro = [
             Text: "C) In case your fellow chefs want to try it",
             onChosen: () => {
               incrementIncorrect();
+              playIncorrectSound()
               correct=false;
               monogatari.storage({currentScript: "GitIntro4"});
               monogatari.storage({C_Wrong: true});
@@ -318,6 +336,7 @@ const GitIntro = [
             Do: "chef Well done, you should store copies in all of these scenarios. Try again.",
             onChosen: () => {
               updateScore();
+              playCorrectSound()
               correct=true;
               monogatari.storage({currentScript: "GitIntro4"});
               monogatari.storage({nextScript: "FailCheck"});
