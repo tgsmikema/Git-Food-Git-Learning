@@ -1,7 +1,9 @@
 const GitAddCommitPush = [
+    "show character chef welcome center with fadeIn",
     'chef Hey {{player.name}},  here is a copy of the restaurant recipe, please cook customers\' orders based on this.',
     'user Thank you boss. This is definitely helpful for me to learn our restaurant\'s cooking style and brainstorm new ideas.',
     'chef Please feel free to come up with any new dishes. You can add them in your recipe, but please let me know and try your new dishes.',
+    "hide character chef with fadeOut",
     'na The process of adding new dishes to your recipe is called “git add”. It tells the version control system what is included in the next version, for example, “git add index.txt” will tell git that all the creation or changes in index.txt will be included in the next version.',
     'jump AddQuiz1',
 

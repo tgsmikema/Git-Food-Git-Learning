@@ -84,6 +84,9 @@ monogatari.characters({
   sous: {
     Name: "Arvin",
     Color: "#9370DB",
+    sprites: {
+      welcome: "chef-holding-empty-board.svg",
+    },
   },
 });
 
@@ -157,6 +160,7 @@ monogatari.script({
     //'show character chef Normal center with fadeIn',
     "chef In the Git-Food kitchen, you'll learn these commands and more as you embark on your cooking adventure.",
     "chef Lets begin our journey in the kitchen, {{player.name}}, I will see you on the other side!",
+    "hide character chef with fadeOut",
     "jump GameStart",
   ],
   GameStart: [

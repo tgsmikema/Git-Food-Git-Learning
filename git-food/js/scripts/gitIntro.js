@@ -10,7 +10,9 @@ monogatari.storage({nextScript: currentScript});
 monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
 
 const GitIntro = [
+  "show character chef welcome center with fadeIn",
   "chef Before you can begin creating recipes with us, we need to teach you how the team saves their versions of recipes.",
+  "hide character chef with fadeOut",
   "na Are you familiar with the importance of Git?",
   {
     Choice: {
@@ -26,6 +28,7 @@ const GitIntro = [
   },
   monogatari.script({
     GitIntro1: [
+      "show character chef welcome center with fadeIn",
       "chef Let's say you create a recipe idea but when we team taste test the dish, we don't think it is quite ready for the menu yet.",
       "chef You would like to improve the recipe but also do not want to forget the current ingredients and instructions.",
       "chef Thus, you should create a copy of the recipe as a backup.",
@@ -47,7 +50,7 @@ const GitIntro = [
         Choice: {
           A: {
             Text: "Create a copy of the recipe as a backup",
-            Do: "na Excellent! You should create a copy of your version as you should not rely on your own or other people's memories",
+            Do: "chef Excellent! You should create a copy of your version as you should not rely on your own or other people's memories",
             onChosen: () => {
               updateScore();
               playCorrectSound()
@@ -66,7 +69,7 @@ const GitIntro = [
               monogatari.storage({currentScript: "GitIntro1"});
               monogatari.storage({B_Wrong: true});
             },
-            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Do: "chef Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
             Clickable: function(){
               return !(this.storage().B_Wrong);
             }
@@ -80,7 +83,7 @@ const GitIntro = [
               monogatari.storage({currentScript: "GitIntro1"});
               monogatari.storage({C_Wrong: true});
             },
-            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Do: "chef Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
             Clickable: function(){
               return !(this.storage().C_Wrong);
             }
@@ -94,7 +97,7 @@ const GitIntro = [
               monogatari.storage({currentScript: "GitIntro1"});
               monogatari.storage({D_Wrong: true});
             },
-            Do: "na Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
+            Do: "chef Incorrect... You should create a copy of your version as you should not rely on your own or other people's memories. Try again.",
             Clickable: function(){
               return !(this.storage().D_Wrong);
             }
@@ -353,10 +356,12 @@ const GitIntro = [
       }
     ],
     GitIntroEnd: [
+      "hide character chef with fadeOut",
       "na You now know the importance of git, let's dive into it with the next level!",
       "jump GameStart",
     ],
     GitIntroEndAlt: [
+      "hide character chef with fadeOut",
       "na You answered more than 3 questions incorrectly. Would you like to try again?",
       {
         Choice: {
