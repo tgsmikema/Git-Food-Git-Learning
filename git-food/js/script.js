@@ -34,13 +34,18 @@ monogatari.configuration("credits", {});
 monogatari.assets("gallery", {});
 
 // Define the music used in the game.
-monogatari.assets("music", {});
+monogatari.assets("music", {
+  ap: "ambient-piano.mp3",
+});
 
 // Define the voice files used in the game.
 monogatari.assets("voices", {});
 
 // Define the sounds used in the game.
-monogatari.assets("sounds", {});
+monogatari.assets("sounds", {
+  correct: "achieve.mp3",
+  incorrect: "lose.mp3",
+});
 
 // Define the videos used in the game.
 monogatari.assets("videos", {});
@@ -79,6 +84,9 @@ monogatari.characters({
   sous: {
     Name: "Arvin",
     Color: "#9370DB",
+    sprites: {
+      welcome: "image4.svg",
+    },
   },
 });
 
@@ -86,7 +94,7 @@ monogatari.script({
   Start: [
     //'show scene restaurant.jpg',
     "show background kitchen",
-    //'play music restaurant.mp3',
+    "play music ap with loop",
     //'show character chef Normal center with fadeIn',
     {
       // Asking for player to enter their name.
@@ -119,18 +127,8 @@ monogatari.script({
     "chef In this kitchen, we use Git to manage our recipes and collaborate with other chefs like you.",
     //'show character chef Smile center with fadeIn',
     "chef Are you ready to become a master chef of version control and whip up some mouthwatering code?",
-    {
-      Choice: {
-        Yes: {
-          Text: "Yes, I'm ready!",
-          Do: "jump IntroductionPart2",
-        },
-        No: {
-          Text: "No, I need more time.",
-          Do: "jump TakeABreak",
-        },
-      },
-    },
+    "user Yes Chef! Let's do it!",
+    "jump IntroductionPart2",
   ],
   TakeABreak: ["chef No Problem, take a break and come back!", "jump End"],
   IntroductionPart2: [
@@ -152,6 +150,7 @@ monogatari.script({
     //'show character chef Normal center with fadeIn',
     "chef In the Git-Food kitchen, you'll learn these commands and more as you embark on your cooking adventure.",
     "chef Lets begin our journey in the kitchen, {{player.name}}, I will see you on the other side!",
+    "hide character chef with fadeOut",
     "jump GameStart",
   ],
   GameStart: [
@@ -159,7 +158,7 @@ monogatari.script({
       Choice: {
         Dialog: "Select which topic you would like to begin with?",
         GitIntro: {
-          Text: "Level 1: Introduction of Git",
+          Text: "Level 1: Introduction to Version Control",
           Do: "jump GitIntro",
         },
         GitClonePull: {
