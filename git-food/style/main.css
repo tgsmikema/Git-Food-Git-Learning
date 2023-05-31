@@ -17,6 +17,11 @@
  * ===========================
 **/
 
+main-screen {
+	background: url(../main-background.png);
+	background-size: contain !important;
+}
+
 main-screen.active #score-label {
 	display: none;
 }
