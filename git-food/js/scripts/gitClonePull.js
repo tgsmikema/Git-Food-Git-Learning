@@ -407,29 +407,29 @@ const GitClonePull = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
-                            playCorrectSound()
-                            incrementCorrect()
+                            playCorrectSound();
+                            incrementCorrect();
                         }
                     },
                     B: {
                         Text: "B) You change the central recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     C: {
                         Text: "C) Your personal recipe book disappears",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     D: {
                         Text: "D) You steal the central recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                 },
@@ -441,21 +441,21 @@ const GitClonePull = [
                         Text: "A) Make personal changes without affecting the central recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     B: {
                         Text: "B) Refer to the recipes without needing to look in the central recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     C: {
                         Text: "C) Add experimental recipes that aren’t fully taste tested yet",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     D: {
@@ -463,8 +463,8 @@ const GitClonePull = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
-                            playCorrectSound()
-                            incrementCorrect()
+                            playCorrectSound();
+                            incrementCorrect();
                         }
                     },
                 },
@@ -476,7 +476,7 @@ const GitClonePull = [
                         Text: "A) Sends your changes to the central recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     B: {
@@ -484,22 +484,22 @@ const GitClonePull = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
-                            playCorrectSound()
-                            incrementCorrect()
+                            playCorrectSound();
+                            incrementCorrect();
                         }
                     },
                     C: {
                         Text: "C) You get a new personal recipe book",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     D: {
                         Text: "D) Your personal recipe book disappears",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                 },
@@ -511,30 +511,30 @@ const GitClonePull = [
                         Text: "A) Yes, it is exactly the same",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                     B: {
                         Text: "B) No, you can’t replace it",
-                        Do: "na Correct! Well done!",
+                        Do: "na Incorrect...",
                         onChosen: () => {
-                            updateScore();
-                            playCorrectSound()
-                            incrementCorrect()
+                            playIncorrectSound();
                         }
                     },
                     C: {
                         Text: "C) Yes, but it would require additional steps",
-                        Do: "na Incorrect...",
+                        Do: "na Correct! Well done!",
                         onChosen: () => {
-                            playIncorrectSound()
+                            updateScore();
+                            playCorrectSound();
+                            incrementCorrect(); 
                           }
                     },
                     D: {
                         Text: "D) I don’t know",
                         Do: "na Incorrect...",
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
                           }
                     },
                 },
