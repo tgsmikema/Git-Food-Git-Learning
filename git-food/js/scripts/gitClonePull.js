@@ -566,8 +566,8 @@ const GitClonePull = [
                     return;
                 }
 
-                const perfect = monogatari.storage('temp_score') == 4;
-                if(perfect){
+                const score = monogatari.storage('temp_score') == 4;
+                if(score){
                     monogatari.storage({section2_mastery:true})
                 }
                 monogatari.storage({temp_score: 0});
@@ -584,7 +584,7 @@ const GitClonePull = [
             "jump GameStart",
         ],
         Achievement2:[
-            "na Congratulations! You have unlocked the Section 2 Mastery achievement in the gallery!",
+            "na Congratulations! You have unlocked the Level 2 Mastery achievement in the gallery!",
             "gallery unlock section2",
             "jump GameStart"
         ]

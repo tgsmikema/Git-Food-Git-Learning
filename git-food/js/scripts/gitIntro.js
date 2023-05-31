@@ -580,7 +580,7 @@ const GitIntro = [
       "jump GameStart"
     ],
     Achievement1:[
-      "na Congratulations! You have unlocked the Section 1 Mastery achievement in the gallery!",
+      "na Congratulations! You have unlocked the Level 1 Mastery achievement in the gallery!",
       "gallery unlock section1",
       "hide character chef with fadeOut",
       "jump GameStart",

@@ -494,12 +494,33 @@ const GitMergePR = [
 
             "chef you have answered {{temp_score}} out of 5 questions correctly!",
             function () {
+                if(monogatari.storage('section5_mastery')){
+                    monogatari.storage({temp_score: 0});
+                    return;
+                }
+
+                const score = monogatari.storage('temp_score');
+                if(score == 5){
+                    monogatari.storage({section5_mastery:true})
+                }
                 monogatari.storage({temp_score: 0});
                 return true;
-              },
+            },
+            {'Conditional': {
+                'Condition': function(){
+                    return monogatari.storage('section5_mastery');
+                },
+                'True': "jump Achievement5",
+                'False': "na Complete this test with no mistakes to gain mastery!"
+                }
+            },
             "chef It's nice to see that you have practiced these questions again, keep working hard!",
-            "jump GameStart",
+            "jump GameStart"
+        ],
+        Achievement5:[
+            "na Congratulations! You have unlocked the Level 5 Mastery achievement in the gallery!",
+            "gallery unlock section5",
+            "jump GameStart"
         ]
-
     })
 ]
