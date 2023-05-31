@@ -543,11 +543,31 @@ const GitClonePull = [
             },
             "chef you have answered {{temp_score}} out of 4 questions correctly!",
             function () {
+                if(monogatari.storage('section2_mastery')){
+                    monogatari.storage({temp_score: 0});
+                    return;
+                }
+
+                const perfect = monogatari.storage('temp_score') == 4;
+                if(perfect){
+                    monogatari.storage({section2_mastery:true})
+                }
                 monogatari.storage({temp_score: 0});
                 return true;
               },
+              {'Conditional': {
+                'Condition': function(){
+                  return this.storage.section1_mastery;
+                },
+                'True': "jump Achievement2"
+            }},
             "chef It's nice to see that you have practiced these questions again, keep working hard!",
             "jump GameStart",
+        ],
+        Achievement2:[
+            "na Congratulations! You have unlocked the Section 1 Mastery achievement in the gallery!",
+            "gallery unlock section1",
+            "jump GameStart"
         ]
     })
 ]

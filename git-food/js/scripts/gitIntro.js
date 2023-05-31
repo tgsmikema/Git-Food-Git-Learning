@@ -552,11 +552,32 @@ const GitIntro = [
 },
       "chef you have answered {{temp_score}} out of 4 questions correctly!",
       function () {
+        if(monogatari.storage('section1_mastery')){
+          monogatari.storage({temp_score: 0});
+          return;
+        }
+
+        const score = monogatari.storage('temp_score');
+        if(score == 4){
+          monogatari.storage({section1_mastery:true});
+        }
         monogatari.storage({temp_score: 0});
-        return true;
+        return;
       },
+      {'Conditional': {
+          'Condition': function(){
+            return monogatari.storage('section1_mastery');
+          },
+          'True': "jump Achievement1",
+          'False': "na Complete this test with no mistakes to gain mastery!"
+      }},
       "chef It's nice to see that you have practiced these questions again, keep working hard!",
-      "jump GameStart",
+      "jump GameStart"
+    ],
+    Achievement1:[
+      "na Congratulations! You have unlocked the Section 1 Mastery achievement in the gallery!",
+      "gallery unlock section1",
+      "jump GameStart"
     ]
   }),
 ];
