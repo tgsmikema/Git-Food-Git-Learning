@@ -28,7 +28,20 @@ const GitAddCommitPush = [
         },
         'False': 'clear',
       }},
-    "show character chef welcome center with fadeIn",
+      "show character chef welcome center with fadeIn",
+      "na Are you already familiar with the Git Add, Commit and Push?", 
+      {
+          Choice: {
+            Yes: {
+              Text: "Yes, I already knew this knowledge!",
+              Do: "jump GitACPEnd",
+            },
+            No: {
+              Text: "No, but I would like to learn about it!",
+              Do: "next",
+            },
+          },
+        },
     'chef Hey {{player.name}},  here is a copy of the restaurant recipe, please cook customers\' orders based on this.',
     'user Thank you boss. This is definitely helpful for me to learn our restaurant\'s cooking style and brainstorm new ideas.',
     'chef Please feel free to come up with any new dishes. You can add them in your recipe, but please let me know and try your new dishes.',
