@@ -11,7 +11,7 @@ const GitClonePull = [
               Do: "jump QuestionsOnly2",
             },
             No: {
-                Text: "No, Thanks",
+                Text: "Study again",
                 Do: 'clear',
             },
             Back: {

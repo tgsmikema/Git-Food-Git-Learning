@@ -11,7 +11,7 @@ const GitMergePR = [
               Do: "jump QuestionsOnly5",
             },
             No: {
-                Text: "No, Thanks",
+                Text: "Study again",
                 Do: 'clear',
             },
             Back: {

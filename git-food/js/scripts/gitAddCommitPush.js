@@ -11,7 +11,7 @@ const GitAddCommitPush = [
               Do: "jump QuestionsOnly3",
             },
             No: {
-              Text: "No, Thanks",
+              Text: "Study again",
               Do: 'clear',
             },
             Back: {

@@ -11,7 +11,7 @@ const GitBranchCheckout = [
               Do: "jump QuestionsOnly4",
             },
             No: {
-                Text: "No, Thanks",
+                Text: "Study again",
                 Do: 'clear',
             },
             Back: {

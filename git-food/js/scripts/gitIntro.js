@@ -22,7 +22,7 @@ const GitIntro = [
           Do: "jump QuestionsOnly",
         },
         No: {
-          Text: "No, Thanks",
+          Text: "Study again",
           Do: 'clear',
         },
         Back: {
