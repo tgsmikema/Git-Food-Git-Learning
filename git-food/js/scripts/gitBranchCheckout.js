@@ -409,11 +409,33 @@ const GitBranchCheckout = [
             
             "chef you have answered {{temp_score}} out of 4 questions correctly!",
             function () {
+                if(monogatari.storage('section4_mastery')){
+                    monogatari.storage({temp_score: 0});
+                    return;
+                }
+
+                const score = monogatari.storage('temp_score');
+                if(score == 4){
+                    monogatari.storage({section4_mastery:true})
+                }
                 monogatari.storage({temp_score: 0});
                 return true;
-              },
+            },
+            {'Conditional': {
+                'Condition': function(){
+                    return monogatari.storage('section4_mastery');
+                },
+                'True': "jump Achievement4",
+                'False': "na Complete this test with no mistakes to gain mastery!"
+                }
+            },
             "chef It's nice to see that you have practiced these questions again, keep working hard!",
             "jump GameStart",
+        ],
+        Achievement4:[
+            "na Congratulations! You have unlocked the Level 4 Mastery achievement in the gallery!",
+            "gallery unlock section4",
+            "jump GameStart"
         ]
     })
 ]

@@ -31,7 +31,14 @@ monogatari.action("canvas").objects({});
 monogatari.configuration("credits", {});
 
 // Define the images that will be available on your game's image gallery
-monogatari.assets("gallery", {});
+monogatari.assets("gallery", {
+  'section1': 'section1_mastery.svg',
+  'section2': 'section2_mastery.svg',
+  'section3': 'section3_mastery.svg',
+  'section4': 'section4_mastery.svg',
+  'section5': 'section5_mastery.jpg',
+  'chat': 'chat_icon.svg'
+});
 
 // Define the music used in the game.
 monogatari.assets("music", {
@@ -121,6 +128,14 @@ monogatari.script({
         Warning: "You must enter a name!",
       },
     },
+    //Lock all achievements when creating new account
+    "gallery lock section1",
+    "gallery lock section2",
+    "gallery lock section3",
+    "gallery lock section4",
+    "gallery lock section5",
+    "gallery lock chat",
+    //Introduction
     "na Welcome to Git-Food, the most delicious version control kitchen in town!",
     "na Are you already familiar with the game?",
   {
@@ -192,7 +207,12 @@ monogatari.script({
         },
         ExternalResources: {
             'Text': 'How can I learn more about Git?',
-            'Do': 'jump ExternalResources'
+            'Do': 'jump ExternalResources',
+            onChosen: () => {
+              if (!monogatari.storage('learn_more_achievement:')){
+                monogatari.storage({learn_more_achievement: true});
+              }
+            }
         },
       },
     },
