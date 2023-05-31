@@ -1,3 +1,9 @@
+function incrementCorrect(){
+    let correctCounter = monogatari.storage('temp_score');
+    correctCounter++;
+    monogatari.storage({temp_score: correctCounter});
+  }
+
 const GitBranchCheckout = [
     {'Conditional': {
         'Condition': function () {
@@ -237,6 +243,10 @@ const GitBranchCheckout = [
 
         'QuestionsOnly4':[
             "Let's test your knowledge again!",
+            function () {
+                monogatari.storage({temp_score: 0});
+                return true;
+              },
             {
                 Choice: {
                     'Dialog': 'Quiz Question 1: Which Git command is used to create a new branch?',
@@ -253,6 +263,7 @@ const GitBranchCheckout = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     C: {
@@ -280,6 +291,7 @@ const GitBranchCheckout = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     B: {
@@ -321,6 +333,7 @@ const GitBranchCheckout = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     C: {
@@ -362,6 +375,7 @@ const GitBranchCheckout = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     D: {
@@ -373,7 +387,12 @@ const GitBranchCheckout = [
                     },
                 },
             },
-
+            
+            "chef you have answered {{temp_score}} out of 4 questions correctly!",
+            function () {
+                monogatari.storage({temp_score: 0});
+                return true;
+              },
             "chef It's nice to see that you have practiced these questions again, keep working hard!",
             "jump GameStart",
         ]

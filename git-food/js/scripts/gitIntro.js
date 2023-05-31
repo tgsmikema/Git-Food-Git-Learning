@@ -4,6 +4,12 @@ function incrementIncorrect(){
   monogatari.storage({incorrectCounter: incorrectCounter});
 }
 
+function incrementCorrect(){
+  let correctCounter = monogatari.storage('temp_score');
+  correctCounter++;
+  monogatari.storage({temp_score: correctCounter});
+}
+
 let currentScript = "GitIntro1";
 let correct = true;
 monogatari.storage({nextScript: currentScript});
@@ -400,6 +406,10 @@ const GitIntro = [
     ],
     QuestionsOnly: [
       "Let's test your knowledge again!",
+      function () {
+        monogatari.storage({temp_score: 0});
+        return true;
+      },
       {
         Choice: {
             'Dialog': 'Quiz Question 1: If you think you will want to refer to an old version of the recipe in the future, what should you do?',
@@ -409,6 +419,7 @@ const GitIntro = [
                 onChosen: () => {
                     updateScore();
                     playCorrectSound()
+                    incrementCorrect()
                 }
             },
             B: {
@@ -450,6 +461,7 @@ const GitIntro = [
               onChosen: () => {
                   updateScore();
                   playCorrectSound()
+                  incrementCorrect()
               }
           },
           C: {
@@ -491,6 +503,7 @@ const GitIntro = [
             onChosen: () => {
                 updateScore();
                 playCorrectSound()
+                incrementCorrect()
             }
         },
         D: {
@@ -532,10 +545,16 @@ const GitIntro = [
           onChosen: () => {
               updateScore();
               playCorrectSound()
+              incrementCorrect()
           }
       },
   },
 },
+      "chef you have answered {{temp_score}} out of 4 questions correctly!",
+      function () {
+        monogatari.storage({temp_score: 0});
+        return true;
+      },
       "chef It's nice to see that you have practiced these questions again, keep working hard!",
       "jump GameStart",
     ]

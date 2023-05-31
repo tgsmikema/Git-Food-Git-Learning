@@ -1,3 +1,9 @@
+function incrementCorrect(){
+    let correctCounter = monogatari.storage('temp_score');
+    correctCounter++;
+    monogatari.storage({temp_score: correctCounter});
+  }
+
 const GitAddCommitPush = [
     {'Conditional': {
         'Condition': function () {
@@ -331,6 +337,10 @@ const GitAddCommitPush = [
 
         'QuestionsOnly3':[
             "Let's test your knowledge again!",
+            function () {
+                monogatari.storage({temp_score: 0});
+                return true;
+              },
             {
                 Choice: {
                     'Dialog': 'Quiz Question 1: If you want to add a new dish named "recipe.txt," which command should you run?',
@@ -340,6 +350,7 @@ const GitAddCommitPush = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     B: {
@@ -374,6 +385,7 @@ const GitAddCommitPush = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     B: {
@@ -408,6 +420,7 @@ const GitAddCommitPush = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     B: {
@@ -456,6 +469,7 @@ const GitAddCommitPush = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     D: {
@@ -490,6 +504,7 @@ const GitAddCommitPush = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     D: {
@@ -501,6 +516,11 @@ const GitAddCommitPush = [
                     },
                 },
             },
+            "chef you have answered {{temp_score}} out of 5 questions correctly!",
+            function () {
+                monogatari.storage({temp_score: 0});
+                return true;
+              },
             "chef It's nice to see that you have practiced these questions again, keep working hard!",
             "jump GameStart",
         ]

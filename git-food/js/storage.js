@@ -14,5 +14,6 @@ monogatari.storage ({
 	playing: false,
 	scripting: false,
 	incorrectCounter: 0,
-	maxIncorrect: 3
+	maxIncorrect: 3,
+	temp_score: 0,
 });

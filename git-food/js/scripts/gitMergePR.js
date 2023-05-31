@@ -1,3 +1,9 @@
+function incrementCorrect(){
+    let correctCounter = monogatari.storage('temp_score');
+    correctCounter++;
+    monogatari.storage({temp_score: correctCounter});
+  }
+
 const GitMergePR = [
     {'Conditional': {
         'Condition': function () {
@@ -287,6 +293,10 @@ const GitMergePR = [
         ],
         'QuestionsOnly5':[
             "Let's test your knowledge again!",
+            function () {
+                monogatari.storage({temp_score: 0});
+                return true;
+              },
             {
                 Choice: {
                     'Dialog': 'Quiz Question 1: What does the \"git merge\" command do?',
@@ -310,6 +320,7 @@ const GitMergePR = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     D: {
@@ -337,6 +348,7 @@ const GitMergePR = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     C: {
@@ -371,6 +383,7 @@ const GitMergePR = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     C: {
@@ -405,6 +418,7 @@ const GitMergePR = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     C: {
@@ -439,6 +453,7 @@ const GitMergePR = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     C: {
@@ -458,6 +473,11 @@ const GitMergePR = [
                 },
             },
 
+            "chef you have answered {{temp_score}} out of 5 questions correctly!",
+            function () {
+                monogatari.storage({temp_score: 0});
+                return true;
+              },
             "chef It's nice to see that you have practiced these questions again, keep working hard!",
             "jump GameStart",
         ]

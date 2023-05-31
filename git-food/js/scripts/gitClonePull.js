@@ -1,3 +1,9 @@
+function incrementCorrect(){
+    let correctCounter = monogatari.storage('temp_score');
+    correctCounter++;
+    monogatari.storage({temp_score: correctCounter});
+  }
+
 const GitClonePull = [
     {'Conditional': {
         'Condition': function () {
@@ -286,6 +292,10 @@ const GitClonePull = [
         ],
         'QuestionsOnly2':[
             "Let's test your knowledge again!",
+            function () {
+                monogatari.storage({temp_score: 0});
+                return true;
+              },
             {
                 Choice: {
                     'Dialog': 'Quiz Question 1: What happens when you cast  "git clone" on the central recipe book?',
@@ -295,6 +305,7 @@ const GitClonePull = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     B: {
@@ -350,6 +361,7 @@ const GitClonePull = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                 },
@@ -370,6 +382,7 @@ const GitClonePull = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     C: {
@@ -404,6 +417,7 @@ const GitClonePull = [
                         onChosen: () => {
                             updateScore();
                             playCorrectSound()
+                            incrementCorrect()
                         }
                     },
                     C: {
@@ -422,6 +436,11 @@ const GitClonePull = [
                     },
                 },
             },
+            "chef you have answered {{temp_score}} out of 4 questions correctly!",
+            function () {
+                monogatari.storage({temp_score: 0});
+                return true;
+              },
             "chef It's nice to see that you have practiced these questions again, keep working hard!",
             "jump GameStart",
         ]
