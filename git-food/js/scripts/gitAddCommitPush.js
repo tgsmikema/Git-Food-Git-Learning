@@ -1,7 +1,9 @@
 const GitAddCommitPush = [
+    "show character chef welcome center with fadeIn",
     'chef Hey {{player.name}},  here is a copy of the restaurant recipe, please cook customers\' orders based on this.',
     'user Thank you boss. This is definitely helpful for me to learn our restaurant\'s cooking style and brainstorm new ideas.',
     'chef Please feel free to come up with any new dishes. You can add them in your recipe, but please let me know and try your new dishes.',
+    "hide character chef with fadeOut",
     'na The process of adding new dishes to your recipe is called “git add”. It tells the version control system what is included in the next version, for example, “git add index.txt” will tell git that all the creation or changes in index.txt will be included in the next version.',
     'jump AddQuiz1',
 
@@ -43,16 +45,19 @@ const GitAddCommitPush = [
             }
         ],
         'CorrectAddQ1': [
+            "show character chef welcome center with fadeIn",
             'chef Cool, you answer is correct.',
             'jump AddQuiz2'
         ],
         'WrongAddQ1': [
+            "show character chef welcome center with fadeIn",
             'chef Unfortunately, you answer is wrong. The correct answer should be A)git add recipe.txt',
             'jump AddQuiz2'
         ],
 
         'AddQuiz2': [
             'chef Let\'s start the second question.',
+            "hide character chef with fadeOut",
             {
                 'Choice': {
                     'Dialog': 'True or False: "git add" only stages new files and ignores modifications to existing files.',
@@ -75,10 +80,12 @@ const GitAddCommitPush = [
             }
         ],
         'WrongAddQ2': [
+            "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer should be False. This is because "git add" stages both new files and modifications to existing files.',
             'jump GitCommitStart'
         ],
         'CorrectAddQ2': [
+            "show character chef welcome center with fadeIn",
             'chef Well done.',
             'jump GitCommitStart'
         ],
@@ -87,6 +94,7 @@ const GitAddCommitPush = [
             'user I have come up with a new dish that combines traditional flavours with a modern twist. Can you try?',
             'chef Yes I would love to.',
             'chef (have a bite) This is absolutely fantastic. It will bring some fresh tastes to our restaurant. Let\'s keep it in the recipe',
+            "hide character chef with fadeOut",
             'na {{chef_name}} has acknowledged this new dish, meaning that there has been a new version of the recipe which includes the new dish. This process is called “git commit”. It will record all the changes you added with “git add” as a new version. When committing files, you will also need a message that describes this message, for example, \'git commit -m “added a new dish”\'',
             'jump GitCommitQuiz1'
         ],
@@ -127,11 +135,15 @@ const GitAddCommitPush = [
             }
         ],
         'WrongCommitQ1': [
+            "show character chef welcome center with fadeIn",
             'chef Unfortunately, the correct answer should be A) git commit -m "Update recipe: spaghetti"',
+            "hide character chef with fadeOut",
             'jump GitCommitQuiz2'
         ],
         'CorrectCommitQ1': [
+            "show character chef welcome center with fadeIn",
             'chef Well done! To attach a message with the commit, you will need to use the -m flag.',
+            "hide character chef with fadeOut",
             'jump GitCommitQuiz2'
         ],
 
@@ -172,10 +184,12 @@ const GitAddCommitPush = [
             }
         ],
         'CorrectCommitQ2': [
+            "show character chef welcome center with fadeIn",
             'chef Nicely done! The commit message should clearly state what was changed in this version.',
             'jump GitPush'
         ],
         'WrongCommitQ2': [
+            "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer should be A) It describes the changes made in the commit.',
             'jump GitPush'
         ],
@@ -184,6 +198,7 @@ const GitAddCommitPush = [
             'chef This is definitely a new great dish for our restaurant, let\'s record the success and add it into our menu so that other chefs can cook it as well.',
             'user I couldn\'t agree more. I believe this dish has the potential to be a new signature of our restaurant.',
             'chef Thank you for your contribution to our restaurant. You are useless now and you are fired (just kidding).',
+            "hide character chef with fadeOut",
             'na This process of letting other chefs see this new dish is “git push”. It will publish your local changes to a remote repository like GitHub, and all developers will be able to view your files.',
             'jump GitPushQuiz1'
         ],
@@ -224,16 +239,19 @@ const GitAddCommitPush = [
             }
         ],
         'WrongPushQ1': [
+            "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer should be C) Push changes to the remote repository.',
             'jump GitPushQuiz2'
         ],
         'CorrectPushQ1': [
+            "show character chef welcome center with fadeIn",
             'chef Great! Git push will send the local changes to a remote repository.',
             'jump GitPushQuiz2'
         ],
 
         'GitPushQuiz2': [
             'chef Let\'s do the other quiz question.',
+            "hide character chef with fadeOut",
             {
                 'Choice': {
                     'Dialog': 'Quiz Question 2: After you update the dish in the menu, your colleague points out a potential improvement. You want to update the edited dish and share with other chefs, what is the correct process to try the dish and update the menu?',
@@ -270,10 +288,12 @@ const GitAddCommitPush = [
             }
         ],
         'WrongPushQ2': [
+            "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer should be C)git add - git commit - git push',
             'jump GitACPEnd'
         ],
         'CorrectPushQ2': [
+            "show character chef welcome center with fadeIn",
             'chef Good job! You need to stage the changes (git add), record the changes (git commit), and send to the remote repository (git push)',
             'jump GitACPEnd'
         ],
@@ -281,6 +301,7 @@ const GitAddCommitPush = [
         'GitACPEnd': [
             'chef Congratulations! You have now master the skill to use git add, git commit and git push.',
             'chef Enjoy your "cook" in Git-Food!',
+            "hide character chef with fadeOut",
             'na Now You can try out other modules to study!',
             'jump GameStart'
         ]

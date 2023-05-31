@@ -1,4 +1,5 @@
 const GitClonePull = [
+    "show character chef welcome center with fadeIn",
     'chef Hi, {{player.name}}! I hope you’ve gotten situated and ready to start work.',
     'user Yes Chef {{chef_name}}. I am ready and eager.',
     'chef Good. Your first task is to prepare our famous Fish and Chips.',
@@ -7,6 +8,8 @@ const GitClonePull = [
     'user Okay chef. I’ll start making the dish.',
     'chef Alright. If you have any questions, you can ask our sous chef {{sous_chef_name}}',
     'user Hey {{sous_chef_name}}, it\'s pretty difficult to refer to the central recipe book all the time. Is there an easier way?',
+    "hide character chef with fadeOut",
+    "show character sous welcome center with fadeIn",
     'sous Hi {{player.name}}, of course there is a much easier way. Just make your own personal recipe book.',
     'user But that would take a long time!',
     'sous Not with the power of “git clone”. With it, you can instantly have your very own recipe book you can use.',
@@ -16,6 +19,7 @@ const GitClonePull = [
     'sous Anytime {{player.name}}',
     'user I’m going to finish this fish and chips now. See you around.',
     'sous See you around {{player.name}}',
+    "hide character sous with fadeOut",
     'na A new chef is hired at the restaurant. The new chef needs to know what dishes are served at the restaurant and how to make them. Thankfully, there is a public recipe book. Using the magical spell ‘git clone’, the new chef now has his own private copy of the recipe book.',
     'na Git clone is used to create a local copy of a repository, meaning that you have a copy of the original repository in your computer. You can use this copy to make changes in the repository, or simply use the software in your local machine',
     'na Cloning a repository is not like copying some files. In addition to copying the files, you get access to the history of the repository, and many other features we will discuss in the coming chapters.',
@@ -59,11 +63,15 @@ const GitClonePull = [
             }
         ],
         'CorrectQ1' : [
+            "show character sous welcome center with fadeIn",
             'sous Well done! Your answer is correct! "Git clone" can create you a personal recipe book from the central recipe book',
+            "hide character sous with fadeOut",
             'jump Quiz2',
         ],
         'WrongQ1': [
+            "show character sous welcome center with fadeIn",
             'sous Oops! The correct answer is A) You get your own recipe book. "Git clone" can create you a personal recipe book from the central recipe book',
+            "hide character sous with fadeOut",
             'jump Quiz2',
         ],
 
@@ -104,20 +112,27 @@ const GitClonePull = [
             }
         ],
         'CorrectQ2' : [
+            "show character sous welcome center with fadeIn",
             'sous Well done! Your answer is correct! All the answers given are benefits of working with your personal recipe book. You can change and use your personal recipe book without worrying about the central recipe book.',
+            "hide character sous with fadeOut",
             'jump EndOfClone',
         ],
         'WrongQ2': [
+            "show character sous welcome center with fadeIn",
             'sous Oops! The correct answer is D) All of the above.  All the answers given are benefits of working with your personal recipe book. You can change and use your personal recipe book without worrying about the central recipe book.',
+            "hide character sous with fadeOut",
             'jump EndOfClone',
         ],
 
         'EndOfClone':[
+            "show character sous welcome center with fadeIn",
             'sous Congratulations, {{player.name}}! You\'ve learned how to git clone.Happy learning',
+            "hide character sous with fadeOut",
             'jump StartPull'
         ],
 
         'StartPull':[
+            "show character chef welcome center with fadeIn",
             'chef Welcome back! Hey {{player.name}}, did you hear about sous chef {{sous_chef_name}}’s new recipe?',
             'user Hi Chef {{chef_name}}. Yes, I hear it\'s selling like hotcakes.',
             'chef Yes! It\'s flying off the shelves, which is why I’m here. We can’t keep up with the demand. We need you to make them as well.',
@@ -125,6 +140,8 @@ const GitClonePull = [
             'chef Great. {{sous_chef_name}} has added the recipe to the central recipe book.',
             'user Okay chef.',
             'user Hi {{sous_chef_name}}. Your recipe is getting popular huh?',
+            "hide character chef with fadeOut",
+            "show character sous welcome center with fadeIn",
             'sous Hey {{player.name}}. Yes, it’s a great success.',
             'user So much so that I’ve been asked to make them as well. The problem is that my recipe book doesn’t have your recipe in it, because it is new. Do I need to copy the central recipe book like when I first started?',
             'sous Of course not. That would mean that you’d have to throw away your old recipe book. That seems a waste. You can use the power of “Git pull” to get all the newest changes added to your personal recipe book.',
@@ -132,6 +149,7 @@ const GitClonePull = [
             'sous Yes, that’s right.',
             'user Nice! I’m going to make some more of your famous hotcakes.',
             'sous Me too. See you around.',
+            "hide character sous with fadeOut",
             'na Danny has made a brand new recipe (sandwiches) and its all the rage. People are coming from all over the place to try the new recipe. The restaurant can’t keep up with just Danny making sandwiches.',
             'na Everybody needs to learn how to make sandwiches. Danny has shared the recipe to the public recipe book, but unfortunately, you have a clone of the old recipe book. Not to worry, the power of ‘git pull’ is here to help',
             'na Using git pull, you are able to access the latest recipes in the public recipe book.',
@@ -175,11 +193,15 @@ const GitClonePull = [
             }
         ],
         'CorrectQ1ForPull' : [
+            "show character sous welcome center with fadeIn",
             'sous Well done! Your answer is correct! When you use "git pull", it checks the central recipe book and adds all the new things to your personal recipe book.',
+            "hide character sous with fadeOut",
             'jump Quiz2ForPull',
         ],
         'WrongQ1ForPull': [
+            "show character sous welcome center with fadeIn",
             'sous Oops! The correct answer is B) Add new stuff in the central recipe book to your personal recipe book. When you use "git pull", it checks the central recipe book and adds all the new things to your personal recipe book.',
+            "hide character sous with fadeOut",
             'jump Quiz2ForPull',
         ],
 
@@ -220,16 +242,22 @@ const GitClonePull = [
             }
         ],
         'CorrectQ2ForPull' : [
+            "show character sous welcome center with fadeIn",
             'sous Well done! Your answer is correct! Technically, you can throw away your old recipe book and use “Git clone” to create a new recipe book when you need to use “Git pull”, but this is very cumbersome and should not be done.',
+            "hide character sous with fadeOut",
             'jump EndOfPull',
         ],
         'WrongQ2ForPull': [
+            "show character sous welcome center with fadeIn",
             'sous Oops! The correct answer is C) Yes, but it would require additional steps. Technically, you can throw away your old recipe book and use “Git clone” to create a new recipe book when you need to use “Git pull”, but this is very cumbersome and should not be done.',
+            "hide character sous with fadeOut",
             'jump EndOfPull',
         ],
         'EndOfPull':[
+            "show character chef welcome center with fadeIn",
             'chef Congratulations! You have now master the skill to use git clone,and git pull.',
             'chef Enjoy your "cook" in Git-Food!',
+            "hide character chef with fadeOut",
             'na Now You can try out other modules to study!',
             'jump GameStart'
         ]
