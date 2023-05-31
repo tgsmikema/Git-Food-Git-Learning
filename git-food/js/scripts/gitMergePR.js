@@ -1,4 +1,23 @@
 const GitMergePR = [
+    {'Conditional': {
+        'Condition': function () {
+            return this.storage.level_5_done;
+        },
+        'True': {
+          Choice: {
+            'Dialog': "Seems like you have done this module already, would you like to test your knowledge again?",
+            Yes: {
+              Text: "Yes, Please!",
+              Do: "jump QuestionsOnly5",
+            },
+            No: {
+              Text: "No, Thanks",
+              Do: "jump GameStart",
+            },
+          },
+        },
+        'False': 'clear',
+      }},
     'chef Greetings, aspiring chef {{player.name}}! In the Git Food, merging is like blending different ingredients to create a brand-new recipe. It allows us to combine the work done in separate branches and bring them together in harmony. Let\'s learn how to use the \'git merge\' command!',
     'user Sounds good, Chef! I\'m ready!',
     'chef Great! Let me explain how \'git merge\' works in our kitchen. Imagine you\'re working on your own dish in a separate prep station, and another chef is also preparing a different dish. When both dishes are ready, you can merge them to create something extraordinary!',
@@ -190,7 +209,137 @@ const GitMergePR = [
         'EndPR':[
             'chef Congratulations, chef! You\'ve learned how to utilize pull requests effectively, just like our chefs here in the Git Food. Pull requests facilitate collaboration and ensure that changes are thoroughly reviewed before merging. Keep up the excellent work and continue exploring the world of collaborative coding!',
             'na With your newfound knowledge of pull requests, you\'re now equipped to contribute to projects and collaborate seamlessly. Happy cooking! Now You can try out other modules to study!',
+            function () {
+                monogatari.storage.level_5_done = true;
+                return true;
+              },
             'jump GameStart',
+        ],
+        'QuestionsOnly5':[
+            "Let's test your knowledge again!",
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 1: What does the \"git merge\" command do?',
+                    A: {
+                        Text: "A) Creates a new branch.",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) Deletes a branch.",
+                        Do: "na Incorrect...",
+                    },
+                    C: {
+                        Text: "C) Combines the changes from one branch into another.",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    D: {
+                        Text: "D) Checks out a specific commit.",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 2: What happens if there are conflicting changes when merging branches?',
+                    A: {
+                        Text: "A) The merge happens automatically without any issues.",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) A merge conflict occurs, and manual intervention is required.",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    C: {
+                        Text: "C) The conflicting changes are deleted from the repository.",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) The merge is canceled, and the branches remain separate.",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 3: In the Git Food kitchen, when we merge dishes, which dish receives the changes?',
+                    A: {
+                        Text: "A) The source dish.",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) The destination dish.",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    C: {
+                        Text: "C) Both dishes equally.",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) None of the above.",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 4: What is the purpose of a pull request in the Git Food kitchen?',
+                    A: {
+                        Text: "A) To immediately add the dish to the menu.",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) To request review and discussion before adding the dish to the menu.",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    C: {
+                        Text: "C) To delete a dish from the menu.",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) To undo the last modification made to the dish.",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 5: What is typically included in a pull request in the Git Food kitchen?',
+                    A: {
+                        Text: "A) The entire collection of recipes in the kitchen.",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) A summary of the changes made to the dish and their purpose.",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    C: {
+                        Text: "C) A request to remove a dish from the menu.",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) The last update made to the dish\'s recipe.",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+
+            "chef It's nice to see that you have practiced these questions again, keep working hard!",
+            "jump GameStart",
         ]
 
     })
