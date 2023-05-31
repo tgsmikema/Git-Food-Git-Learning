@@ -24,6 +24,19 @@ const GitBranchCheckout = [
         },
         'False': 'clear',
       }},
+      "na Are you already familiar with the Git Branch and Checkout?", 
+      {
+          Choice: {
+            Yes: {
+              Text: "Yes, I already knew this knowledge!",
+              Do: "jump EndOfCheckout",
+            },
+            No: {
+              Text: "No, but I would like to learn about it!",
+              Do: "next",
+            },
+          },
+        },
     'na Anonymous Chef is working on his recipe for a new dish. The chef wants to make changes to the recipe and experiment, but he doesn’t want to alter the original recipe',
     'na He makes a copy of the recipe and takes it to a separate cooking station. There he can start experimenting with the recipe like adding different spices, modifying cooking times, or even introducing new ingredients.',
     'na  His original recipe remains unaffected as he is experimenting on with his new experimental recipe.',
