@@ -15,7 +15,7 @@ function incrementCorrect(){
 const GitBranchCheckout = [
     {'Conditional': {
         'Condition': function () {
-            return monogatari.storage('level_4_done');
+            return this.storage.level_4_done;
         },
         'True': {
           Choice: {
@@ -306,7 +306,7 @@ const GitBranchCheckout = [
             "hide character chef with fadeOut",
             'na Now You can try out other modules to study!',
             function () {
-                monogatari.storage({level_4_done: true});
+                monogatari.storage.level_4_done = true;
                 console.log(monogatari.storage('level_4_done'));
                 return true;
               },
