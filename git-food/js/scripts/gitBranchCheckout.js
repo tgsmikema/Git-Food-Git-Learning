@@ -40,6 +40,7 @@ const GitBranchCheckout = [
     'chef Let’s hold it off for now. I’ll copy down the original recipe and place it on a separate cooking station so we can experiment with it later.',
     "hide character chef with fadeOut",
     'na This “experimental” recipe can be akin to an “experimental” branch. When you want to keep the original recipe intact but want to experiment with it, we can work on it on a separate cooking station using “git branch branch-name”',
+    'na You can learn more about Git Branch <u><a href="https://www.atlassian.com/git/tutorials/using-branches" target="_blank" style="color: blue">here</a></u>',
     'jump BranchQuiz1',
 
     monogatari.script({
@@ -142,6 +143,7 @@ const GitBranchCheckout = [
             "hide character chef with fadeOut",
             'na The two of them head over to the extra cooking station that {{chef_name}} had set up and started experimenting with the recipe.',
             'na The process of going to the new “experimental” cooking station that was made before using “git branch” can be akin to using “git checkout branch-name”. This allows us to go to the new branch and start working on it without affecting our “original” branch, which was the original recipe.',
+            'na You can learn more about Git Checkout <u><a href="https://www.atlassian.com/git/tutorials/using-branches/git-checkout" target="_blank" style="color: blue">here</a></u>',
             'jump CheckoutQuiz1'
         ],
 

@@ -31,6 +31,7 @@ const GitMergePR = [
     'chef In the Git Food, each chef represents a branch, and their dish represents the code changes made in that branch. Merging branches allows the chefs to combine their work and create a unified codebase.',
     'chef Now, let\'s dive deeper into the \'git merge\' command',
     'chef In our kitchen, when it\'s time to merge dishes, we use the \'git merge\' command. Similarly, in Git, \'git merge\' brings together the changes made in one branch and incorporates them into another.',
+    'chef You can learn more about Git Merge <u><a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge" target="_blank" style="color: blue">here</a></u>',
     //NPC Chef demonstrates the usage of the 'git merge' command in a restaurant context, showing examples of merging different dishes to create a new, unique dish.
     'chef Now it\'s time to test your knowledge!',
     "hide character chef with fadeOut",
@@ -187,6 +188,7 @@ const GitMergePR = [
             'chef Welcome back, chef! Today, we\'re going to learn about an essential concept in collaborative cooking: the \'pull request.\' Just as we have sous chefs reviewing and approving dishes before they are served, in the Git Food, a pull request allows us to review and merge code changes. Let\'s begin!',
             'chef Fantastic! Let me introduce you to the world of pull requests.',
             'chef In our bistro, when a chef wants their dish to be included in the menu, they create a pull request. Similarly, in Git, a pull request is a request to merge changes from one branch to another, providing an opportunity for review and discussion before finalizing the merge.',
+            'chef You can learn more about pull requests <u><a href="https://www.atlassian.com/git/tutorials/making-a-pull-request" target="_blank" style="color: blue">here</a></u>',
             "hide character chef with fadeOut",
             {
                 'Choice': {

@@ -177,6 +177,10 @@ monogatari.script({
           Text: "Level 5: Git Merge & Pull-Request",
           Do: "jump GitMergePR",
         },
+        ExternalResources: {
+            'Text': 'How can I learn more about Git?',
+            'Do': 'jump ExternalResources'
+        },
       },
     },
   ],
@@ -191,4 +195,5 @@ monogatari.script({
   GitAddCommitPush: GitAddCommitPush,
   GitBranchCheckout: GitBranchCheckout,
   GitMergePR: GitMergePR,
+  ExternalResources: ExternalResources
 });
