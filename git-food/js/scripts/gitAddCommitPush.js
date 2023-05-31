@@ -41,7 +41,7 @@ const GitAddCommitPush = [
       {
           Choice: {
             Yes: {
-              Text: "Yes, I already knew this knowledge!",
+              Text: "Yes",
               Do: "jump GitACPEnd",
             },
             No: {

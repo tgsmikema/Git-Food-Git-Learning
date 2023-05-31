@@ -41,7 +41,7 @@ const GitClonePull = [
     {
         Choice: {
           Yes: {
-            Text: "Yes, I already knew this knowledge!",
+            Text: "Yes",
             Do: "jump EndOfPull",
           },
           No: {

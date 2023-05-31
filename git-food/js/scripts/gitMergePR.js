@@ -33,7 +33,7 @@ const GitMergePR = [
       {
           Choice: {
             Yes: {
-              Text: "Yes, I already knew this knowledge!",
+              Text: "Yes",
               Do: "jump EndPR",
             },
             No: {
