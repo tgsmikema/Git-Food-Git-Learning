@@ -14,22 +14,32 @@ const GitMergePR = [
             'Dialog': 'Quiz Question 1: What does the "git merge" command do?',
             'GitIntro': {
                 'Text': 'A) Creates a new branch.',
-                'Do': 'jump WrongMergeQ1'
+                'Do': 'jump WrongMergeQ1',
+                onChosen: () => {
+                    playIncorrectSound()
+                }
             },
             'GitClonePull': {
                 'Text': 'B) Deletes a branch.',
-                'Do': 'jump WrongMergeQ1'
+                'Do': 'jump WrongMergeQ1',
+                onChosen: () => {
+                    playIncorrectSound()
+                }
             },
             'GitAddCommitPush': {
                 'Text': 'C) Combines the changes from one branch into another.',
                 'Do': 'jump CorrectMergeQ1',
                 onChosen: () => {
                   updateScore()
+                  playCorrectSound()
                 }
             },
             'GitBranchCheckout': {
                 'Text': 'D) Checks out a specific commit.',
-                'Do': 'jump WrongMergeQ1'
+                'Do': 'jump WrongMergeQ1',
+                onChosen: () => {
+                    playIncorrectSound()
+                }
             },
         }
     },
@@ -52,22 +62,32 @@ const GitMergePR = [
                     'Dialog': 'Quiz Question 2: What happens if there are conflicting changes when merging branches?',
                     'GitIntro': {
                         'Text': 'A) The merge happens automatically without any issues.',
-                        'Do': 'jump WrongMergeQ2'
+                        'Do': 'jump WrongMergeQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'GitClonePull': {
                         'Text': 'B) A merge conflict occurs, and manual intervention is required.',
                         'Do': 'jump CorrectMergeQ2',
                         onChosen: () => {
-                          updateScore()
+                            playCorrectSound()
+                            updateScore()
                         }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) The conflicting changes are deleted from the repository.',
-                        'Do': 'jump WrongMergeQ2'
+                        'Do': 'jump WrongMergeQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'GitBranchCheckout': {
                         'Text': 'D) The merge is canceled, and the branches remain separate.',
-                        'Do': 'jump WrongMergeQ2'
+                        'Do': 'jump WrongMergeQ2',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 }
             },
@@ -91,22 +111,32 @@ const GitMergePR = [
                     'Dialog': 'Quiz Question 3: In the Git Food kitchen, when we merge dishes, which dish receives the changes?',
                     'GitIntro': {
                         'Text': 'A) The source dish.',
-                        'Do': 'jump WrongMergeQ3'
+                        'Do': 'jump WrongMergeQ3',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'GitClonePull': {
                         'Text': 'B) The destination dish.',
                         'Do': 'jump CorrectMergeQ3',
                         onChosen: () => {
                           updateScore()
+                          playCorrectSound()
                         }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) Both dishes equally.',
-                        'Do': 'jump WrongMergeQ3'
+                        'Do': 'jump WrongMergeQ3',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                     'GitBranchCheckout': {
                         'Text': 'D) None of the above.',
-                        'Do': 'jump WrongMergeQ3'
+                        'Do': 'jump WrongMergeQ3',
+                        onChosen: () => {
+                            playIncorrectSound()
+                        }
                     },
                 }
             },
