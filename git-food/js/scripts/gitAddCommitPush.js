@@ -1,4 +1,23 @@
 const GitAddCommitPush = [
+    {'Conditional': {
+        'Condition': function () {
+            return this.storage.level_3_done;
+        },
+        'True': {
+          Choice: {
+            'Dialog': "Seems like you have done this module already, would you like to test your knowledge again?",
+            Yes: {
+              Text: "Yes, Please!",
+              Do: "jump QuestionsOnly3",
+            },
+            No: {
+              Text: "No, Thanks",
+              Do: "jump GameStart",
+            },
+          },
+        },
+        'False': 'clear',
+      }},
     'chef Hey {{player.name}},  here is a copy of the restaurant recipe, please cook customers\' orders based on this.',
     'user Thank you boss. This is definitely helpful for me to learn our restaurant\'s cooking style and brainstorm new ideas.',
     'chef Please feel free to come up with any new dishes. You can add them in your recipe, but please let me know and try your new dishes.',
@@ -228,7 +247,137 @@ const GitAddCommitPush = [
             'chef Congratulations! You have now master the skill to use git add, git commit and git push.',
             'chef Enjoy your "cook" in Git-Food!',
             'na Now You can try out other modules to study!',
+            function () {
+                monogatari.storage.level_3_done = true;
+                return true;
+              },
             'jump GameStart'
+        ],
+
+        'QuestionsOnly3':[
+            "Let's test your knowledge again!",
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 1: If you want to add a new dish named "recipe.txt," which command should you run?',
+                    A: {
+                        Text: "A) git add recipe.txt",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    B: {
+                        Text: "B) git add -m \"recipe.txt\"",
+                        Do: "na Incorrect...",
+                    },
+                    C: {
+                        Text: "C) git add commit recipe.txt",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) git add origin recipe.txt",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 2: Update recipe: spaghetti" to create a new commit, which command should you use?',
+                    A: {
+                        Text: "A) git commit -m \"Update recipe: spaghetti\"",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    B: {
+                        Text: "B) git commit -a \"Update recipe: spaghetti\"",
+                        Do: "na Incorrect...",
+                    },
+                    C: {
+                        Text: "C) git commit -p \"Update recipe: spaghetti\"",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) git commit -s \"Update recipe: spaghetti\"",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 3: What is the role of the commit message in the \"git commit\" command?',
+                    A: {
+                        Text: "A) It describes the changes made in the commit.",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    B: {
+                        Text: "B) It specifies the name of the branch to commit to.",
+                        Do: "na Incorrect...",
+                    },
+                    C: {
+                        Text: "C) It determines the level of visibility for the commit.",
+                        Do: "na Incorrect...",
+                    },
+                    D: {
+                        Text: "D) It sets the priority level for the commit.",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 4: In the given conversation context, what is the purpose of \"git push\"?',
+                    A: {
+                        Text: "A) Move files from the working directory to the staging area.",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) Save changes to the local repository.",
+                        Do: "na Incorrect...",
+                    },
+                    C: {
+                        Text: "C) Push changes to the remote repository.",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    D: {
+                        Text: "D) Create a new branch.",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            {
+                Choice: {
+                    'Dialog': 'Quiz Question 5: After you update the dish in the menu, your colleague points out a potential improvement. You want to update the edited dish and share with other chefs, what is the correct process to try the dish and update the menu?',
+                    A: {
+                        Text: "A) git commit - git push - git add",
+                        Do: "na Incorrect...",
+                    },
+                    B: {
+                        Text: "B) git push - git commit - git add",
+                        Do: "na Incorrect...",
+                    },
+                    C: {
+                        Text: "C) git add - git commit - git push",
+                        Do: "na Correct! Well done!",
+                        onChosen: () => {
+                            updateScore();
+                        }
+                    },
+                    D: {
+                        Text: "D) git add - git push - git commit",
+                        Do: "na Incorrect...",
+                    },
+                },
+            },
+            "chef It's nice to see that you have practiced these questions again, keep working hard!",
+            "jump GameStart",
         ]
     })
 ]

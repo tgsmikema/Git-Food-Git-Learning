@@ -8,7 +8,7 @@ const GitClonePull = [
             'Dialog': "Seems like you have done this module already, would you like to test your knowledge again?",
             Yes: {
               Text: "Yes, Please!",
-              Do: "jump QuestionsOnly",
+              Do: "jump QuestionsOnly2",
             },
             No: {
               Text: "No, Thanks",
@@ -216,7 +216,7 @@ const GitClonePull = [
               },
             'jump GameStart'
         ],
-        'QuestionsOnly':[
+        'QuestionsOnly2':[
             "Let's test your knowledge again!",
             {
                 Choice: {
