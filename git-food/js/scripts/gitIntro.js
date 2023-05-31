@@ -408,19 +408,29 @@ const GitIntro = [
                 Do: "na Correct! Well done!",
                 onChosen: () => {
                     updateScore();
+                    playCorrectSound()
                 }
             },
             B: {
                 Text: "B) Store it in your brain because you probably won't forget",
                 Do: "na Incorrect...",
+                onChosen: () => {
+                  playIncorrectSound()
+                }
             },
             C: {
                 Text: "C) Ask your coworker to remember it for you",
                 Do: "na Incorrect...",
+                onChosen: () => {
+                  playIncorrectSound()
+                }
             },
             D: {
                 Text: "D) Nothing, you won't ever need to refer to an old recipe",
                 Do: "na Incorrect...",
+                onChosen: () => {
+                  playIncorrectSound()
+                }
             },
         },
     },
@@ -430,21 +440,31 @@ const GitIntro = [
           A: {
               Text: "A) Let them overwrite your recipe",
               Do: "na Incorrect...",
+              onChosen: () => {
+                playIncorrectSound()
+              }
           },
           B: {
               Text: "B) Let them copy the recipe and then make modifications on their copy",
               Do: "na Correct! Well done!",
               onChosen: () => {
                   updateScore();
+                  playCorrectSound()
               }
           },
           C: {
               Text: "C) Don't let them modify your recipe at all, your recipe is perfect",
               Do: "na Incorrect...",
+              onChosen: () => {
+                playIncorrectSound()
+              }
           },
           D: {
               Text: "D) Yell at them because you feel insulted",
               Do: "na Incorrect...",
+              onChosen: () => {
+                playIncorrectSound()
+              }
           },
       },
   },
@@ -454,21 +474,31 @@ const GitIntro = [
         A: {
             Text: "A) In the kitchen.",
             Do: "na Incorrect...",
+            onChosen: () => {
+              playIncorrectSound()
+            }
         },
         B: {
             Text: "B) Nowhere, you'll probably remember.",
             Do: "na Incorrect...",
+            onChosen: () => {
+              playIncorrectSound()
+            }
         },
         C: {
             Text: "C) Online and in the kitchen.",
             Do: "na Correct! Well done!",
             onChosen: () => {
                 updateScore();
+                playCorrectSound()
             }
         },
         D: {
             Text: "D) Online.",
             Do: "na Incorrect...",
+            onChosen: () => {
+              playIncorrectSound()
+            }
         },
     },
 },
@@ -478,20 +508,30 @@ const GitIntro = [
       A: {
           Text: "A) In case new versions aren't as nice",
           Do: "na Incorrect...",
+          onChosen: () => {
+            playIncorrectSound()
+          }
       },
       B: {
           Text: "B) In case you lose the recipe",
           Do: "na Incorrect...",
+          onChosen: () => {
+            playIncorrectSound()
+          }
       },
       C: {
           Text: "C) In case your fellow chefs want to try it",
           Do: "na Incorrect...",
+          onChosen: () => {
+            playIncorrectSound()
+          }
       },
       D: {
           Text: "D) All above",
           Do: "na Correct! Well done!",
           onChosen: () => {
               updateScore();
+              playCorrectSound()
           }
       },
   },

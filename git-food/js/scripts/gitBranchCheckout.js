@@ -243,21 +243,31 @@ const GitBranchCheckout = [
                     A: {
                         Text: "A) git init branch_name",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) git branch branch_name",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     C: {
                         Text: "C) git checkout branch_name",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) None of the above",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -269,19 +279,29 @@ const GitBranchCheckout = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     B: {
                         Text: "B) To create multiple copies of a repository",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     C: {
                         Text: "C) To synchronise changes between multiple repositories",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) None of the above",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -291,21 +311,31 @@ const GitBranchCheckout = [
                     A: {
                         Text: "A) Creates a new branch with the given name",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) Switches to the branch with the given name",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     C: {
                         Text: "C) Deletes the branch with the given name",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) None of the above",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -315,21 +345,31 @@ const GitBranchCheckout = [
                     A: {
                         Text: "A) The changes are discarded",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) The changes are automatically merged into the new branch",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     C: {
                         Text: "C) The changes are preserved on the original branch",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     D: {
                         Text: "D) None of the above",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },

@@ -294,19 +294,29 @@ const GitClonePull = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     B: {
                         Text: "B) You change the central recipe book",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     C: {
                         Text: "C) Your personal recipe book disappears",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) You steal the central recipe book",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -316,20 +326,30 @@ const GitClonePull = [
                     A: {
                         Text: "A) Make personal changes without affecting the central recipe book",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) Refer to the recipes without needing to look in the central recipe book",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     C: {
                         Text: "C) Add experimental recipes that aren’t fully taste tested yet",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) All of the above",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                 },
@@ -340,21 +360,31 @@ const GitClonePull = [
                     A: {
                         Text: "A) Sends your changes to the central recipe book",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) Add new stuff in the central recipe book to your personal recipe book",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     C: {
                         Text: "C) You get a new personal recipe book",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) Your personal recipe book disappears",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -364,21 +394,31 @@ const GitClonePull = [
                     A: {
                         Text: "A) Yes, it is exactly the same",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) No, you can’t replace it",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     C: {
                         Text: "C) Yes, but it would require additional steps",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) I don’t know",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },

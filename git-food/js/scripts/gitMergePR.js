@@ -293,21 +293,31 @@ const GitMergePR = [
                     A: {
                         Text: "A) Creates a new branch.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) Deletes a branch.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     C: {
                         Text: "C) Combines the changes from one branch into another.",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     D: {
                         Text: "D) Checks out a specific commit.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -317,21 +327,31 @@ const GitMergePR = [
                     A: {
                         Text: "A) The merge happens automatically without any issues.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) A merge conflict occurs, and manual intervention is required.",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     C: {
                         Text: "C) The conflicting changes are deleted from the repository.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) The merge is canceled, and the branches remain separate.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -341,21 +361,31 @@ const GitMergePR = [
                     A: {
                         Text: "A) The source dish.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) The destination dish.",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     C: {
                         Text: "C) Both dishes equally.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) None of the above.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -365,21 +395,31 @@ const GitMergePR = [
                     A: {
                         Text: "A) To immediately add the dish to the menu.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) To request review and discussion before adding the dish to the menu.",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     C: {
                         Text: "C) To delete a dish from the menu.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) To undo the last modification made to the dish.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -389,21 +429,31 @@ const GitMergePR = [
                     A: {
                         Text: "A) The entire collection of recipes in the kitchen.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) A summary of the changes made to the dish and their purpose.",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     C: {
                         Text: "C) A request to remove a dish from the menu.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) The last update made to the dish\'s recipe.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },

@@ -339,19 +339,29 @@ const GitAddCommitPush = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     B: {
                         Text: "B) git add -m \"recipe.txt\"",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     C: {
                         Text: "C) git add commit recipe.txt",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) git add origin recipe.txt",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -363,19 +373,29 @@ const GitAddCommitPush = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     B: {
                         Text: "B) git commit -a \"Update recipe: spaghetti\"",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     C: {
                         Text: "C) git commit -p \"Update recipe: spaghetti\"",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) git commit -s \"Update recipe: spaghetti\"",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -387,19 +407,29 @@ const GitAddCommitPush = [
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     B: {
                         Text: "B) It specifies the name of the branch to commit to.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     C: {
                         Text: "C) It determines the level of visibility for the commit.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     D: {
                         Text: "D) It sets the priority level for the commit.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -409,21 +439,31 @@ const GitAddCommitPush = [
                     A: {
                         Text: "A) Move files from the working directory to the staging area.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) Save changes to the local repository.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     C: {
                         Text: "C) Push changes to the remote repository.",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     D: {
                         Text: "D) Create a new branch.",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
@@ -433,21 +473,31 @@ const GitAddCommitPush = [
                     A: {
                         Text: "A) git commit - git push - git add",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     B: {
                         Text: "B) git push - git commit - git add",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                     C: {
                         Text: "C) git add - git commit - git push",
                         Do: "na Correct! Well done!",
                         onChosen: () => {
                             updateScore();
+                            playCorrectSound()
                         }
                     },
                     D: {
                         Text: "D) git add - git push - git commit",
                         Do: "na Incorrect...",
+                        onChosen: () => {
+                            playIncorrectSound()
+                          }
                     },
                 },
             },
