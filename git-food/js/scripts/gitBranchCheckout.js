@@ -49,13 +49,9 @@ const GitBranchCheckout = [
             },
           },
         },
-    'na Anonymous Chef is working on his recipe for a new dish. The chef wants to make changes to the recipe and experiment, but he doesn’t want to alter the original recipe',
-    'na He makes a copy of the recipe and takes it to a separate cooking station. There he can start experimenting with the recipe like adding different spices, modifying cooking times, or even introducing new ingredients.',
-    'na  His original recipe remains unaffected as he is experimenting on with his new experimental recipe.',
-    'na The original recipe is like the main branch. Git branch new branch is like making a copy of the original recipe and putting it elsewhere, like a new cooking station.',
-    'na Git checkout existing_branch is like going to that cooking station where you can start experimenting with the recipe without affecting the main branch.',
+
     "show character chef welcome center with fadeIn",
-    'chef  Hey, great work on the new dish the other day, it was a huge hit with the customers. You’ve got a gift in you.',
+    'chef  Hey, great work on the new dish the other day, it was a huge hit with the customers. You’re a natural!',
     'user  Thank you chef!',
     'chef Today, I’ve been thinking about tweaking one of our original recipes. Do you think you’re up for the task?',
     'user  I would love to! Should we get started right away?',
@@ -64,7 +60,7 @@ const GitBranchCheckout = [
     "show character chef welcome center with fadeIn",
     'chef Let’s hold it off for now. I’ll copy down the original recipe and place it on a separate cooking station so we can experiment with it later.',
     "hide character chef with fadeOut",
-    'na This “experimental” recipe can be akin to an “experimental” branch. When you want to keep the original recipe intact but want to experiment with it, we can work on it on a separate cooking station using “git branch branch-name”',
+    'na The experimental recipe begins as a copy of the original recipe. This is like creating an experimental branch in Git. This keeps the original recipe intact if you want to modify it. We can create this copy using “git branch branch-name”',
     'na You can learn more about Git Branch <u><a href="https://www.atlassian.com/git/tutorials/using-branches" target="_blank" style="color: gold">here</a></u>',
     'jump BranchQuiz1',
 
@@ -72,7 +68,7 @@ const GitBranchCheckout = [
         'BranchQuiz1':[
             {
                 'Choice': {
-                    'Dialog': 'Quiz Question 1: Which Git command is used to create a new branch?' +
+                    'Dialog': 'Quiz Question 1: Which Git command is used to create a new branch? ' +
                         'How do you create a new cooking station to experiment with a recipe?',
                     'A': {
                         'Text': 'A) git init branch_name',
@@ -164,7 +160,7 @@ const GitBranchCheckout = [
         ],
         'BranchCorrectQ2' : [
             "show character chef welcome center with fadeIn",
-            'chef Well done! Your answer is correct! Branching allows multiple versions of a codebase to coexist simultaneously, enabling developers to work on different features',
+            'chef Well done! Your answer is correct! Branching allows multiple versions of a codebase to coexist, enabling developers to work on different features.',
             "hide character chef with fadeOut",
             'jump EndOfBranch',
         ],
@@ -176,20 +172,18 @@ const GitBranchCheckout = [
         ],
         'EndOfBranch':[
             "show character chef welcome center with fadeIn",
-            'chef Congratulations, {{player.name}}! You\'ve learned how to git branch.Happy learning',
+            'chef Congratulations, {{player.name}}! You\'ve learned how to git branch. Happy learning!',
             "hide character chef with fadeOut",
             'jump StartCheckout'
         ],
         'StartCheckout':[
-            'na {{chef_name}} comes over as you finish up the final orders of today.',
+            'na Later that day...',
             "show character chef welcome center with fadeIn",
-            'chef Hey {{player.name}}, good job today.',
-            'user Thank you chef!',
-            'chef Now that we have some time do you want to start working on the recipe?',
+            'chef Now that we have some time, do you want to start working on the recipe?',
             'user Sure!',
             "hide character chef with fadeOut",
-            'na The two of them head over to the extra cooking station that {{chef_name}} had set up and started experimenting with the recipe.',
-            'na The process of going to the new “experimental” cooking station that was made before using “git branch” can be akin to using “git checkout branch-name”. This allows us to go to the new branch and start working on it without affecting our “original” branch, which was the original recipe.',
+            'na The two of them head over to the extra cooking station that {{chef_name}} had set up, leaving any unfinished work on the previous station.',
+            'na The process of switching to the new “experimental” cooking station that was made before using “git branch” is like using “git checkout branch-name”. This allows us to visit the new branch and start working on it without affecting our “original” branch.',
             'na You can learn more about Git Checkout <u><a href="https://www.atlassian.com/git/tutorials/using-branches/git-checkout" target="_blank" style="color: gold">here</a></u>',
             'jump CheckoutQuiz1'
         ],
@@ -289,7 +283,7 @@ const GitBranchCheckout = [
         ],
         'CheckoutCorrectQ2' : [
             "show character chef welcome center with fadeIn",
-            'chef Well done! Your answer is correct! When you switch to a different branch using git checkout, the changes made on the current branch that have not been committed or staged will be preserved in the working directory and staging area',
+            'chef Well done! Your answer is correct! When you switch to a different branch using git checkout, the changes made on the current branch that have not been committed or staged will be preserved in the working directory and staging area.',
             "hide character chef with fadeOut",
             'jump FailCheck4',
         ],
@@ -301,10 +295,10 @@ const GitBranchCheckout = [
         ],
         'EndOfCheckout':[
             "show character chef welcome center with fadeIn",
-            'chef Congratulations! You have now master the skill to use git branch,and git checkout.',
-            'chef Enjoy your "cook" in Git-Food!',
+            'chef Congratulations! You have now learned to use git branch, and git checkout.',
+            'chef Enjoy the rest of your day!',
             "hide character chef with fadeOut",
-            'na Now You can try out other modules to study!',
+            'na Now you can try out the other modules!',
             function () {
                 monogatari.storage.level_4_done = true;
                 console.log(monogatari.storage('level_4_done'));
@@ -314,7 +308,7 @@ const GitBranchCheckout = [
         ],
 
         EndOfCheckoutAlt:[
-            "na You answered more than 3 questions incorrectly. Would you like to try again?",
+            "na You answered 3 or more questions incorrectly. Would you like to try again?",
             {
               Choice: {
                 optionA: {
@@ -489,8 +483,8 @@ const GitBranchCheckout = [
                     },
                 },
             },
-            
-            "chef you have answered {{temp_score}} out of 4 questions correctly!",
+            "show character chef welcome center with fadeIn",
+            "chef You have answered {{temp_score}} out of 4 questions correctly!",
             function () {
                 if(monogatari.storage('section4_mastery')){
                     monogatari.storage({temp_score: 0});
@@ -509,15 +503,17 @@ const GitBranchCheckout = [
                     return monogatari.storage('section4_mastery');
                 },
                 'True': "jump Achievement4",
-                'False': "na Complete this test with no mistakes to gain mastery!"
+                'False': "chef Complete this test with no mistakes to gain mastery!"
                 }
             },
             "chef It's nice to see that you have practiced these questions again, keep working hard!",
+            "hide character chef with fadeOut",
             "jump GameStart",
         ],
         Achievement4:[
-            "na Congratulations! You have unlocked the Level 4 Mastery achievement in the gallery!",
+            "chef Congratulations! You have unlocked the Level 4 Mastery achievement in the gallery!",
             "gallery unlock section4",
+            "hide character chef with fadeOut",
             "jump GameStart"
         ]
     })
