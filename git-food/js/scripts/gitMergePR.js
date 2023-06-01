@@ -431,8 +431,8 @@ const GitMergePR = [
                     if (fail){monogatari.storage({incorrectCounter: 0});}
                     return fail;
                   },
-                  'True': 'jump EndOfCheckoutAlt',
-                  'False': 'jump EndOfCheckout'
+                  'True': 'jump EndPRAlt',
+                  'False': 'jump EndPR'
                 }
             }
         ],
