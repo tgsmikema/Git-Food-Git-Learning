@@ -75,7 +75,7 @@ const GitClonePull = [
     'na A new chef is hired at the restaurant. The new chef needs to know what dishes are served at the restaurant and how to make them. Thankfully, there is a public recipe book. Using the magical spell ‘git clone’, the new chef now has his own private copy of the recipe book.',
     'na Git clone is used to create a local copy of a repository, meaning that you have a copy of the original repository in your computer. You can use this copy to make changes in the repository, or simply use the software in your local machine',
     'na Cloning a repository is not like copying some files. In addition to copying the files, you get access to the history of the repository, and many other features we will discuss in the coming chapters.',
-    'na You can learn more about Git Clone <u><a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone" target="_blank" style="color: blue">here</a></u>',
+    'na You can learn more about Git Clone <u><a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone" target="_blank" style="color: gold">here</a></u>',
     'jump Quiz1',
 
     monogatari.script({
@@ -239,7 +239,7 @@ const GitClonePull = [
             'na Everybody needs to learn how to make sandwiches. Danny has shared the recipe to the public recipe book, but unfortunately, you have a clone of the old recipe book. Not to worry, the power of ‘git pull’ is here to help',
             'na Using git pull, you are able to access the latest recipes in the public recipe book.',
             'na Git pull is used when the central repository has new changes and you want to add them to your local repository. It will fetch and merge the changes related to the repository.',
-            'na You can learn more about Git Pull <u><a href="https://www.atlassian.com/git/tutorials/syncing/git-pull" target="_blank" style="color: blue">here</a></u>',
+            'na You can learn more about Git Pull <u><a href="https://www.atlassian.com/git/tutorials/syncing/git-pull" target="_blank" style="color: gold">here</a></u>',
             'jump Quiz1ForPull'
         ],
         'Quiz1ForPull':[

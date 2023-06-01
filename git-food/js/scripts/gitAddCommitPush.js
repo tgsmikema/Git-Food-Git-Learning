@@ -55,7 +55,7 @@ const GitAddCommitPush = [
     'chef Please feel free to come up with any new dishes. You can add them in your recipe, but please let me know and try your new dishes.',
     "hide character chef with fadeOut",
     'na The process of adding new dishes to your recipe is called “git add”. It tells the version control system what is included in the next version, for example, “git add index.txt” will tell git that all the creation or changes in index.txt will be included in the next version.',
-    'na You can learn more about Git Add <u><a href="https://www.atlassian.com/git/tutorials/saving-changes" target="_blank" style="color: blue">here</a></u>',
+    'na You can learn more about Git Add <u><a href="https://www.atlassian.com/git/tutorials/saving-changes" target="_blank" style="color: gold">here</a></u>',
     'jump AddQuiz1',
 
     monogatari.script({
@@ -169,7 +169,7 @@ const GitAddCommitPush = [
             'chef (have a bite) This is absolutely fantastic. It will bring some fresh tastes to our restaurant. Let\'s keep it in the recipe',
             "hide character chef with fadeOut",
             'na {{chef_name}} has acknowledged this new dish, meaning that there has been a new version of the recipe which includes the new dish. This process is called “git commit”. It will record all the changes you added with “git add” as a new version. When committing files, you will also need a message that describes this message, for example, \'git commit -m “added a new dish”\'',
-            'na You can learn more about Git Commit <u><a href="https://www.atlassian.com/git/tutorials/saving-changes/git-commit" target="_blank" style="color: blue">here</a></u>',
+            'na You can learn more about Git Commit <u><a href="https://www.atlassian.com/git/tutorials/saving-changes/git-commit" target="_blank" style="color: gold">here</a></u>',
             'jump GitCommitQuiz1'
         ],
         'GitCommitQuiz1': [
@@ -306,7 +306,7 @@ const GitAddCommitPush = [
             'chef Thank you for your contribution to our restaurant. You are useless now and you are fired (just kidding).',
             "hide character chef with fadeOut",
             'na This process of letting other chefs see this new dish is “git push”. It will publish your local changes to a remote repository like GitHub, and all developers will be able to view your files.',
-            'na You can learn more about Git Push <u><a href="https://www.atlassian.com/git/tutorials/syncing/git-push" target="_blank" style="color: blue">here</a></u>',
+            'na You can learn more about Git Push <u><a href="https://www.atlassian.com/git/tutorials/syncing/git-push" target="_blank" style="color: gold">here</a></u>',
             'jump GitPushQuiz1'
         ],
         'GitPushQuiz1': [
