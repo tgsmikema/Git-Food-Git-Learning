@@ -17,3 +17,8 @@ Open the file index.html in the git-clone folder.
 4. Connectivism
 5. Scaffolding
 6. Cognitive Load
+
+## Useful links
+<a href="https://trello.com/invite/b/N5Xl9cwG/ATTI86328ecbc7d681ca0462de75aebab0f137DD7790/week12"> Trello </a>
+
+<a href="https://drive.google.com/drive/folders/1ibiHVMG6aU-TeDNWdnKmT-_52jGRtd5W?usp=share_link"> Google Shared Folder </a>
