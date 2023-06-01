@@ -1,14 +1,14 @@
 {
-  "name": "my-game",
-  "productName": "My Game",
+  "name": "git-food",
+  "productName": "Git Food",
   "version": "0.1.0",
   "main": "engine/electron/index.js",
-  "description": "A description of your game",
-  "author": "Your Name",
+  "description": "A visual novel to teach about Git using analogies",
+  "author": "SOFTENG 701 Group 3",
   "license": "MIT",
   "homepage": "https://example.com",
   "build": {
-    "appId": "com.example.mygame",
+    "appId": "com.se701.group3.gitfood",
     "win": {
       "target": [
         "nsis"
@@ -32,8 +32,8 @@
       "target": [
         "AppImage"
       ],
-      "synopsis": "A small synopsis of your game",
-      "description": "A more detailed description of your game"
+      "synopsis": "A visual novel to teach about Git using analogies",
+      "description": "A visual novel to teach about Git using analogies"
     },
     "icon": "assets/icons/512x512.png",
     "afterSign": "engine/electron/notarize.js"
