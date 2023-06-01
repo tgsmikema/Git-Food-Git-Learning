@@ -18,7 +18,7 @@ monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: fal
 const GitIntro = [
   {'Conditional': {
     'Condition': function () {
-        return this.storage.level_1_done;
+        return monogatari.storage('level_1_done');
     },
     'True': {
       Choice: {
@@ -349,7 +349,7 @@ const GitIntro = [
               playCorrectSound()
               correct=true;
               monogatari.storage({currentScript: "GitIntro4"});
-              monogatari.storage({nextScript: "FailCheck"});
+              monogatari.storage({nextScript: "FailCheck1"});
               monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
             }
           },
@@ -368,7 +368,7 @@ const GitIntro = [
           }
       }
     ],
-    FailCheck:[
+    FailCheck1:[
       {'Conditional':
           {
             'Condition': function () {
@@ -388,7 +388,8 @@ const GitIntro = [
       "na You now know the importance of git, let's dive into it with the next level!",
       //save that user already done this module.
       function () {
-        monogatari.storage.level_1_done = true;
+        monogatari.storage({level_1_done: true});
+        console.log(monogatari.storage('level_1_done'));
         return true;
       },
       "jump GameStart",
@@ -403,7 +404,7 @@ const GitIntro = [
           },
           optionB: {
             Text: "No",
-            Do: "jump GameIntroEnd",
+            Do: "jump GitIntroEnd",
           }
         }
       }
