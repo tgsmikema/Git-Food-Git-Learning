@@ -291,7 +291,7 @@ const GitBranchCheckout = [
             "show character chef welcome center with fadeIn",
             'chef Well done! Your answer is correct! When you switch to a different branch using git checkout, the changes made on the current branch that have not been committed or staged will be preserved in the working directory and staging area',
             "hide character chef with fadeOut",
-            'jump FailCheck',
+            'jump FailCheck4',
         ],
         'CheckoutWrongQ2': [
             "show character chef welcome center with fadeIn",
@@ -329,7 +329,7 @@ const GitBranchCheckout = [
             }
         ],
 
-        FailCheck:[
+        FailCheck4:[
             {'Conditional':
                 {
                   'Condition': function () {

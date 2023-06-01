@@ -364,7 +364,7 @@ const GitClonePull = [
             "show character sous welcome center with fadeIn",
             'sous Well done! Your answer is correct! Technically, you can throw away your old recipe book and use “Git clone” to create a new recipe book when you need to use “Git pull”, but this is very cumbersome and should not be done.',
             "hide character sous with fadeOut",
-            'jump FailCheck',
+            'jump FailCheck2',
         ],
         'WrongQ2ForPull': [
             "show character sous welcome center with fadeIn",
@@ -399,7 +399,7 @@ const GitClonePull = [
               }
             }
         ],
-        FailCheck:[
+        FailCheck2:[
             {'Conditional':
                 {
                   'Condition': function () {

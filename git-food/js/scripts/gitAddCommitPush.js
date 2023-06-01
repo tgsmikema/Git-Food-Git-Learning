@@ -434,7 +434,7 @@ const GitAddCommitPush = [
         'CorrectPushQ2': [
             "show character chef welcome center with fadeIn",
             'chef Good job! You need to stage the changes (git add), record the changes (git commit), and send to the remote repository (git push)',
-            'jump FailCheck'
+            'jump FailCheck3'
         ],
 
         'GitACPEnd': [
@@ -465,7 +465,7 @@ const GitAddCommitPush = [
             }
         ],
 
-        FailCheck:[
+        FailCheck3:[
             {'Conditional':
                 {
                   'Condition': function () {

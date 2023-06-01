@@ -389,7 +389,7 @@ const GitMergePR = [
         'CorrectPRQ2':[
             "show character chef welcome center with fadeIn",
             'chef Well done! In the Git Food kitchen, a pull request typically includes a summary of the changes made to the dish and their purpose. This summary helps the other chefs understand the intention behind the modifications and facilitates effective review.',
-            'jump FailCheck',
+            'jump FailCheck5',
         ],
         'WrongPRQ2':[
             "show character chef welcome center with fadeIn",
@@ -423,7 +423,7 @@ const GitMergePR = [
             }
         ],
 
-        FailCheck:[
+        FailCheck5:[
             {'Conditional':
                 {
                   'Condition': function () {
