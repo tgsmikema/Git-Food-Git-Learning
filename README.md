@@ -8,7 +8,7 @@ In Git Food, we choose to compare git practices to working as a chef in a restau
 University students who are new to Git or struggling to grasp its concepts.
 
 ## How to play the game
-Open the file index.html in the git-clone folder.
+Under the folder <i> git-food </i>, open the file <i>index.html</i> in browser and then it is good to go.
 
 ## Relevant Theories
 1. Analogy
