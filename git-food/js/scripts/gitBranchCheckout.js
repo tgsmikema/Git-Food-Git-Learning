@@ -1,8 +1,16 @@
+function incrementIncorrect(){
+    let incorrectCounter  = monogatari.storage('incorrectCounter');
+    incorrectCounter++;
+    monogatari.storage({incorrectCounter: incorrectCounter});
+}
+
+monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
+
 function incrementCorrect(){
     let correctCounter = monogatari.storage('temp_score');
     correctCounter++;
     monogatari.storage({temp_score: correctCounter});
-  }
+}
 
 const GitBranchCheckout = [
     {'Conditional': {
@@ -32,7 +40,7 @@ const GitBranchCheckout = [
       {
           Choice: {
             Yes: {
-              Text: "Yes, I already knew this knowledge!",
+              Text: "Yes",
               Do: "jump EndOfCheckout",
             },
             No: {
@@ -70,22 +78,33 @@ const GitBranchCheckout = [
                         'Text': 'A) git init branch_name',
                         'Do': 'jump BranchWrongQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
                         }
                     },
                     'B': {
                         'Text': 'B) git branch branch_name',
                         'Do': 'jump BranchCorrectQ1',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'C': {
                         'Text': 'C)  git checkout branch_name',
                         'Do': 'jump BranchWrongQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);  
                         }
                     },
                 },
@@ -101,7 +120,7 @@ const GitBranchCheckout = [
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer is B) git branch branch_name.  When we create a new branch, we will use the git branch command',
             "hide character chef with fadeOut",
-            'jump BranchQuiz2',
+            'jump BranchQuiz1',
         ],
         'BranchQuiz2':[
             {
@@ -111,22 +130,33 @@ const GitBranchCheckout = [
                         'Text': 'A) To experiment with new features without affecting the main codebase',
                         'Do': 'jump BranchCorrectQ2',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'B': {
                         'Text': 'B) To create multiple copies of a repository',
                         'Do': 'jump BranchWrongQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);  
                         }
                     },
                     'C': {
                         'Text': 'C) To synchronise changes between multiple repositories',
                         'Do': 'jump BranchWrongQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);  
                         }
                     },
                 },
@@ -142,7 +172,7 @@ const GitBranchCheckout = [
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer is A) To experiment with new features without affecting the main codebase. Branching allows multiple versions of a codebase to coexist simultaneously, enabling developers to work on different features',
             "hide character chef with fadeOut",
-            'jump EndOfBranch',
+            'jump BranchQuiz2',
         ],
         'EndOfBranch':[
             "show character chef welcome center with fadeIn",
@@ -172,22 +202,33 @@ const GitBranchCheckout = [
                         'Text': 'A) Creates a new branch with the given name',
                         'Do': 'jump CheckoutWrongQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
                         }
                     },
                     'B': {
                         'Text': 'B) Switches to the branch with the given name',
                         'Do': 'jump CheckoutCorrectQ1',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'C': {
                         'Text': 'C) Deletes the branch with the given name',
                         'Do': 'jump CheckoutWrongQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);  
                         }
                     },
                 },
@@ -203,7 +244,7 @@ const GitBranchCheckout = [
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer is B) Switches to the branch with the given name.',
             "hide character chef with fadeOut",
-            'jump CheckoutQuiz2',
+            'jump CheckoutQuiz1',
         ],
 
         'CheckoutQuiz2':[
@@ -214,22 +255,33 @@ const GitBranchCheckout = [
                         'Text': 'A) The changes are discarded',
                         'Do': 'jump CheckoutWrongQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
                         }
                     },
                     'B': {
                         'Text': 'B) The changes are automatically merged into the new branch',
                         'Do': 'jump CheckoutWrongQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);  
                         }
                     },
                     'C': {
                         'Text': 'C) The changes are preserved on the original branch',
                         'Do': 'jump CheckoutCorrectQ2',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                 },
@@ -239,13 +291,13 @@ const GitBranchCheckout = [
             "show character chef welcome center with fadeIn",
             'chef Well done! Your answer is correct! When you switch to a different branch using git checkout, the changes made on the current branch that have not been committed or staged will be preserved in the working directory and staging area',
             "hide character chef with fadeOut",
-            'jump EndOfCheckout',
+            'jump FailCheck4',
         ],
         'CheckoutWrongQ2': [
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer is C) The changes are preserved on the original branch. When you switch to a different branch using git checkout, the changes made on the current branch that have not been committed or staged will be preserved in the working directory and staging area',
             "hide character chef with fadeOut",
-            'jump EndOfCheckout',
+            'jump CheckoutQuiz2',
         ],
         'EndOfCheckout':[
             "show character chef welcome center with fadeIn",
@@ -255,9 +307,40 @@ const GitBranchCheckout = [
             'na Now You can try out other modules to study!',
             function () {
                 monogatari.storage.level_4_done = true;
+                console.log(monogatari.storage('level_4_done'));
                 return true;
               },
             'jump GameStart'
+        ],
+
+        EndOfCheckoutAlt:[
+            "na You answered more than 3 questions incorrectly. Would you like to try again?",
+            {
+              Choice: {
+                optionA: {
+                  Text: "Yes",
+                  Do: "jump BranchQuiz1",
+                },
+                optionB: {
+                  Text: "No",
+                  Do: "jump EndOfCheckout",
+                }
+              }
+            }
+        ],
+
+        FailCheck4:[
+            {'Conditional':
+                {
+                  'Condition': function () {
+                    let fail = this.storage('incorrectCounter') >= this.storage('maxIncorrect');
+                    if (fail){monogatari.storage({incorrectCounter: 0});}
+                    return fail;
+                  },
+                  'True': 'jump EndOfCheckoutAlt',
+                  'False': 'jump EndOfCheckout'
+                }
+            }
         ],
 
         'QuestionsOnly4':[

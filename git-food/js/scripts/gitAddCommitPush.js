@@ -1,8 +1,16 @@
+function incrementIncorrect(){
+    let incorrectCounter  = monogatari.storage('incorrectCounter');
+    incorrectCounter++;
+    monogatari.storage({incorrectCounter: incorrectCounter});
+}
+
+monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
+
 function incrementCorrect(){
     let correctCounter = monogatari.storage('temp_score');
     correctCounter++;
     monogatari.storage({temp_score: correctCounter});
-  }
+}
 
 const GitAddCommitPush = [
     {'Conditional': {
@@ -33,7 +41,7 @@ const GitAddCommitPush = [
       {
           Choice: {
             Yes: {
-              Text: "Yes, I already knew this knowledge!",
+              Text: "Yes",
               Do: "jump GitACPEnd",
             },
             No: {
@@ -59,29 +67,45 @@ const GitAddCommitPush = [
                         'Text': 'A) git add recipe.txt',
                         'Do': 'jump CorrectAddQ1',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'B': {
                         'Text': 'B) git add -m "recipe.txt"',
                         'Do': 'jump WrongAddQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);  
                         }
                     },
                     'C': {
                         'Text': 'C) git add commit recipe.txt',
                         'Do': 'jump WrongAddQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);  
                         }
                     },
                     'D': {
                         'Text': 'D) git add origin recipe.txt',
                         'Do': 'jump WrongAddQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
                         }
                     },
                 },
@@ -95,7 +119,7 @@ const GitAddCommitPush = [
         'WrongAddQ1': [
             "show character chef welcome center with fadeIn",
             'chef Unfortunately, you answer is wrong. The correct answer should be A)git add recipe.txt',
-            'jump AddQuiz2'
+            'jump AddQuiz1'
         ],
 
         'AddQuiz2': [
@@ -108,15 +132,21 @@ const GitAddCommitPush = [
                         'Text': 'True',
                         'Do': 'jump WrongAddQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
                         }
                     },
                     'False': {
                         'Text': 'False',
                         'Do': 'jump CorrectAddQ2',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     }
                 }
@@ -125,7 +155,7 @@ const GitAddCommitPush = [
         'WrongAddQ2': [
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer should be False. This is because "git add" stages both new files and modifications to existing files.',
-            'jump GitCommitStart'
+            'jump AddQuiz2'
         ],
         'CorrectAddQ2': [
             "show character chef welcome center with fadeIn",
@@ -150,29 +180,45 @@ const GitAddCommitPush = [
                         'Text': 'A) git commit -m "Update recipe: spaghetti"',
                         'Do': 'jump CorrectCommitQ1',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'B': {
                         'Text': 'B) git commit -a "Update recipe: spaghetti"',
                         'Do': 'jump WrongCommitQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);  
                         }
                     },
                     'C': {
                         'Text': 'C) git commit -p "Update recipe: spaghetti"',
                         'Do': 'jump WrongCommitQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);  
                         }
                     },
                     'D': {
                         'Text': 'D) git commit -s "Update recipe: spaghetti"',
                         'Do': 'jump WrongCommitQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
                         }
                     },
                 },
@@ -182,7 +228,7 @@ const GitAddCommitPush = [
             "show character chef welcome center with fadeIn",
             'chef Unfortunately, the correct answer should be A) git commit -m "Update recipe: spaghetti"',
             "hide character chef with fadeOut",
-            'jump GitCommitQuiz2'
+            'jump GitCommitQuiz1'
         ],
         'CorrectCommitQ1': [
             "show character chef welcome center with fadeIn",
@@ -199,29 +245,45 @@ const GitAddCommitPush = [
                         'Text': 'A) It describes the changes made in the commit.',
                         'Do': 'jump CorrectCommitQ2',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'B': {
                         'Text': 'B) It specifies the name of the branch to commit to.',
                         'Do': 'jump WrongCommitQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);  
                         }
                     },
                     'C': {
                         'Text': 'C) It determines the level of visibility for the commit.',
                         'Do': 'jump WrongCommitQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);  
                         }
                     },
                     'D': {
                         'Text': 'D) It sets the priority level for the commit.',
                         'Do': 'jump WrongCommitQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
                         }
                     },
                 },
@@ -235,7 +297,7 @@ const GitAddCommitPush = [
         'WrongCommitQ2': [
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer should be A) It describes the changes made in the commit.',
-            'jump GitPush'
+            'jump GitCommitQuiz2'
         ],
 
         'GitPush': [
@@ -255,29 +317,45 @@ const GitAddCommitPush = [
                         'Text': 'A) Move files from the working directory to the staging area.',
                         'Do': 'jump WrongPushQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
                         }
                     },
                     'B': {
                         'Text': 'B) Save changes to the local repository.',
                         'Do': 'jump WrongPushQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);  
                         }
                     },
                     'C': {
                         'Text': 'C) Push changes to the remote repository.',
                         'Do': 'jump CorrectPushQ1',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'D': {
                         'Text': 'D) Create a new branch.',
                         'Do': 'jump WrongPushQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
                         }
                     },
                 },
@@ -286,7 +364,7 @@ const GitAddCommitPush = [
         'WrongPushQ1': [
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer should be C) Push changes to the remote repository.',
-            'jump GitPushQuiz2'
+            'jump GitPushQuiz1'
         ],
         'CorrectPushQ1': [
             "show character chef welcome center with fadeIn",
@@ -304,29 +382,45 @@ const GitAddCommitPush = [
                         'Text': 'A) git commit - git push - git add',
                         'Do': 'jump WrongPushQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
                         }
                     },
                     'B': {
                         'Text': 'B) git push - git commit - git add',
                         'Do': 'jump WrongPushQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);  
                         }
                     },
                     'C': {
                         'Text': 'C) git add - git commit - git push',
                         'Do': 'jump CorrectPushQ2',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'D': {
                         'Text': 'D) git add - git push - git commit',
                         'Do': 'jump WrongPushQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
                         }
                     },
                 },
@@ -335,12 +429,12 @@ const GitAddCommitPush = [
         'WrongPushQ2': [
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer should be C)git add - git commit - git push',
-            'jump GitACPEnd'
+            'jump GitPushQuiz2'
         ],
         'CorrectPushQ2': [
             "show character chef welcome center with fadeIn",
             'chef Good job! You need to stage the changes (git add), record the changes (git commit), and send to the remote repository (git push)',
-            'jump GitACPEnd'
+            'jump FailCheck3'
         ],
 
         'GitACPEnd': [
@@ -353,6 +447,36 @@ const GitAddCommitPush = [
                 return true;
               },
             'jump GameStart'
+        ],
+
+        GitACPEndAlt:[
+            "na You answered more than 3 questions incorrectly. Would you like to try again?",
+            {
+              Choice: {
+                optionA: {
+                  Text: "Yes",
+                  Do: "jump AddQuiz1",
+                },
+                optionB: {
+                  Text: "No",
+                  Do: "jump GitACPEnd",
+                }
+              }
+            }
+        ],
+
+        FailCheck3:[
+            {'Conditional':
+                {
+                  'Condition': function () {
+                    let fail = this.storage('incorrectCounter') >= this.storage('maxIncorrect');
+                    if (fail){monogatari.storage({incorrectCounter: 0});}
+                    return fail;
+                  },
+                  'True': 'jump GitACPEndAlt',
+                  'False': 'jump GitACPEnd'
+                }
+            }
         ],
 
         'QuestionsOnly3':[

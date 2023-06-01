@@ -1,8 +1,16 @@
+function incrementIncorrect(){
+    let incorrectCounter  = monogatari.storage('incorrectCounter');
+    incorrectCounter++;
+    monogatari.storage({incorrectCounter: incorrectCounter});
+}
+
+monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
+
 function incrementCorrect(){
     let correctCounter = monogatari.storage('temp_score');
     correctCounter++;
     monogatari.storage({temp_score: correctCounter});
-  }
+}
 
 const GitMergePR = [
     {'Conditional': {
@@ -33,7 +41,7 @@ const GitMergePR = [
       {
           Choice: {
             Yes: {
-              Text: "Yes, I already knew this knowledge!",
+              Text: "Yes",
               Do: "jump EndPR",
             },
             No: {
@@ -52,41 +60,61 @@ const GitMergePR = [
     //NPC Chef demonstrates the usage of the 'git merge' command in a restaurant context, showing examples of merging different dishes to create a new, unique dish.
     'chef Now it\'s time to test your knowledge!',
     "hide character chef with fadeOut",
-    {
-        'Choice': {
-            'Dialog': 'Quiz Question 1: What does the "git merge" command do?',
-            'GitIntro': {
-                'Text': 'A) Creates a new branch.',
-                'Do': 'jump WrongMergeQ1',
-                onChosen: () => {
-                    playIncorrectSound()
-                }
-            },
-            'GitClonePull': {
-                'Text': 'B) Deletes a branch.',
-                'Do': 'jump WrongMergeQ1',
-                onChosen: () => {
-                    playIncorrectSound()
-                }
-            },
-            'GitAddCommitPush': {
-                'Text': 'C) Combines the changes from one branch into another.',
-                'Do': 'jump CorrectMergeQ1',
-                onChosen: () => {
-                  updateScore()
-                  playCorrectSound()
-                }
-            },
-            'GitBranchCheckout': {
-                'Text': 'D) Checks out a specific commit.',
-                'Do': 'jump WrongMergeQ1',
-                onChosen: () => {
-                    playIncorrectSound()
-                }
-            },
-        }
-    },
+    "jump StartQ1",
+
     monogatari.script({
+        'StartQ1':[
+            {
+                'Choice': {
+                    'Dialog': 'Quiz Question 1: What does the "git merge" command do?',
+                    'GitIntro': {
+                        'Text': 'A) Creates a new branch.',
+                        'Do': 'jump WrongMergeQ1',
+                        onChosen: () => {
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
+                        }
+                    },
+                    'GitClonePull': {
+                        'Text': 'B) Deletes a branch.',
+                        'Do': 'jump WrongMergeQ1',
+                        onChosen: () => {
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({B_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().B_Wrong);  
+                        }
+                    },
+                    'GitAddCommitPush': {
+                        'Text': 'C) Combines the changes from one branch into another.',
+                        'Do': 'jump CorrectMergeQ1',
+                        onChosen: () => {
+                        updateScore();
+                        playCorrectSound();
+                        monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
+                        }
+                    },
+                    'GitBranchCheckout': {
+                        'Text': 'D) Checks out a specific commit.',
+                        'Do': 'jump WrongMergeQ1',
+                        onChosen: () => {
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
+                        }
+                    },
+                }
+            }
+        ],
         'CorrectMergeQ1' : [
             "show character chef welcome center with fadeIn",
             'chef Well done! Just like in our kitchen, the "git merge" command combines the changes made in one branch into another, creating a flavorful blend of code.',
@@ -95,7 +123,7 @@ const GitMergePR = [
         'WrongMergeQ1': [
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer is C) Combines the changes from one branch into another. With "git merge", you can bring together the changes made in one branch into another, just like blending different ingredients.',
-            'jump StartQ2',
+            'jump StartQ1',
         ],
         'StartQ2' : [
             'chef Excellent! You\'re understanding the concept of merging. Let\'s continue with more questions to reinforce your knowledge.',
@@ -107,29 +135,45 @@ const GitMergePR = [
                         'Text': 'A) The merge happens automatically without any issues.',
                         'Do': 'jump WrongMergeQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
                         }
                     },
                     'GitClonePull': {
                         'Text': 'B) A merge conflict occurs, and manual intervention is required.',
                         'Do': 'jump CorrectMergeQ2',
                         onChosen: () => {
-                            playCorrectSound()
-                            updateScore()
+                            playCorrectSound();
+                            updateScore();
+                            monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) The conflicting changes are deleted from the repository.',
                         'Do': 'jump WrongMergeQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);  
                         }
                     },
                     'GitBranchCheckout': {
                         'Text': 'D) The merge is canceled, and the branches remain separate.',
                         'Do': 'jump WrongMergeQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
                         }
                     },
                 }
@@ -143,7 +187,7 @@ const GitMergePR = [
         'WrongMergeQ2':[
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer is B) A merge conflict occurs, and manual intervention is required. When conflicting changes are found during a merge, a merge conflict arises, and manual intervention is necessary to resolve it.',
-            'jump StartQ3',
+            'jump StartQ2',
         ],
         'StartQ3':[
             "show character chef welcome center with fadeIn",
@@ -156,29 +200,45 @@ const GitMergePR = [
                         'Text': 'A) The source dish.',
                         'Do': 'jump WrongMergeQ3',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
                         }
                     },
                     'GitClonePull': {
                         'Text': 'B) The destination dish.',
                         'Do': 'jump CorrectMergeQ3',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) Both dishes equally.',
                         'Do': 'jump WrongMergeQ3',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);  
                         }
                     },
                     'GitBranchCheckout': {
                         'Text': 'D) None of the above.',
                         'Do': 'jump WrongMergeQ3',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
                         }
                     },
                 }
@@ -192,7 +252,7 @@ const GitMergePR = [
         'WrongMergeQ3':[
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer is B) The destination dish. When merging dishes in the Git Food kitchen, the changes from the source dish are incorporated into the destination dish.',
-            'jump EndOfMerge',
+            'jump StartQ3',
         ],
         'EndOfMerge':[
             'chef Congratulations, {{player.name}}! You\'ve learned how to merge code changes like a pro. Remember, just like creating a delectable dish, merging in Git brings together different branches and flavors of code. Keep up the great work and continue exploring the Git Food kitchen!',
@@ -207,6 +267,10 @@ const GitMergePR = [
             'chef In our bistro, when a chef wants their dish to be included in the menu, they create a pull request. Similarly, in Git, a pull request is a request to merge changes from one branch to another, providing an opportunity for review and discussion before finalizing the merge.',
             'chef You can learn more about pull requests <u><a href="https://www.atlassian.com/git/tutorials/making-a-pull-request" target="_blank" style="color: blue">here</a></u>',
             "hide character chef with fadeOut",
+            "jump StartPRQ1"
+        ],
+
+        'StartPRQ1':[
             {
                 'Choice': {
                     'Dialog': 'Quiz Question 1: What is the purpose of a pull request in the Git Food kitchen?',
@@ -214,29 +278,45 @@ const GitMergePR = [
                         'Text': 'A) To immediately add the dish to the menu.',
                         'Do': 'jump WrongPRQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
                         }
                     },
                     'GitClonePull': {
                         'Text': 'B) To request review and discussion before adding the dish to the menu.',
                         'Do': 'jump CorrectPRQ1',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                            updateScore();
+                            playCorrectSound();
+                            monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) To delete a dish from the menu.',
                         'Do': 'jump WrongPRQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);  
                         }
                     },
                     'GitBranchCheckout': {
                         'Text': 'D) To undo the last modification made to the dish.',
                         'Do': 'jump WrongPRQ1',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
                         }
                     },
                 }
@@ -250,7 +330,7 @@ const GitMergePR = [
         'WrongPRQ1':[
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer is B) To request review and discussion before adding the dish to the menu. In the Git Food kitchen, a pull request is used to request review and discussion before adding a dish to the menu, ensuring the best possible outcome.',
-            'jump StartPRQ2',
+            'jump StartPRQ1',
         ],
         'StartPRQ2':[
             'chef You\'re doing great! Let\'s continue with more questions to reinforce your understanding of pull requests.',
@@ -262,29 +342,45 @@ const GitMergePR = [
                         'Text': 'A) The entire collection of recipes in the kitchen.',
                         'Do': 'jump WrongPRQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({A_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().A_Wrong);  
                         }
                     },
                     'GitClonePull': {
                         'Text': 'B) A summary of the changes made to the dish and their purpose.',
                         'Do': 'jump CorrectPRQ2',
                         onChosen: () => {
-                          updateScore()
-                          playCorrectSound()
+                          updateScore();
+                          playCorrectSound();
+                          monogatari.storage({A_Wrong: false, B_Wrong: false, C_Wrong: false, D_Wrong: false});
                         }
                     },
                     'GitAddCommitPush': {
                         'Text': 'C) A request to remove a dish from the menu.',
                         'Do': 'jump WrongPRQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({C_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().C_Wrong);  
                         }
                     },
                     'GitBranchCheckout': {
                         'Text': 'D) The last update made to the dish\'s recipe.',
                         'Do': 'jump WrongPRQ2',
                         onChosen: () => {
-                            playIncorrectSound()
+                            playIncorrectSound();
+                            incrementIncorrect();
+                            monogatari.storage({D_Wrong: true});
+                        },
+                        Clickable: function(){
+                            return !(this.storage().D_Wrong);  
                         }
                     },
                 }
@@ -293,12 +389,12 @@ const GitMergePR = [
         'CorrectPRQ2':[
             "show character chef welcome center with fadeIn",
             'chef Well done! In the Git Food kitchen, a pull request typically includes a summary of the changes made to the dish and their purpose. This summary helps the other chefs understand the intention behind the modifications and facilitates effective review.',
-            'jump EndPR',
+            'jump FailCheck5',
         ],
         'WrongPRQ2':[
             "show character chef welcome center with fadeIn",
             'chef Oops! The correct answer is B) A summary of the changes made to the dish and their purpose. In the Git Food kitchen, a pull request typically includes a summary of the changes made to the dish and their purpose. This summary provides context for the review process and helps ensure the quality of the final recipe.',
-            'jump EndPR',
+            'jump StartPRQ2',
         ],
         'EndPR':[
             'chef Congratulations, chef! You\'ve learned how to utilize pull requests effectively, just like our chefs here in the Git Food. Pull requests facilitate collaboration and ensure that changes are thoroughly reviewed before merging. Keep up the excellent work and continue exploring the world of collaborative coding!',
@@ -310,6 +406,37 @@ const GitMergePR = [
               },
             'jump GameStart',
         ],
+
+        EndPRAlt:[
+            "na You answered more than 3 questions incorrectly. Would you like to try again?",
+            {
+              Choice: {
+                optionA: {
+                  Text: "Yes",
+                  Do: "jump StartQ1",
+                },
+                optionB: {
+                  Text: "No",
+                  Do: "jump EndPR",
+                }
+              }
+            }
+        ],
+
+        FailCheck5:[
+            {'Conditional':
+                {
+                  'Condition': function () {
+                    let fail = this.storage('incorrectCounter') >= this.storage('maxIncorrect');
+                    if (fail){monogatari.storage({incorrectCounter: 0});}
+                    return fail;
+                  },
+                  'True': 'jump EndPRAlt',
+                  'False': 'jump EndPR'
+                }
+            }
+        ],
+
         'QuestionsOnly5':[
             "Let's test your knowledge again!",
             function () {

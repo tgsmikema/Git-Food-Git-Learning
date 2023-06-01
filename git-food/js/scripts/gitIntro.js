@@ -46,7 +46,7 @@ const GitIntro = [
   {
     Choice: {
       Yes: {
-        Text: "Yes, I already knew this knowledge!",
+        Text: "Yes",
         Do: "jump GitIntroEnd",
       },
       No: {
